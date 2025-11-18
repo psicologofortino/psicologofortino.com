@@ -6,13 +6,36 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1">
 </script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  gtag('config', 'G-LG4RRB1FM1');
+  gtag('config', 'G-LG4RRB1FM1');
 </script>
 <!-- Fin de Google Analytics -->
+
+<!-- 
+  CÓDIGO DE MEDICIÓN DE CONVERSIÓN (GOOGLE ADS)
+  Este script se encarga de avisar a Google cuando alguien hace clic en WhatsApp.
+-->
+<script>
+  // Helper function to delay opening a URL until a gtag event is sent.
+  // Call it in response to an action that should navigate to a URL.
+  function gtagSendEvent(url) {
+    var callback = function () {
+      if (typeof url === 'string') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'ads_conversion_Contact_1', {
+      'event_callback': callback,
+      'event_timeout': 2000,
+      // <event_parameters>
+    });
+    return false;
+  }
+</script>
+<!-- Fin del código de conversión -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,10 +56,6 @@
     <link rel="icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" />
     <!-- Fin de Favicon -->
-
-    <!-- 
-      ¡Eliminado! Ya no necesitamos el código de marcador de posición.
-    -->
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -184,7 +203,10 @@
             <!-- TEXTO DEL SUBTÍTULO MODIFICADO -->
             <p class="text-xl text-blue-200 mb-8">Terapia individual para adolescentes y adultos jóvenes, presencial y en línea.</p>
             
-            <a href="#contacto" class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-100 transition-colors shadow-lg">
+            <!-- BOTÓN PRINCIPAL AHORA LLEVA A WHATSAPP -->
+            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia." 
+               onclick="return gtagSendEvent(this.href);"
+               class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-100 transition-colors shadow-lg">
                 Agendar Cita
             </a>
         </div>
@@ -207,7 +229,7 @@
                     
                     <!-- PÁRRAFO 1 ACTUALIZADO -->
                     <p class="text-lg text-gray-700 mb-4">
-                        Originario de Los Mochis, tengo más de cinco años de experiencia ofreciendo terapia. En ese tiempo me he especializado en el trabajo con adolescentes (15 años en adelante) y jóvenes adultos.
+                        Originario de Los Mochis, tengo más de cinco años de experiencia ofreciendo terapia. En ese tiempo me he especializado en el trabajo con adolescentes (15 años en adelante) y jóvenes adultos que buscan entenderse y enfrentar con honestidad lo que están viviendo.
                     </p>
                     
                     <!-- PÁRRAFO 2 (Sin cambios) -->
@@ -246,7 +268,7 @@
                 <!-- Servicio 2: Terapia en Línea -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <i class="fas fa-laptop-medical text-3xl text-blue-600 mb-4"></i>
-                    <h3 class="text-2x1 font-bold mb-3">Terapia en Línea</h3>
+                    <h3 class="text-2xl font-bold mb-3">Terapia en Línea</h3>
                     <p class="text-gray-700">La misma calidad terapéutica, pero por videollamada. Una opción flexible que se adapta a tu ritmo de vida, sin importar dónde te encuentres.</p>
                 </div>
             </div>
@@ -259,10 +281,9 @@
             <h2 class="text-3xl font-bold mb-8">Agenda tu cita</h2>
             <p class="text-xl text-blue-200 mb-8">Da el primer paso. Envíame un mensaje para agendar una cita o resolver tus dudas.</p>
             
-            <!-- Botón de WhatsApp Principal -->
+            <!-- Botón de WhatsApp Principal (SECCIÓN CONTACTO) CON SEGUIMIENTO -->
             <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia."
-               target="_blank"
-               rel="noopener noreferrer"
+               onclick="return gtagSendEvent(this.href);"
                class="bg-green-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-green-600 transition-colors shadow-lg inline-flex items-center gap-3">
                 <i class="fab fa-whatsapp text-2xl"></i>
                 Enviar WhatsApp
@@ -305,7 +326,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo sé si necesito ir a terapia?</h3>
                     <p class="text-gray-700">
                         Si sientes un malestar emocional que no desaparece, te cuesta manejar situaciones del día a día, o simplemente sientes que "algo no está bien", la terapia puede ser un gran apoyo. No necesitas estar en crisis para que la terapia te ayude; a veces, solo la necesidad de conocerse mejor es un motivo suficiente.
-                    </v>
+                    </p>
                 </div>
 
                 <!-- Pregunta 2 -->
@@ -313,7 +334,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo es la primera sesión de terapia contigo?</h3>
                     <p class="text-gray-700">
                         La primera sesión es, sobre todo, una conversación para conocernos. Hablaremos de lo que te trae a consulta, qué te gustaría lograr y cómo te sientes. Es un espacio para que resuelvas todas tus dudas sobre el proceso. Mi objetivo es que te sientas en un lugar seguro y profesional desde el primer minuto.
-                    </v>
+                    </p>
                 </div>
 
                 <!-- Pregunta 3 -->
@@ -336,10 +357,10 @@
     </section>
 
 
-    <!-- Botón Flotante de WhatsApp -->
+    <!-- Botón Flotante de WhatsApp (CON SEGUIMIENTO) -->
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20vi%20tu%20sitio%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n."
+       onclick="return gtagSendEvent(this.href);"
        class="whatsapp-float" 
-       target="_blank" 
        rel="noopener noreferrer"
        aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -357,36 +378,40 @@
             </p>
             
             <div class="flex justify-center space-x-8"> 
+                <!-- Icono más grande y color ajustado para hover -->
                 <a href="https://www.instagram.com/psicologo.fortino/" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    aria-label="Instagram"
                    class="text-gray-500 hover:text-pink-500 transition-colors">
-                    <i class="fab fa-instagram text-4xl"></i> <!-- Icono más grande -->
+                    <i class="fab fa-instagram text-4xl"></i>
                 </a>
                 
+                <!-- Icono más grande y color ajustado para hover -->
                 <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    aria-label="YouTube"
                    class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-youtube text-4xl"></i> <!-- Icono más grande -->
+                    <i class="fab fa-youtube text-4xl"></i>
                 </a>
 
+                <!-- Icono más grande y color ajustado para hover -->
                 <a href="https://www.facebook.com/Fortino.Velderrain/" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    aria-label="Facebook"
                    class="text-gray-500 hover:text-blue-500 transition-colors">
-                    <i class="fab fa-facebook text-4xl"></i> <!-- Icono más grande -->
+                    <i class="fab fa-facebook text-4xl"></i>
                 </a>
 
+                <!-- Icono más grande y color ajustado para hover -->
                 <a href="https://www.tiktok.com/@psicologo.fortino" 
                    target="_blank" 
                    rel="noopener noreferrer"
                    aria-label="TikTok"
-                   class="text-gray-500 hover:text-gray-900 transition-colors"> <!-- TikTok hover color a negro -->
-                    <i class="fab fa-tiktok text-4xl"></i> <!-- Icono más grande -->
+                   class="text-gray-500 hover:text-gray-900 transition-colors">
+                    <i class="fab fa-tiktok text-4xl"></i>
                 </a>
             </div>
         </div>
