@@ -15,24 +15,31 @@
 <!-- Fin de Google Analytics -->
 
 <!-- 
-  CÓDIGO DE MEDICIÓN DE CONVERSIÓN (GOOGLE ADS)
-  Este script se encarga de avisar a Google cuando alguien hace clic en WhatsApp.
+  CÓDIGO DE MEDICIÓN DE CONVERSIÓN (GOOGLE ADS) - AJUSTADO
+  Este script maneja el evento de conversión y respeta si el enlace es _blank.
 -->
 <script>
-  // Helper function to delay opening a URL until a gtag event is sent.
-  // Call it in response to an action that should navigate to a URL.
-  function gtagSendEvent(url) {
+  function gtagSendEvent(element) {
+    var url = element.href;
+    var target = element.target;
+    
     var callback = function () {
       if (typeof url === 'string') {
-        window.location = url;
+        if (target === '_blank') {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
       }
     };
+
     gtag('event', 'ads_conversion_Contact_1', {
       'event_callback': callback,
       'event_timeout': 2000,
       // <event_parameters>
     });
-    return false;
+    
+    return false; 
   }
 </script>
 <!-- Fin del código de conversión -->
@@ -203,9 +210,10 @@
             <!-- TEXTO DEL SUBTÍTULO MODIFICADO -->
             <p class="text-xl text-blue-200 mb-8">Terapia individual para adolescentes y adultos jóvenes, presencial y en línea.</p>
             
-            <!-- BOTÓN PRINCIPAL AHORA LLEVA A WHATSAPP -->
-            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia." 
-               onclick="return gtagSendEvent(this.href);"
+            <!-- BOTÓN 1: HERO (CON SEGUIMIENTO) -->
+            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:" 
+               target="_blank"
+               onclick="return gtagSendEvent(this);"
                class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-100 transition-colors shadow-lg">
                 Agendar Cita
             </a>
@@ -281,9 +289,10 @@
             <h2 class="text-3xl font-bold mb-8">Agenda tu cita</h2>
             <p class="text-xl text-blue-200 mb-8">Da el primer paso. Envíame un mensaje para agendar una cita o resolver tus dudas.</p>
             
-            <!-- Botón de WhatsApp Principal (SECCIÓN CONTACTO) CON SEGUIMIENTO -->
-            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia."
-               onclick="return gtagSendEvent(this.href);"
+            <!-- BOTÓN 2: CONTACTO (CON SEGUIMIENTO) -->
+            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
+               target="_blank"
+               onclick="return gtagSendEvent(this);"
                class="bg-green-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-green-600 transition-colors shadow-lg inline-flex items-center gap-3">
                 <i class="fab fa-whatsapp text-2xl"></i>
                 Enviar WhatsApp
@@ -357,9 +366,10 @@
     </section>
 
 
-    <!-- Botón Flotante de WhatsApp (CON SEGUIMIENTO) -->
-    <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20vi%20tu%20sitio%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n."
-       onclick="return gtagSendEvent(this.href);"
+    <!-- BOTÓN 3: FLOTANTE (CON SEGUIMIENTO) -->
+    <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
+       target="_blank"
+       onclick="return gtagSendEvent(this);"
        class="whatsapp-float" 
        rel="noopener noreferrer"
        aria-label="Contactar por WhatsApp">
