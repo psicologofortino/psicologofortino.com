@@ -2,47 +2,27 @@
 <html lang="es" class="scroll-smooth">
 <head>
 
-<!-- Google tag (gtag.js) - ACTUALIZADO AL DE GOOGLE ADS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- 1. GOOGLE ADS TAG (NO BORRAR - CAMPAÑA ACTIVA) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-LG4RRB1FM1');
-</script>
-<!-- Fin de Google Analytics -->
+      gtag('config', 'G-LG4RRB1FM1');
+    </script>
 
-<!-- 
-  CÓDIGO DE MEDICIÓN DE CONVERSIÓN (GOOGLE ADS) - AJUSTADO
-  Este script maneja el evento de conversión y respeta si el enlace es _blank.
--->
-<script>
-  function gtagSendEvent(element) {
-    var url = element.href;
-    var target = element.target;
-    
-    var callback = function () {
-      if (typeof url === 'string') {
-        if (target === '_blank') {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
+    <!-- 2. SCRIPT DE CONVERSIÓN (WHATSAPP) -->
+    <script>
+      function gtagSendEvent(url) {
+        // Enviamos el evento a Google Ads
+        gtag('event', 'ads_conversion_Contact_1', {
+          'event_timeout': 2000
+        });
+        // Retornamos true para permitir que el enlace se abra en nueva pestaña (target="_blank")
+        return true; 
       }
-    };
-
-    gtag('event', 'ads_conversion_Contact_1', {
-      'event_callback': callback,
-      'event_timeout': 2000,
-      // <event_parameters>
-    });
-    
-    return false; 
-  }
-</script>
-<!-- Fin del código de conversión -->
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,37 +31,31 @@
     <meta name="description" content="¿Buscas Psicólogo en Los Mochis? 🧠 Fortino Velderrain. Terapia individual para adolescentes y adultos. Conoce mi enfoque y agenda tu cita hoy. Entra ahora.">
 
     <!-- 
-      ¡SOLUCIÓN DE INDEXACIÓN!
-      Esta etiqueta le dice a Google cuál es tu página "oficial" y arregla el error de "Duplicado".
+      3. SOLUCIÓN AL ERROR DE INDEXACIÓN (CANONICAL)
+      Esta línea es la que le dice a Google: "Ignora duplicados, esta es la oficial".
     -->
     <link rel="canonical" href="https://psicologofortino.com/" />
 
-    <!-- 
-      ¡NUEVO! FAVICON (EL ÍCONO DEL SITIO)
-      Esto añade tu foto a las pestañas del navegador y resultados de búsqueda.
-    -->
+    <!-- 4. FAVICON (Tu foto) -->
     <link rel="icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" />
-    <!-- Fin de Favicon -->
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FontAwesome (para iconos) -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Google Fonts (Inter) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Aplicamos la fuente Inter a toda la página */
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth; /* Para el scroll suave con el menú */
+            scroll-behavior: smooth;
         }
-        /* Estilo para el botón flotante de WhatsApp */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -100,30 +74,17 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-        /* Esta regla ahora es específica para el botón flotante y no afectará a otros */
         .whatsapp-float .fa-whatsapp {
             margin-top: 15px;
         }
 
-        /* --- Estilos para el Menú Móvil --- */
-        /* Oculta el icono 'X' por defecto */
-        #menu-icon-close {
-            display: none;
-        }
-        /* Muestra el icono 'X' cuando el menú está abierto (body tiene la clase 'menu-open') */
-        body.menu-open #menu-icon-close {
-            display: block;
-        }
-        /* Oculta el icono 'hamburguesa' cuando el menú está abierto */
-        body.menu-open #menu-icon-open {
-            display: none;
-        }
-
+        /* Menú Móvil */
+        #menu-icon-close { display: none; }
+        body.menu-open #menu-icon-close { display: block; }
+        body.menu-open #menu-icon-open { display: none; }
     </style>
     
-    <!-- 
-      SCHEMA / JSON-LD
-    -->
+    <!-- SCHEMA (Datos Estructurados) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -143,14 +104,7 @@
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "opens": "08:00",
         "closes": "21:00"
       },
@@ -165,14 +119,13 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header (Menú de Navegación) -->
+    <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-800">
                 <a href="#inicio">Psicólogo Fortino</a>
             </div>
             
-            <!-- Menú de Escritorio (REORDENADO) -->
             <div class="hidden md:flex space-x-6">
                 <a href="#inicio" class="text-gray-600 hover:text-blue-800 transition-colors">Inicio</a>
                 <a href="#sobre-mi" class="text-gray-600 hover:text-blue-800 transition-colors">Sobre Mí</a>
@@ -182,7 +135,6 @@
                 <a href="#redes" class="text-gray-600 hover:text-blue-800 transition-colors">Redes</a>
             </div>
             
-            <!-- Botón de Menú Móvil -->
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-800 focus:outline-none">
                     <i class="fas fa-bars text-2xl" id="menu-icon-open"></i>
@@ -191,7 +143,6 @@
             </div>
         </nav>
 
-        <!-- Panel de Menú Móvil (REORDENADO) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute top-full left-0 w-full">
             <a href="#inicio" class="block text-gray-700 hover:bg-gray-100 px-6 py-3 mobile-menu-link">Inicio</a>
             <a href="#sobre-mi" class="block text-gray-700 hover:bg-gray-100 px-6 py-3 mobile-menu-link">Sobre Mí</a>
@@ -202,18 +153,16 @@
         </div>
     </header>
 
-    <!-- Sección Hero (Inicio) -->
+    <!-- Sección Hero -->
     <section id="inicio" class="bg-blue-800 text-white pt-24 pb-32">
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Psicólogo en Los Mochis - Fortino Velderrain</h1>
-            
-            <!-- TEXTO DEL SUBTÍTULO MODIFICADO -->
             <p class="text-xl text-blue-200 mb-8">Terapia individual para adolescentes y adultos jóvenes, presencial y en línea.</p>
             
-            <!-- BOTÓN 1: HERO (CON SEGUIMIENTO) -->
+            <!-- BOTÓN CON ADS TRACKING + TARGET BLANK -->
             <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:" 
                target="_blank"
-               onclick="return gtagSendEvent(this);"
+               onclick="return gtagSendEvent(this.href);"
                class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-100 transition-colors shadow-lg">
                 Agendar Cita
             </a>
@@ -224,33 +173,22 @@
     <section id="sobre-mi" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
-                <!-- Contenedor de la Imagen -->
                 <div class="md:w-1/3 w-full max-w-sm mx-auto">
                     <img src="psicologo-fortino-velderrain-los-mochis.jpg" 
                          alt="Psicólogo Fortino Velderrain en Los Mochis, especialista en terapia de adolescentes" 
                          class="rounded-full shadow-xl w-full h-auto aspect-square object-cover">
                 </div>
-                
-                <!-- Contenedor del Texto -->
                 <div class="md:w-2/3">
                     <h2 class="text-3xl font-bold text-blue-800 mb-6">Psicólogo Clínico</h2>
-                    
-                    <!-- PÁRRAFO 1 ACTUALIZADO -->
                     <p class="text-lg text-gray-700 mb-4">
-                        Originario y fan de Los Mochis, tengo más de cinco años de experiencia terapéutica. Me he especializado mucho en el trabajo con adolescentes (15 años+) y con adultos jóvenes. Las personas encuentran conmigo un espacio en el que se les escucha y entiende, pero también se les confronta.
+                        Originario de Los Mochis, tengo más de cinco años de experiencia ofreciendo terapia. En ese tiempo me he especializado en el trabajo con adolescentes (15 años en adelante) y jóvenes adultos que buscan entenderse y enfrentar con honestidad lo que están viviendo.
                     </p>
-                    
-                    <!-- PÁRRAFO 2 (Sin cambios) -->
                     <p class="text-lg text-gray-700 mb-4">
                         Mi enfoque es la <a href="#faq" class="text-blue-700 underline hover:text-blue-900 transition-colors">psicoterapia dinámica</a>, que yo llamo la nueva generación del psicoanálisis. Es un tipo de terapia confrontativa en la que nos enfocamos juntos en tus <strong>desafíos personales</strong>.
                     </p>
-                    
-                    <!-- PÁRRAFO 3 ACTUALIZADO -->
                     <p class="text-lg text-gray-700 mb-4">
-                        Avanzaremos hacia las partes de ti mismo de las que huyes pero que necesitas enfrentar si de verdad quieres estar mejor; porque sanar también significa confrontar el rol que juegas en tu propio sufrimiento.
+                        Iremos de frente hacia las partes que evitas de ti mismo pero que necesitas atender para estar mejor, porque sanar también significa confrontar el rol que juegas en tu propio sufrimiento.
                     </p>
-                    
-                    <!-- Cédula Profesional (sin cambios) -->
                     <p class="text-md text-gray-600 mt-8 pt-6 border-t border-gray-200">
                         <strong>Cédula Profesional:</strong> 15259245
                     </p>
@@ -264,15 +202,11 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">Servicios Terapéuticos</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                
-                <!-- Servicio 1: Terapia Individual -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <i class="fas fa-user text-3xl text-blue-600 mb-4"></i>
                     <h3 class="text-2xl font-bold mb-3">Terapia Individual</h3>
                     <p class="text-gray-700">Un espacio seguro y confidencial para explorar y enfocarnos en desafíos personales, encontrar nuevas perspectivas y construir un significado más profundo de ti mismo.</p>
                 </div>
-
-                <!-- Servicio 2: Terapia en Línea -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <i class="fas fa-laptop-medical text-3xl text-blue-600 mb-4"></i>
                     <h3 class="text-2xl font-bold mb-3">Terapia en Línea</h3>
@@ -288,10 +222,10 @@
             <h2 class="text-3xl font-bold mb-8">Agenda tu cita</h2>
             <p class="text-xl text-blue-200 mb-8">Da el primer paso. Envíame un mensaje para agendar una cita o resolver tus dudas.</p>
             
-            <!-- BOTÓN 2: CONTACTO (CON SEGUIMIENTO) -->
+            <!-- BOTÓN CON ADS TRACKING + TARGET BLANK -->
             <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
                target="_blank"
-               onclick="return gtagSendEvent(this);"
+               onclick="return gtagSendEvent(this.href);"
                class="bg-green-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-green-600 transition-colors shadow-lg inline-flex items-center gap-3">
                 <i class="fab fa-whatsapp text-2xl"></i>
                 Enviar WhatsApp
@@ -301,14 +235,8 @@
                 <p>O si prefieres:</p>
                 <p class="mt-4"><strong>Email:</strong> <a href="mailto:Psicologo.Fortino@gmail.com" class="hover:underline">Psicologo.Fortino@gmail.com</a></p>
                 <p><strong>Teléfono:</strong> <a href="tel:6688850591" class="hover:underline">668-885-0591</a></p>
-                
-                <p class="mt-4">
-                    <strong>Consultorio:</strong> <strong>Clínica Velderrain</strong>
-                </p>
-                
-                <p class="mt-1 text-blue-100">
-                    Blvd. Rosales #188, entre Morelos y Juárez, 81245 Los Mochis, Sin.
-                </p>
+                <p class="mt-4"><strong>Consultorio:</strong> <strong>Clínica Velderrain</strong></p>
+                <p class="mt-1 text-blue-100">Blvd. Rosales #188, entre Morelos y Juárez, 81245 Los Mochis, Sin.</p>
                 <p class="mt-3">
                     <a href="https://maps.app.goo.gl/SJRvB9puPiUp194r6" 
                        target="_blank" 
@@ -323,54 +251,35 @@
     </section>
 
     <!-- Sección FAQ -->
-    <section id="faq" class="py-20 bg-gray-50"> <!-- Alternamos color -->
+    <section id="faq" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">Preguntas Frecuentes</h2>
-            
             <div class="space-y-8">
-                
-                <!-- Pregunta 1 -->
                 <div class="border-b border-gray-200 pb-4">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo sé si necesito ir a terapia?</h3>
-                    <p class="text-gray-700">
-                        Si sientes un malestar emocional que no desaparece, te cuesta manejar situaciones del día a día, o simplemente sientes que "algo no está bien", la terapia puede ser un gran apoyo. No necesitas estar en crisis para que la terapia te ayude; a veces, solo la necesidad de conocerse mejor es un motivo suficiente.
-                    </p>
+                    <p class="text-gray-700">Si sientes un malestar emocional que no desaparece, te cuesta manejar situaciones del día a día, o simplemente sientes que "algo no está bien", la terapia puede ser un gran apoyo. No necesitas estar en crisis para que la terapia te ayude; a veces, solo la necesidad de conocerse mejor es un motivo suficiente.</p>
                 </div>
-
-                <!-- Pregunta 2 -->
                 <div class="border-b border-gray-200 pb-4">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cómo es la primera sesión de terapia contigo?</h3>
-                    <p class="text-gray-700">
-                        La primera sesión es, sobre todo, una conversación para conocernos. Hablaremos de lo que te trae a consulta, qué te gustaría lograr y cómo te sientes. Es un espacio para que resuelvas todas tus dudas sobre el proceso. Mi objetivo es que te sientas en un lugar seguro y profesional desde el primer minuto.
-                    </p>
+                    <p class="text-gray-700">La primera sesión es, sobre todo, una conversación para conocernos. Hablaremos de lo que te trae a consulta, qué te gustaría lograr y cómo te sientes. Es un espacio para que resuelvas todas tus dudas sobre el proceso. Mi objetivo es que te sientas en un lugar seguro y profesional desde el primer minuto.</p>
                 </div>
-
-                <!-- Pregunta 3 -->
                 <div class="border-b border-gray-200 pb-4">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Qué significa eso de psicoterapia dinámica?</h3>
-                    <p class="text-gray-700">
-                        Es un enfoque que se centra en entender cómo tus experiencias pasadas y patrones inconscientes emocionales y de pensamiento afectan tu vida actual. A diferencia del psicoanálisis tradicional, es más flexible y enfocado a tu vida y problemas presentes. Buscamos entender la *raíz* de tus desafíos para lograr un cambio profundo y duradero, no solo aliviar los síntomas.
-                    </p>
+                    <p class="text-gray-700">Es un enfoque que se centra en entender cómo tus experiencias pasadas y patrones inconscientes emocionales y de pensamiento afectan tu vida actual. A diferencia del psicoanálisis tradicional, es más flexible y enfocado a tu vida y problemas presentes. Buscamos entender la *raíz* de tus desafíos para lograr un cambio profundo y duradero, no solo aliviar los síntomas.</p>
                 </div>
-
-                <!-- Pregunta 4 -->
                 <div class="border-b border-gray-200 pb-4">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">¿Cuánto dura una sesión y con qué frecuencia debo asistir?</h3>
-                    <p class="text-gray-700">
-                        Cada sesión tiene una duración de 50 minutos. La mejor frecuencia para lograr un trabajo efectivo es de una sesión por semana, especialmente al inicio de tu proceso. Sin embargo, esto es flexible y lo adaptaremos a tus necesidades específicas y al momento del proceso en el que te encuentres.
-                    </p>
+                    <p class="text-gray-700">Cada sesión tiene una duración de 50 minutos. La mejor frecuencia para lograr un trabajo efectivo es de una sesión por semana, especialmente al inicio de tu proceso. Sin embargo, esto es flexible y lo adaptaremos a tus necesidades específicas y al momento del proceso en el que te encuentres.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- BOTÓN 3: FLOTANTE (CON SEGUIMIENTO) -->
+    <!-- Botón Flotante (CON ADS TRACKING + TARGET BLANK) -->
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
        target="_blank"
-       onclick="return gtagSendEvent(this);"
+       onclick="return gtagSendEvent(this.href);"
        class="whatsapp-float" 
-       rel="noopener noreferrer"
        aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -378,50 +287,15 @@
     <!-- Sección Redes -->
     <section id="redes" class="py-20 bg-white">
         <div class="container mx-auto px-6 text-center max-w-3xl"> 
-            
-            <!-- Título de sección principal -->
             <h2 class="text-3xl font-bold text-center text-blue-800 mb-8">Conoce mi Contenido</h2>
-            
             <p class="text-lg text-gray-700 mb-10">
                 Mis pacientes nuevos con frecuencia mencionan que mi contenido en video les ayudó a tomar la decisión. Si quieres conocerme mejor, ver cómo explico y mi enfoque, te invito a visitar mis redes. Es la mejor forma de ver al psicólogo detrás del título.
             </p>
-            
             <div class="flex justify-center space-x-8"> 
-                <!-- Icono más grande y color ajustado para hover -->
-                <a href="https://www.instagram.com/psicologo.fortino/" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Instagram"
-                   class="text-gray-500 hover:text-pink-500 transition-colors">
-                    <i class="fab fa-instagram text-4xl"></i>
-                </a>
-                
-                <!-- Icono más grande y color ajustado para hover -->
-                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="YouTube"
-                   class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-youtube text-4xl"></i>
-                </a>
-
-                <!-- Icono más grande y color ajustado para hover -->
-                <a href="https://www.facebook.com/Fortino.Velderrain/" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Facebook"
-                   class="text-gray-500 hover:text-blue-500 transition-colors">
-                    <i class="fab fa-facebook text-4xl"></i>
-                </a>
-
-                <!-- Icono más grande y color ajustado para hover -->
-                <a href="https://www.tiktok.com/@psicologo.fortino" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="TikTok"
-                   class="text-gray-500 hover:text-gray-900 transition-colors">
-                    <i class="fab fa-tiktok text-4xl"></i>
-                </a>
+                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" aria-label="Instagram" class="text-gray-500 hover:text-pink-500 transition-colors"><i class="fab fa-instagram text-4xl"></i></a>
+                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" aria-label="YouTube" class="text-gray-500 hover:text-red-500 transition-colors"><i class="fab fa-youtube text-4xl"></i></a>
+                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" aria-label="Facebook" class="text-gray-500 hover:text-blue-500 transition-colors"><i class="fab fa-facebook text-4xl"></i></a>
+                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" aria-label="TikTok" class="text-gray-500 hover:text-gray-900 transition-colors"><i class="fab fa-tiktok text-4xl"></i></a>
             </div>
         </div>
     </section>
@@ -433,26 +307,17 @@
         </div>
     </footer>
 
-    <!-- 
-      SCRIPT PARA MENÚ MÓVIL
-      Este código hace que el botón hamburguesa funcione.
-    -->
+    <!-- Script Menú Móvil -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-            // Función para alternar el menú
             const toggleMenu = () => {
-                mobileMenu.classList.toggle('hidden'); // Muestra/oculta el panel
-                document.body.classList.toggle('menu-open'); // Cambia el icono (hamburguesa/X)
+                mobileMenu.classList.toggle('hidden');
+                document.body.classList.toggle('menu-open');
             };
-
-            // Abrir/cerrar menú con el botón
             menuButton.addEventListener('click', toggleMenu);
-
-            // Cerrar menú al hacer clic en un enlace
             menuLinks.forEach(link => {
                 link.addEventListener('click', toggleMenu);
             });
@@ -461,4 +326,3 @@
 
 </body>
 </html>
-
