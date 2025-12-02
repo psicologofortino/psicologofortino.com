@@ -3,35 +3,46 @@
 <head>
 
 <!-- 
-  1. GOOGLE ADS & ANALYTICS (CRÍTICO PARA CAMPAÑA ACTIVA)
-  No modificar ni borrar. Esto mantiene tus anuncios funcionando.
+  ========================================
+  1. GOOGLE TAG (Analytics + Ads)
+  ========================================
+  Este bloque conecta tu web con Google.
 -->
+<!-- Carga asíncrona de la librería gtag.js -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+  // Configuración de Google Analytics 4
   gtag('config', 'G-LG4RRB1FM1');
+
+  // Configuración de Google Ads (AÑADIDO)
+  gtag('config', 'AW-17736912613');
 </script>
 
 <!-- 
-  2. SCRIPT DE CONVERSIÓN (WHATSAPP)
-  Mide los clics en tus anuncios.
+  ========================================
+  2. FUNCIÓN DE CONVERSIÓN (WHATSAPP)
+  ========================================
+  Esta función se activa cuando alguien hace clic en "Agendar".
+  Envía la señal a Google Ads y permite abrir WhatsApp.
 -->
 <script>
   function gtagSendEvent(url) {
     var callback = function () {
-      // Callback opcional
+      // Callback opcional por si quisiéramos redirigir manualmente
+      // pero dejamos que el enlace html (target="_blank") haga el trabajo
     };
-    
-    gtag('event', 'ads_conversion_Contact_1', {
-      'event_callback': callback,
-      'event_timeout': 2000,
-      // <event_parameters>
+
+    // Envía el evento de conversión EXACTO que nos dio Google Ads
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17736912613/tQBKCISgsMobEOWdz4lC',
+        'event_callback': callback
     });
-    
-    // Retorna true para permitir la navegación normal (target="_blank")
+
+    // Retorna true para permitir que el navegador abra la nueva pestaña de WhatsApp normalmente
     return true; 
   }
 </script>
@@ -42,12 +53,10 @@
     <title>Psicólogo Fortino Velderrain - Terapia en Los Mochis</title>
     <meta name="description" content="¿Buscas Psicólogo en Los Mochis? 🧠 Fortino Velderrain. Terapia individual para adolescentes y adultos. Conoce mi enfoque y agenda tu cita hoy. Entra ahora.">
 
-    <!-- 
-      3. SOLUCIÓN AL ERROR DE INDEXACIÓN (CANONICAL)
-    -->
+    <!-- Canonical para SEO -->
     <link rel="canonical" href="https://psicologofortino.com/" />
 
-    <!-- 4. FAVICON -->
+    <!-- Favicon -->
     <link rel="icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" />
 
@@ -81,12 +90,16 @@
             box-shadow: 2px 2px 3px #999;
             z-index: 100;
             transition: all 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-        .whatsapp-float .fa-whatsapp {
-            margin-top: 15px;
+        /* Ajuste para centrar el icono perfectamente */
+        .whatsapp-float i {
+            margin-top: 0; 
         }
 
         /* Menú Móvil */
@@ -94,23 +107,20 @@
         body.menu-open #menu-icon-close { display: block; }
         body.menu-open #menu-icon-open { display: none; }
         
-        /* --- CLASES PARA EL HEADER STICKY Y ANIMACIÓN --- */
-        
+        /* --- HEADER STICKY --- */
         #main-header {
             transition: padding 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         
-        /* Animación suave para el bloque de marca (Nombre y Título) */
         .header-brand {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 150px; /* Altura suficiente para el contenido inicial */
+            max-height: 150px;
             opacity: 1;
             transform: translateY(0);
             overflow: hidden;
-            margin-bottom: 1.5rem; /* mb-6 equivalente */
+            margin-bottom: 1.5rem;
         }
 
-        /* Estado 'scrolled' (compacto y limpio) */
         #main-header.scrolled {
             padding-top: 0px !important;
             padding-bottom: 0px !important;
@@ -119,15 +129,13 @@
             backdrop-filter: blur(5px);
         }
         
-        /* Al hacer scroll, colapsamos suavemente el bloque de marca */
         #main-header.scrolled .header-brand {
             max-height: 0;
             opacity: 0;
             margin-bottom: 0;
-            transform: translateY(-20px); /* Efecto de deslizar hacia arriba */
+            transform: translateY(-20px);
         }
         
-        /* Ajuste del menú de navegación al hacer scroll */
         .nav-container {
             transition: padding 0.5s ease;
         }
@@ -135,12 +143,11 @@
         #main-header.scrolled .nav-container {
             padding-top: 15px;
             padding-bottom: 15px;
-            border-top-color: transparent; /* Desvanece la línea divisoria */
+            border-top-color: transparent;
         }
-
     </style>
     
-    <!-- SCHEMA -->
+    <!-- SCHEMA (Datos Estructurados) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -175,33 +182,27 @@
 </head>
 <body class="bg-white text-gray-900">
 
-    <!-- Header Estilo Editorial con ID para JS -->
+    <!-- Header -->
     <header id="main-header" class="bg-white pt-8 pb-4 border-b border-gray-100 sticky top-0 z-50">
         <div class="container mx-auto px-6 header-content">
             
-            <!-- Bloque de Marca (Nombre y Título) -->
-            <!-- Clase header-brand añadida para controlar la animación -->
             <div class="text-center header-brand">
                 <a href="#inicio" class="block group">
-                    <!-- TÍTULO SIMPLIFICADO: Solo Nombre -->
                     <h1 class="text-3xl md:text-4xl font-extrabold text-black tracking-tight mb-2 group-hover:text-gray-700 transition-colors">
                         FORTINO VELDERRAIN
                     </h1>
-                    <!-- CAMBIO 1: Letra más grande y negra para el subtítulo -->
                     <p class="text-sm md:text-base font-bold text-black tracking-[0.2em] uppercase">
                         Psicólogo en Los Mochis
                     </p>
                 </a>
             </div>
 
-            <!-- Navegación (Escritorio) -->
-            <!-- CAMBIO 3: Elementos más grandes (text-base), negros (text-black) y más separados (space-x-12) -->
+            <!-- Navegación PC -->
             <div class="nav-container hidden md:flex justify-center items-center space-x-12 border-t border-gray-100 pt-4">
                 <a href="#inicio" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Bio</a>
                 <a href="#faq" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Preguntas</a>
                 <a href="#contacto" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Contacto</a>
                 
-                <!-- Iconos de Redes en el Header -->
                 <div class="flex space-x-5 ml-10 pl-10 border-l border-gray-300">
                     <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-black hover:text-pink-600 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
                     <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-black hover:text-red-600 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
@@ -210,22 +211,21 @@
                 </div>
             </div>
             
-            <!-- Botón de Menú Móvil (Solo visible en móvil) -->
+            <!-- Botón Menú Móvil -->
             <div class="md:hidden absolute top-8 right-6">
-                <button id="mobile-menu-button" class="text-black hover:text-gray-700 focus:outline-none p-2">
+                <button id="mobile-menu-button" class="text-black hover:text-gray-700 focus:outline-none p-2" aria-label="Abrir menú">
                     <i class="fas fa-bars text-2xl" id="menu-icon-open"></i>
                     <i class="fas fa-times text-2xl" id="menu-icon-close"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Panel de Menú Móvil -->
+        <!-- Menú Móvil Desplegable -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute top-full left-0 w-full border-t border-gray-100">
             <div class="flex flex-col py-4">
                 <a href="#inicio" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Bio</a>
                 <a href="#faq" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Preguntas</a>
                 <a href="#contacto" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Contacto</a>
-                <!-- Redes en menú móvil -->
                 <div class="flex justify-center space-x-6 py-4 mt-2 border-t border-gray-100">
                     <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-gray-900"><i class="fab fa-instagram text-2xl"></i></a>
                     <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-gray-900"><i class="fab fa-tiktok text-2xl"></i></a>
@@ -235,29 +235,24 @@
         </div>
     </header>
 
-    <!-- 
-      SECCIÓN PRINCIPAL (FUSIÓN DE HERO + BIO)
-    -->
+    <!-- SECCIÓN 1: BIO / HERO -->
     <section id="inicio" class="bg-gray-50 py-0 md:py-16">
         <div class="container mx-auto max-w-6xl bg-white shadow-none md:shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-center">
             
-            <!-- COLUMNA IMAGEN (Izquierda en PC, Arriba en Móvil) -->
+            <!-- Imagen -->
             <div class="w-full md:w-1/2 flex justify-center p-0 md:p-8 bg-white md:bg-transparent">
                 <img src="psicologo-fortino-velderrain-los-mochis.jpg" 
                      alt="Psicólogo Fortino Velderrain" 
                      class="w-full h-auto md:w-full md:max-w-xl aspect-square object-cover object-center shadow-none">
             </div>
 
-            <!-- COLUMNA TEXTO (Derecha en PC, Abajo en Móvil) -->
+            <!-- Texto -->
             <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
-                <!-- TÍTULO DE SECCIÓN -->
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 uppercase tracking-tight text-center md:text-left">
                     FORTINO VELDERRAIN
                 </h2>
                 
-                <!-- Cambio: Interlineado más chico -->
                 <div class="space-y-4 text-lg text-gray-600 leading-snug text-justify">
-                    <!-- TEXTO ACTUALIZADO -->
                     <p>
                         Originario y fan de Los Mochis, tengo más de cinco años de experiencia terapéutica. En ese tiempo me he especializado en el trabajo con adolescentes (15 años en adelante) y jóvenes adultos que buscan entenderse y enfrentar con honestidad lo que están viviendo.
                     </p>
@@ -272,7 +267,7 @@
                 <div class="mt-8 pt-6 border-t border-gray-100 text-center md:text-left">
                     <p class="text-sm text-gray-500 mb-6"><strong>Cédula Profesional:</strong> 15259245</p>
                     
-                    <!-- BOTÓN -->
+                    <!-- BOTÓN 1: WHATSAPP (CON TRACKING) -->
                     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:" 
                        target="_blank"
                        onclick="return gtagSendEvent(this.href);"
@@ -285,7 +280,7 @@
         </div>
     </section>
 
-    <!-- Sección FAQ -->
+    <!-- SECCIÓN 2: FAQ -->
     <section id="faq" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12 uppercase tracking-wide">Preguntas Frecuentes</h2>
@@ -307,8 +302,6 @@
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Cuánto dura una sesión y con qué frecuencia debo asistir?</h3>
                     <p class="text-gray-600">Cada sesión tiene una duración de 50 minutos. La mejor frecuencia para lograr un trabajo efectivo es de una sesión por semana, especialmente al inicio de tu proceso. Sin embargo, esto es flexible y lo adaptaremos a tus necesidades específicas y al momento del proceso en el que te encuentres.</p>
                 </div>
-
-                <!-- PREGUNTA MOVIDA AL FINAL -->
                 <div class="bg-white p-6 shadow-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Ofreces terapia en línea?</h3>
                     <p class="text-gray-600">Sí, pero toma en cuenta que es muy importante tratar de emular las mismas condiciones del consultorio lo mayor posible, o sea; un cuarto privado, sin distracciones, cámara y una muy buena conexión a internet. Si puedes contar con todo esto, la terapia puede funcionar tan bien como en persona.</p>
@@ -318,13 +311,13 @@
         </div>
     </section>
 
-    <!-- Sección Contacto (AHORA AL FINAL) -->
+    <!-- SECCIÓN 3: CONTACTO -->
     <section id="contacto" class="py-20 bg-blue-900 text-white">
         <div class="container mx-auto px-6 text-center max-w-3xl">
             <h2 class="text-3xl font-bold mb-8 uppercase tracking-wide">Contacto</h2>
             <p class="text-xl text-blue-100 mb-8">Da el primer paso. Envíame un mensaje para agendar una cita o resolver tus dudas.</p>
             
-            <!-- Botón de WhatsApp con tamaño de fuente aumentado -->
+            <!-- BOTÓN 2: WHATSAPP (CON TRACKING) -->
             <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
                target="_blank"
                onclick="return gtagSendEvent(this.href);"
@@ -352,14 +345,14 @@
                 </div>
             </div>
 
-            <!-- Footer Integrado (Texto de Derechos) -->
+            <!-- Footer -->
             <div class="mt-16 pt-6 border-t border-blue-800 text-blue-200 text-xs uppercase tracking-widest">
                 <p>&copy; 2025 Psicólogo Fortino. Todos los derechos reservados.</p>
             </div>
         </div>
     </section>
 
-    <!-- Botón Flotante -->
+    <!-- BOTÓN 3: FLOTANTE (CON TRACKING) -->
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
        target="_blank"
        onclick="return gtagSendEvent(this.href);"
@@ -368,7 +361,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Script Menú y Scroll Sticky -->
+    <!-- Scripts de UI -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('mobile-menu-button');
@@ -376,7 +369,6 @@
             const menuLinks = document.querySelectorAll('.mobile-menu-link');
             const header = document.getElementById('main-header');
 
-            // Menú móvil
             const toggleMenu = () => {
                 mobileMenu.classList.toggle('hidden');
                 document.body.classList.toggle('menu-open');
@@ -386,9 +378,8 @@
                 link.addEventListener('click', toggleMenu);
             });
 
-            // Header Sticky: Detectar scroll
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) { // Si bajamos más de 50px
+                if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
