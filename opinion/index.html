@@ -3,66 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opinión - Psicólogo Fortino Velderrain</title>
+    <title>Calificar - Psicólogo Fortino Velderrain</title>
     
     <!-- 
-      CORRECCIÓN TÉCNICA:
-      ID Decimal: 15762158804564625146
-      ID Hex Correcto: 0xdac20d9183669efa  (Antes tenía un error de dedo aquí)
+      ESTRATEGIA BLINDADA:
+      En lugar de pelear contra el filtro de spam de Google que bloquea el popup,
+      usamos el enlace CID directo.
+      Ventaja: Abre la App de Google Maps nativa en Android/iPhone.
+      CID: 15762158804564625146
     -->
 
     <script>
-        // 1. Enlace PRO (Intenta abrir el popup de estrellas directamente)
-        // Funciona excelente en PC.
-        const deepLink = "https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdac20d9183669efa,3";
+        // Enlace directo a la ficha en el mapa (El más compatible del mundo)
+        const safeLink = "https://maps.google.com/?cid=15762158804564625146";
         
-        // 2. Enlace SEGURO (El que te da Google)
-        // Funciona siempre, pero a veces requiere un clic extra del usuario.
-        // Usaremos este como respaldo manual.
-        const safeLink = "https://g.page/r/CdD2_7rnucmWEBM/review"; 
-        // Nota: He usado un link genérico de Maps compatible con tu CID, 
-        // si tienes el tuyo corto (share.google...) el script tratará de usarlo si falla el primero.
-
-        // Lógica de redirección
-        function redirect() {
-            // Intentamos el enlace PRO primero
-            window.location.href = deepLink;
-        }
-
-        // Ejecutar al cargar
+        // Redirección
         window.onload = function() {
-            // Damos un pequeño respiro de 500ms para que se vea el logo y luego redirigimos
-            setTimeout(redirect, 800);
+            setTimeout(function() {
+                window.location.href = safeLink;
+            }, 800);
         };
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-gray-50 flex items-center justify-center h-screen font-sans">
 
-    <div class="text-center p-8 max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100">
+    <div class="text-center p-6 max-w-sm w-full bg-white rounded-xl shadow-xl border border-gray-100 mx-4">
         
-        <!-- Spinner -->
-        <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-blue-900 border-t-transparent mb-6"></div>
-        
-        <h1 class="text-xl font-bold text-gray-900 mb-2">Cargando formulario de Google...</h1>
-        <p class="text-gray-600 mb-8 text-sm px-4">Si no aparece las estrellas automáticamente en unos segundos, elige una opción:</p>
-        
-        <!-- Botones Manuales (Plan B y C) -->
-        <div class="space-y-3">
-            <a href="https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdac20d9183669efa,3" 
-               class="block w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-black transition-colors text-sm">
-                Opción 1: Abrir Popup Directo
-            </a>
-
-            <a href="https://maps.google.com/?cid=15762158804564625146" 
-               class="block w-full bg-white border-2 border-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-50 transition-colors text-sm">
-                Opción 2: Ir al Perfil (Seguro)
-            </a>
+        <!-- Logo o Icono -->
+        <div class="mb-6">
+            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto text-blue-900">
+                <i class="fas fa-star text-3xl"></i>
+            </div>
         </div>
+        
+        <h1 class="text-xl font-bold text-gray-900 mb-2">¡Gracias por tu confianza!</h1>
+        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+            Tus comentarios me ayudan a seguir mejorando. Te estamos redirigiendo a Google Maps...
+        </p>
+        
+        <!-- Botón Principal -->
+        <a href="https://maps.google.com/?cid=15762158804564625146" 
+           class="block w-full bg-blue-900 text-white py-4 rounded-lg font-bold hover:bg-black transition-all transform hover:scale-[1.02] shadow-md uppercase tracking-wide text-sm flex items-center justify-center gap-2">
+            <i class="fas fa-pen"></i>
+            Escribir Opinión
+        </a>
 
-        <p class="mt-6 text-xs text-gray-400 uppercase tracking-widest">Psicólogo Fortino Velderrain</p>
+        <!-- Nota al pie -->
+        <p class="mt-6 text-xs text-gray-400">
+            ¿No abre automáticamente? Pulsa el botón.
+        </p>
     </div>
 
 </body>
