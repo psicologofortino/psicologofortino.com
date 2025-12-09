@@ -6,10 +6,9 @@
     <title>Calificar - Psicólogo Fortino Velderrain</title>
     
     <!-- 
-      CORRECCIÓN FINAL:
-      El endpoint "writereview" dio error 404.
-      Reemplazamos con el enlace CID Universal (maps.google.com/?cid=...)
-      Este enlace es indestructible: lleva directo a la ficha en la App de Maps.
+      ESTRATEGIA ÚNICA Y CLARA:
+      Solo un botón al CID (Maps).
+      Instrucciones claras de qué hacer después.
     -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,26 +30,24 @@
 
         <!-- Cuerpo y Botones -->
         <div class="p-8">
-            <p class="text-gray-600 text-center mb-6 text-sm">
-                Elige una opción para ir a Google Maps:
-            </p>
+            <!-- Instrucción Principal -->
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6 text-center">
+                <p class="text-sm text-blue-900 font-bold mb-1">
+                    <i class="fas fa-info-circle mr-1"></i> Pasos a seguir:
+                </p>
+                <p class="text-sm text-blue-800 leading-snug">
+                    Al abrirse el mapa, desplázate hacia abajo hasta encontrar la pestaña <strong>"Opiniones"</strong> y toca las estrellas.
+                </p>
+            </div>
             
             <div class="space-y-4">
-                <!-- OPCIÓN 1: Enlace CID (Abre la App de Maps directo) -->
-                <!-- Es el método más seguro y profesional existente -->
+                <!-- ÚNICO BOTÓN: Enlace CID -->
                 <a href="https://maps.google.com/?cid=15762158804564625146" 
-                   class="block w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-black transition-all transform active:scale-95 shadow-md flex items-center justify-center gap-3 group">
-                    <span class="bg-white/20 p-1.5 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <i class="fas fa-map-marker-alt text-sm"></i>
+                   class="block w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-black transition-all transform active:scale-95 shadow-md flex items-center justify-center gap-3 group text-lg">
+                    <span class="bg-white/20 p-2 rounded-full w-9 h-9 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                        <i class="fas fa-map-marker-alt text-base"></i>
                     </span>
                     <span>Abrir Google Maps</span>
-                </a>
-
-                <!-- OPCIÓN 2: Tu enlace de perfil (Respaldo) -->
-                <a href="https://share.google/cZj5NpClnzveJCktB" 
-                   class="block w-full bg-white border-2 border-gray-200 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all active:scale-95 flex items-center justify-center gap-3">
-                    <i class="fab fa-google text-lg text-gray-500"></i>
-                    <span>Ir a mi Perfil</span>
                 </a>
             </div>
 
