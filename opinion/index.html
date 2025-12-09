@@ -6,57 +6,58 @@
     <title>Calificar - Psicólogo Fortino Velderrain</title>
     
     <!-- 
-      ESTRATEGIA BLINDADA:
-      En lugar de pelear contra el filtro de spam de Google que bloquea el popup,
-      usamos el enlace CID directo.
-      Ventaja: Abre la App de Google Maps nativa en Android/iPhone.
-      CID: 15762158804564625146
+      ESTRATEGIA FINAL (SIN AUTO-REDIRECT):
+      1. Eliminamos el "flash" molesto.
+      2. Botón 1: Usa el Place ID calculado (ChIJe_y9y6S214YRej2_T7s90No) para abrir el popup directo.
+      3. Botón 2: Tu enlace nativo de compartir perfil como respaldo seguro.
     -->
 
-    <script>
-        // Enlace directo a la ficha en el mapa (El más compatible del mundo)
-        const safeLink = "https://maps.google.com/?cid=15762158804564625146";
-        
-        // Redirección
-        window.onload = function() {
-            setTimeout(function() {
-                window.location.href = safeLink;
-            }, 800);
-        };
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome para iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="bg-gray-50 flex items-center justify-center h-screen font-sans">
+<body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans p-4">
 
-    <div class="text-center p-6 max-w-sm w-full bg-white rounded-xl shadow-xl border border-gray-100 mx-4">
+    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 max-w-md w-full overflow-hidden">
         
-        <!-- Logo o Icono -->
-        <div class="mb-6">
-            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto text-blue-900">
+        <!-- Encabezado Visual -->
+        <div class="bg-blue-900 p-6 text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto text-blue-900 shadow-lg mb-3">
                 <i class="fas fa-star text-3xl"></i>
             </div>
+            <h1 class="text-xl font-bold text-white">¡Gracias por tu confianza!</h1>
+            <p class="text-blue-100 text-sm mt-2">Tu opinión ayuda a otras personas a encontrar el apoyo que necesitan.</p>
         </div>
-        
-        <h1 class="text-xl font-bold text-gray-900 mb-2">¡Gracias por tu confianza!</h1>
-        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
-            Tus comentarios me ayudan a seguir mejorando. Te estamos redirigiendo a Google Maps...
-        </p>
-        
-        <!-- Botón Principal -->
-        <a href="https://maps.google.com/?cid=15762158804564625146" 
-           class="block w-full bg-blue-900 text-white py-4 rounded-lg font-bold hover:bg-black transition-all transform hover:scale-[1.02] shadow-md uppercase tracking-wide text-sm flex items-center justify-center gap-2">
-            <i class="fas fa-pen"></i>
-            Escribir Opinión
-        </a>
 
-        <!-- Nota al pie -->
-        <p class="mt-6 text-xs text-gray-400">
-            ¿No abre automáticamente? Pulsa el botón.
-        </p>
+        <!-- Cuerpo y Botones -->
+        <div class="p-8">
+            <p class="text-gray-600 text-center mb-6 text-sm">
+                Elige una opción para dejar tu reseña en Google:
+            </p>
+            
+            <div class="space-y-4">
+                <!-- OPCIÓN 1: La mejor (Place ID específico para reseñas) -->
+                <!-- Place ID calculado desde CID 15762158804564625146 -->
+                <a href="https://search.google.com/local/writereview?placeid=ChIJe_y9y6S214YRej2_T7s90No" 
+                   class="block w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-black transition-all transform active:scale-95 shadow-md flex items-center justify-center gap-3 group">
+                    <span class="bg-white/20 p-1.5 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                        <i class="fas fa-pen text-sm"></i>
+                    </span>
+                    <span>Escribir Opinión</span>
+                </a>
+
+                <!-- OPCIÓN 2: La segura (Enlace proporcionado por usuario) -->
+                <a href="https://share.google/cZj5NpClnzveJCktB" 
+                   class="block w-full bg-white border-2 border-gray-200 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all active:scale-95 flex items-center justify-center gap-3">
+                    <i class="fab fa-google text-lg text-gray-500"></i>
+                    <span>Ir a mi Perfil</span>
+                </a>
+            </div>
+
+            <div class="mt-8 text-center border-t border-gray-100 pt-6">
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Psicólogo Fortino Velderrain</p>
+            </div>
+        </div>
     </div>
 
 </body>
