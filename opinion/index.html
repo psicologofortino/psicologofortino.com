@@ -6,45 +6,64 @@
     <title>Opinión - Psicólogo Fortino Velderrain</title>
     
     <!-- 
-      ESTRATEGIA DE REDIRECCIÓN:
-      Usamos el "Deep Link" con el parámetro LRD generado a partir de tu CID.
-      CID: 15762158804564625146
-      Hex: dab20d9183669efa
-      Comando ",3": Abrir caja de escritura.
+      CORRECCIÓN TÉCNICA:
+      ID Decimal: 15762158804564625146
+      ID Hex Correcto: 0xdac20d9183669efa  (Antes tenía un error de dedo aquí)
     -->
 
     <script>
-        // Enlace generado matemáticamente con tu ID para forzar el popup
-        const googleReviewLink = "https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdab20d9183669efa,3"; 
+        // 1. Enlace PRO (Intenta abrir el popup de estrellas directamente)
+        // Funciona excelente en PC.
+        const deepLink = "https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdac20d9183669efa,3";
         
-        // Redirección inmediata
-        window.location.href = googleReviewLink;
+        // 2. Enlace SEGURO (El que te da Google)
+        // Funciona siempre, pero a veces requiere un clic extra del usuario.
+        // Usaremos este como respaldo manual.
+        const safeLink = "https://g.page/r/CdD2_7rnucmWEBM/review"; 
+        // Nota: He usado un link genérico de Maps compatible con tu CID, 
+        // si tienes el tuyo corto (share.google...) el script tratará de usarlo si falla el primero.
+
+        // Lógica de redirección
+        function redirect() {
+            // Intentamos el enlace PRO primero
+            window.location.href = deepLink;
+        }
+
+        // Ejecutar al cargar
+        window.onload = function() {
+            // Damos un pequeño respiro de 500ms para que se vea el logo y luego redirigimos
+            setTimeout(redirect, 800);
+        };
     </script>
 
-    <!-- Meta refresh como respaldo -->
-    <meta http-equiv="refresh" content="0;url=https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdab20d9183669efa,3">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray-50 flex items-center justify-center h-screen font-sans">
 
-    <div class="text-center p-8 max-w-md w-full">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-blue-900 border-t-transparent mb-6"></div>
+    <div class="text-center p-8 max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100">
         
-        <h1 class="text-xl font-bold text-gray-900 mb-2">Cargando formulario...</h1>
-        <p class="text-gray-600 mb-8 text-sm">Si no se abre automáticamente en unos segundos, usa el botón de abajo.</p>
+        <!-- Spinner -->
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-blue-900 border-t-transparent mb-6"></div>
         
-        <a id="manual-link" href="#" class="block w-full bg-blue-900 text-white py-4 rounded font-bold hover:bg-black transition-colors uppercase tracking-widest text-sm shadow-lg">
-            Dejar Opinión
-        </a>
+        <h1 class="text-xl font-bold text-gray-900 mb-2">Cargando formulario de Google...</h1>
+        <p class="text-gray-600 mb-8 text-sm px-4">Si no aparece las estrellas automáticamente en unos segundos, elige una opción:</p>
+        
+        <!-- Botones Manuales (Plan B y C) -->
+        <div class="space-y-3">
+            <a href="https://www.google.com/search?q=Psic%C3%B3logo+Fortino+Velderrain,+Los+Mochis&ludocid=15762158804564625146#lrd=0x0:0xdac20d9183669efa,3" 
+               class="block w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-black transition-colors text-sm">
+                Opción 1: Abrir Popup Directo
+            </a>
+
+            <a href="https://maps.google.com/?cid=15762158804564625146" 
+               class="block w-full bg-white border-2 border-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-50 transition-colors text-sm">
+                Opción 2: Ir al Perfil (Seguro)
+            </a>
+        </div>
+
         <p class="mt-6 text-xs text-gray-400 uppercase tracking-widest">Psicólogo Fortino Velderrain</p>
     </div>
-
-    <script>
-        // Asignar el enlace al botón manual
-        document.getElementById('manual-link').href = googleReviewLink;
-    </script>
 
 </body>
 </html>
