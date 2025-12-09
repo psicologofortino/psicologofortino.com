@@ -6,10 +6,10 @@
     <title>Calificar - Psicólogo Fortino Velderrain</title>
     
     <!-- 
-      ESTRATEGIA FINAL (SIN AUTO-REDIRECT):
-      1. Eliminamos el "flash" molesto.
-      2. Botón 1: Usa el Place ID calculado (ChIJe_y9y6S214YRej2_T7s90No) para abrir el popup directo.
-      3. Botón 2: Tu enlace nativo de compartir perfil como respaldo seguro.
+      CORRECCIÓN FINAL:
+      El endpoint "writereview" dio error 404.
+      Reemplazamos con el enlace CID Universal (maps.google.com/?cid=...)
+      Este enlace es indestructible: lleva directo a la ficha en la App de Maps.
     -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,21 +32,21 @@
         <!-- Cuerpo y Botones -->
         <div class="p-8">
             <p class="text-gray-600 text-center mb-6 text-sm">
-                Elige una opción para dejar tu reseña en Google:
+                Elige una opción para ir a Google Maps:
             </p>
             
             <div class="space-y-4">
-                <!-- OPCIÓN 1: La mejor (Place ID específico para reseñas) -->
-                <!-- Place ID calculado desde CID 15762158804564625146 -->
-                <a href="https://search.google.com/local/writereview?placeid=ChIJe_y9y6S214YRej2_T7s90No" 
+                <!-- OPCIÓN 1: Enlace CID (Abre la App de Maps directo) -->
+                <!-- Es el método más seguro y profesional existente -->
+                <a href="https://maps.google.com/?cid=15762158804564625146" 
                    class="block w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-black transition-all transform active:scale-95 shadow-md flex items-center justify-center gap-3 group">
                     <span class="bg-white/20 p-1.5 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <i class="fas fa-pen text-sm"></i>
+                        <i class="fas fa-map-marker-alt text-sm"></i>
                     </span>
-                    <span>Escribir Opinión</span>
+                    <span>Abrir Google Maps</span>
                 </a>
 
-                <!-- OPCIÓN 2: La segura (Enlace proporcionado por usuario) -->
+                <!-- OPCIÓN 2: Tu enlace de perfil (Respaldo) -->
                 <a href="https://share.google/cZj5NpClnzveJCktB" 
                    class="block w-full bg-white border-2 border-gray-200 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-50 transition-all active:scale-95 flex items-center justify-center gap-3">
                     <i class="fab fa-google text-lg text-gray-500"></i>
