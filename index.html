@@ -14,9 +14,9 @@
     </script>
 
     <!-- 
-      2. SCRIPT DE CONVERSIÓN (WHATSAPP) - VERSIÓN ROBUSTA
-      Este script dispara el evento pero permite que el enlace se abra normalmente.
-      Es más seguro contra bloqueadores de pop-ups.
+      2. SCRIPT DE CONVERSIÓN (WHATSAPP) - VERSIÓN BLINDADA
+      Mejora: Verifica si gtag existe antes de ejecutar.
+      Si el usuario tiene AdBlock, el botón funcionará igual (sin tracking, pero abre el chat).
     -->
     <script>
       function gtagSendEvent(url) {
@@ -24,12 +24,15 @@
           // Callback opcional
         };
         
-        gtag('event', 'ads_conversion_Contact_1', {
-          'event_callback': callback,
-          'event_timeout': 2000,
-        });
+        // Verificamos si Google Analytics cargó correctamente
+        if (typeof gtag === 'function') {
+            gtag('event', 'ads_conversion_Contact_1', {
+              'event_callback': callback,
+              'event_timeout': 2000,
+            });
+        }
         
-        return true; // Permite la navegación normal
+        return true; // Siempre permite abrir el enlace
       }
     </script>
 
