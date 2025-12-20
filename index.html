@@ -3,46 +3,33 @@
 <head>
 
 <!-- 
-  ========================================
-  1. GOOGLE TAG (Analytics + Ads)
-  ========================================
-  Este bloque conecta tu web con Google.
+  1. GOOGLE ADS & ANALYTICS (CRÍTICO PARA CAMPAÑA ACTIVA)
+  No modificar ni borrar. Esto mantiene tus anuncios funcionando.
 -->
-<!-- Carga asíncrona de la librería gtag.js -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  // Configuración de Google Analytics 4
   gtag('config', 'G-LG4RRB1FM1');
-
-  // Configuración de Google Ads (AÑADIDO)
-  gtag('config', 'AW-17736912613');
 </script>
 
 <!-- 
-  ========================================
-  2. FUNCIÓN DE CONVERSIÓN (WHATSAPP)
-  ========================================
-  Esta función se activa cuando alguien hace clic en "Agendar".
-  Envía la señal a Google Ads y permite abrir WhatsApp.
+  2. SCRIPT DE CONVERSIÓN (WHATSAPP)
+  Mide los clics en tus anuncios.
 -->
 <script>
   function gtagSendEvent(url) {
     var callback = function () {
-      // Callback opcional por si quisiéramos redirigir manualmente
-      // pero dejamos que el enlace html (target="_blank") haga el trabajo
+      // Callback opcional
     };
-
-    // Envía el evento de conversión EXACTO que nos dio Google Ads
-    gtag('event', 'conversion', {
-        'send_to': 'AW-17736912613/tQBKCISgsMobEOWdz4lC',
-        'event_callback': callback
+    
+    gtag('event', 'ads_conversion_Contact_1', {
+      'event_callback': callback,
+      'event_timeout': 2000,
     });
-
-    // Retorna true para permitir que el navegador abra la nueva pestaña de WhatsApp normalmente
+    
     return true; 
   }
 </script>
@@ -53,10 +40,12 @@
     <title>Psicólogo Fortino Velderrain - Terapia en Los Mochis</title>
     <meta name="description" content="¿Buscas Psicólogo en Los Mochis? 🧠 Fortino Velderrain. Terapia individual para adolescentes y adultos. Conoce mi enfoque y agenda tu cita hoy. Entra ahora.">
 
-    <!-- Canonical para SEO -->
+    <!-- 
+      3. SOLUCIÓN AL ERROR DE INDEXACIÓN (CANONICAL)
+    -->
     <link rel="canonical" href="https://psicologofortino.com/" />
 
-    <!-- Favicon -->
+    <!-- 4. FAVICON -->
     <link rel="icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/psicologo-fortino-velderrain-los-mochis.jpg" />
 
@@ -90,16 +79,12 @@
             box-shadow: 2px 2px 3px #999;
             z-index: 100;
             transition: all 0.3s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-        /* Ajuste para centrar el icono perfectamente */
-        .whatsapp-float i {
-            margin-top: 0; 
+        .whatsapp-float .fa-whatsapp {
+            margin-top: 15px;
         }
 
         /* Menú Móvil */
@@ -107,20 +92,23 @@
         body.menu-open #menu-icon-close { display: block; }
         body.menu-open #menu-icon-open { display: none; }
         
-        /* --- HEADER STICKY --- */
+        /* --- CLASES PARA EL HEADER STICKY Y ANIMACIÓN --- */
+        
         #main-header {
             transition: padding 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         
+        /* Animación suave para el bloque de marca (Nombre y Título) */
         .header-brand {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            max-height: 150px;
+            max-height: 150px; /* Altura suficiente para el contenido inicial */
             opacity: 1;
             transform: translateY(0);
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* mb-6 equivalente */
         }
 
+        /* Estado 'scrolled' (compacto y limpio) */
         #main-header.scrolled {
             padding-top: 0px !important;
             padding-bottom: 0px !important;
@@ -129,25 +117,48 @@
             backdrop-filter: blur(5px);
         }
         
-        #main-header.scrolled .header-brand {
-            max-height: 0;
+        /* Al hacer scroll, colapsamos suavemente el bloque de marca SOLO EN ESCRITORIO */
+        @media (min-width: 768px) {
+            #main-header.scrolled .header-brand {
+                max-height: 0;
+                opacity: 0;
+                margin-bottom: 0;
+                transform: translateY(-20px); /* Efecto de deslizar hacia arriba */
+            }
+            
+            #main-header.scrolled .nav-container {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-top-color: transparent; /* Desvanece la línea divisoria */
+            }
+        }
+        
+        /* En móvil, aseguramos que el header se mantenga compacto al scroll */
+        @media (max-width: 767px) {
+             #main-header.scrolled {
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+             }
+        }
+
+        /* Animación suave para el menú móvil */
+        #mobile-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 0;
-            margin-bottom: 0;
-            transform: translateY(-20px);
+            transform: translateY(-10px);
+            pointer-events: none; /* Evita clics cuando está oculto */
         }
         
-        .nav-container {
-            transition: padding 0.5s ease;
+        /* Estado abierto del menú */
+        body.menu-open #mobile-menu {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto; /* Habilita clics */
         }
-        
-        #main-header.scrolled .nav-container {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            border-top-color: transparent;
-        }
+
     </style>
     
-    <!-- SCHEMA (Datos Estructurados) -->
+    <!-- SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -182,11 +193,24 @@
 </head>
 <body class="bg-white text-gray-900">
 
-    <!-- Header -->
-    <header id="main-header" class="bg-white pt-8 pb-4 border-b border-gray-100 sticky top-0 z-50">
-        <div class="container mx-auto px-6 header-content">
+    <!-- Header Estilo Editorial con ID para JS -->
+    <header id="main-header" class="bg-white pt-4 pb-4 md:pt-8 md:pb-4 border-b border-gray-100 sticky top-0 z-50">
+        <div class="container mx-auto px-6 header-content relative flex justify-between items-center md:block">
             
-            <div class="text-center header-brand">
+            <!-- 
+               ICONOS REDES SOCIALES (SOLO MÓVIL) 
+            -->
+            <div class="flex md:hidden space-x-5 items-center">
+                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-black hover:text-pink-600 transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-black hover:text-red-600 transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
+                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" class="text-black hover:text-blue-600 transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-black hover:text-gray-600 transition-colors"><i class="fab fa-tiktok text-2xl"></i></a>
+            </div>
+
+            <!-- 
+               Bloque de Marca (Nombre y Título) 
+            -->
+            <div class="text-center header-brand hidden md:block">
                 <a href="#inicio" class="block group">
                     <h1 class="text-3xl md:text-4xl font-extrabold text-black tracking-tight mb-2 group-hover:text-gray-700 transition-colors">
                         FORTINO VELDERRAIN
@@ -197,12 +221,15 @@
                 </a>
             </div>
 
-            <!-- Navegación PC -->
+            <!-- Navegación (Escritorio) -->
             <div class="nav-container hidden md:flex justify-center items-center space-x-12 border-t border-gray-100 pt-4">
+                <!-- ENLACES REORDENADOS: Bio -> Preguntas -> Consultorio -> Citas -->
                 <a href="#inicio" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Bio</a>
                 <a href="#faq" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Preguntas</a>
-                <a href="#contacto" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Contacto</a>
+                <a href="#ubicacion" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Consultorio</a>
+                <a href="#contacto" class="text-base font-bold text-black hover:text-gray-600 uppercase tracking-wide transition-colors">Citas</a>
                 
+                <!-- Iconos de Redes en el Header (Escritorio) -->
                 <div class="flex space-x-5 ml-10 pl-10 border-l border-gray-300">
                     <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-black hover:text-pink-600 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
                     <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-black hover:text-red-600 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
@@ -211,53 +238,53 @@
                 </div>
             </div>
             
-            <!-- Botón Menú Móvil -->
-            <div class="md:hidden absolute top-8 right-6">
-                <button id="mobile-menu-button" class="text-black hover:text-gray-700 focus:outline-none p-2" aria-label="Abrir menú">
+            <!-- Botón de Menú Móvil -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-black hover:text-gray-700 focus:outline-none p-2">
                     <i class="fas fa-bars text-2xl" id="menu-icon-open"></i>
                     <i class="fas fa-times text-2xl" id="menu-icon-close"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Menú Móvil Desplegable -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute top-full left-0 w-full border-t border-gray-100">
+        <!-- Panel de Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute top-full left-0 w-full border-t border-gray-100 z-40">
             <div class="flex flex-col py-4">
+                <!-- ENLACES MÓVILES REORDENADOS: Bio -> Preguntas -> Consultorio -> Citas -->
                 <a href="#inicio" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Bio</a>
                 <a href="#faq" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Preguntas</a>
-                <a href="#contacto" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Contacto</a>
-                <div class="flex justify-center space-x-6 py-4 mt-2 border-t border-gray-100">
-                    <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-gray-900"><i class="fab fa-instagram text-2xl"></i></a>
-                    <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-gray-900"><i class="fab fa-tiktok text-2xl"></i></a>
-                    <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-900"><i class="fab fa-youtube text-2xl"></i></a>
-                </div>
+                <a href="#ubicacion" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Consultorio</a>
+                <a href="#contacto" class="text-center py-3 text-gray-900 hover:bg-gray-50 font-bold mobile-menu-link">Citas</a>
             </div>
         </div>
     </header>
 
-    <!-- SECCIÓN 1: BIO / HERO -->
+    <!-- SECCIÓN 1: BIO (Inicio) -->
     <section id="inicio" class="bg-gray-50 py-0 md:py-16">
         <div class="container mx-auto max-w-6xl bg-white shadow-none md:shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-center">
             
-            <!-- Imagen -->
+            <!-- COLUMNA IMAGEN -->
             <div class="w-full md:w-1/2 flex justify-center p-0 md:p-8 bg-white md:bg-transparent">
                 <img src="psicologo-fortino-velderrain-los-mochis.jpg" 
                      alt="Psicólogo Fortino Velderrain" 
-                     class="w-full h-auto md:w-full md:max-w-xl aspect-square object-cover object-center shadow-none">
+                     class="w-full h-auto aspect-square object-cover object-center shadow-none rounded-none">
             </div>
 
-            <!-- Texto -->
+            <!-- COLUMNA TEXTO -->
             <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
+                <!-- TÍTULO DE SECCIÓN -->
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 uppercase tracking-tight text-center md:text-left">
                     FORTINO VELDERRAIN
                 </h2>
                 
-                <div class="space-y-4 text-lg text-gray-600 leading-snug text-justify">
+                <!-- ALINEACIÓN: LEFT (text-left) -->
+                <div class="space-y-4 text-lg text-gray-600 leading-snug text-left">
                     <p>
-                        Originario y fan de Los Mochis, tengo más de cinco años de experiencia terapéutica. En ese tiempo me he especializado en el trabajo con adolescentes (15 años en adelante) y jóvenes adultos que buscan entenderse y enfrentar con honestidad lo que están viviendo.
+                        Originario y fan de Los Mochis, tengo más de cinco años de experiencia terapéutica. En ese tiempo me he especializado en el trabajo con adolescentes (15 años+) y adultos jóvenes que buscan entenderse y enfrentar con honestidad lo que están viviendo.
                     </p>
                     <p>
-                        Mi enfoque es la <a href="#faq" class="text-blue-900 underline hover:text-black transition-colors font-medium">psicoterapia dinámica</a>, que yo llamo la nueva generación del psicoanálisis. Es un tipo de terapia confrontativa en la que nos enfocamos juntos en tus <strong>desafíos personales</strong>.
+                        <!-- ENLACE DIRECTO AL INICIO DE LA SECCIÓN FAQ -->
+                        Mi enfoque es la <a href="#faq" class="text-blue-900 font-medium hover:text-black transition-colors">psicoterapia dinámica</a>, que yo llamo la nueva generación del psicoanálisis. Es un tipo de terapia confrontativa en la que nos enfocamos juntos en tus <strong>desafíos personales</strong>.
                     </p>
                     <p>
                         Iremos de frente hacia las partes que evitas de ti mismo pero que necesitas atender para estar mejor, porque sanar también significa confrontar el rol que juegas en tu propio sufrimiento.
@@ -267,7 +294,7 @@
                 <div class="mt-8 pt-6 border-t border-gray-100 text-center md:text-left">
                     <p class="text-sm text-gray-500 mb-6"><strong>Cédula Profesional:</strong> 15259245</p>
                     
-                    <!-- BOTÓN 1: WHATSAPP (CON TRACKING) -->
+                    <!-- BOTÓN 1 -->
                     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:" 
                        target="_blank"
                        onclick="return gtagSendEvent(this.href);"
@@ -280,28 +307,32 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 2: FAQ -->
-    <section id="faq" class="py-20 bg-gray-50">
+    <!-- SECCIÓN 2: PREGUNTAS FRECUENTES (Reordenada aquí) -->
+    <section id="faq" class="py-20 bg-gray-50"> 
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12 uppercase tracking-wide">Preguntas Frecuentes</h2>
             <div class="space-y-8">
                 
+                <div id="psicoterapia-dinamica" class="bg-white p-6 shadow-sm border border-gray-100 scroll-mt-24">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿Qué significa eso de psicoterapia dinámica?</h3>
+                    <p class="text-gray-600">Es un enfoque que se centra en entender cómo tus experiencias pasadas y patrones inconscientes emocionales y de pensamiento afectan tu vida actual. A diferencia del psicoanálisis tradicional, es más flexible y enfocado a tu vida y problemas presentes. Buscamos entender la *raíz* de tus desafíos para lograr un cambio profundo y duradero, no solo aliviar los síntomas.</p>
+                </div>
+
                 <div class="bg-white p-6 shadow-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Cómo sé si necesito ir a terapia?</h3>
                     <p class="text-gray-600">Si sientes un malestar emocional que no desaparece, te cuesta manejar situaciones del día a día, o simplemente sientes que "algo no está bien", la terapia puede ser un gran apoyo. No necesitas estar en crisis para que la terapia te ayude; a veces, solo la necesidad de conocerse mejor es un motivo suficiente.</p>
                 </div>
+                
                 <div class="bg-white p-6 shadow-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Cómo es la primera sesión de terapia contigo?</h3>
                     <p class="text-gray-600">La primera sesión es, sobre todo, una conversación para conocernos. Hablaremos de lo que te trae a consulta, qué te gustaría lograr y cómo te sientes. Es un espacio para que resuelvas todas tus dudas sobre el proceso. Mi objetivo es que te sientas en un lugar seguro y profesional desde el primer minuto.</p>
                 </div>
-                <div class="bg-white p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿Qué significa eso de psicoterapia dinámica?</h3>
-                    <p class="text-gray-600">Es un enfoque que se centra en entender cómo tus experiencias pasadas y patrones inconscientes emocionales y de pensamiento afectan tu vida actual. A diferencia del psicoanálisis tradicional, es más flexible y enfocado a tu vida y problemas presentes. Buscamos entender la *raíz* de tus desafíos para lograr un cambio profundo y duradero, no solo aliviar los síntomas.</p>
-                </div>
+                
                 <div class="bg-white p-6 shadow-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Cuánto dura una sesión y con qué frecuencia debo asistir?</h3>
                     <p class="text-gray-600">Cada sesión tiene una duración de 50 minutos. La mejor frecuencia para lograr un trabajo efectivo es de una sesión por semana, especialmente al inicio de tu proceso. Sin embargo, esto es flexible y lo adaptaremos a tus necesidades específicas y al momento del proceso en el que te encuentres.</p>
                 </div>
+
                 <div class="bg-white p-6 shadow-sm border border-gray-100">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">¿Ofreces terapia en línea?</h3>
                     <p class="text-gray-600">Sí, pero toma en cuenta que es muy importante tratar de emular las mismas condiciones del consultorio lo mayor posible, o sea; un cuarto privado, sin distracciones, cámara y una muy buena conexión a internet. Si puedes contar con todo esto, la terapia puede funcionar tan bien como en persona.</p>
@@ -311,48 +342,78 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: CONTACTO -->
+    <!-- 
+      SECCIÓN 3: CONSULTORIO (Reordenada aquí)
+    -->
+    <section id="ubicacion" class="py-20 bg-white text-gray-900">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+             <h2 class="text-3xl font-bold mb-8 uppercase tracking-wide text-gray-900">CONSULTORIO</h2>
+             
+             <div class="border-t border-gray-200 pt-8">
+                <!-- TEXTO OSCURO -->
+                <p class="text-lg text-gray-600 leading-snug mb-6">
+                    Mi consultorio se encuentra por Blvd. Rosales, pasando el Bronco antes de llegar con mis vecinas las TostiHouse, aquí abajo tienes la ubicación y dirección.
+                </p>
+                
+                <!-- Botón -->
+                <div class="mb-8">
+                    <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 text-blue-900 border-2 border-blue-900 px-6 py-3 hover:bg-blue-900 hover:text-white transition-colors text-sm uppercase tracking-widest font-bold">
+                        <i class="fas fa-map-location-dot"></i>
+                        Ver en Google Maps
+                    </a>
+                </div>
+
+                <!-- MAPA INTEGRADO (Z=17 para zoom ajustado) -->
+                <div class="w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg border border-gray-200 mb-8">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Psic%C3%B3logo%20Fortino%20Velderrain%20Los%20Mochis&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- Dirección debajo del mapa -->
+                <p class="text-lg text-gray-600 leading-snug font-medium">
+                    Dirección: Blvd. Rosales #188, entre Morelos y Juárez, 81245 Los Mochis, Sin.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: CITAS (Final) -->
     <section id="contacto" class="py-20 bg-blue-900 text-white">
         <div class="container mx-auto px-6 text-center max-w-3xl">
-            <h2 class="text-3xl font-bold mb-8 uppercase tracking-wide">Contacto</h2>
-            <p class="text-xl text-blue-100 mb-8">Da el primer paso. Envíame un mensaje para agendar una cita o resolver tus dudas.</p>
+            <h2 class="text-3xl font-bold mb-8 uppercase tracking-wide">Citas</h2>
+            <p class="text-lg text-blue-100 leading-snug mb-8">Da el primer paso. Envíame mensaje para agendar una cita o resolver tus dudas.</p>
             
-            <!-- BOTÓN 2: WHATSAPP (CON TRACKING) -->
             <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
                target="_blank"
                onclick="return gtagSendEvent(this.href);"
-               class="bg-white text-blue-900 font-bold py-5 px-14 rounded-none hover:bg-gray-100 transition-colors inline-flex items-center gap-3 uppercase tracking-widest text-lg">
-                <i class="fab fa-whatsapp text-xl"></i>
-                Enviar WhatsApp
+               class="bg-[#25D366] text-white font-bold py-5 px-14 rounded-none hover:bg-[#128C7E] transition-colors inline-flex items-center gap-3 uppercase tracking-widest text-lg shadow-lg">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                AGENDAR CITA
             </a>
 
             <div class="mt-12 text-lg text-blue-100 space-y-2">
-                <p><strong>Email:</strong> <a href="mailto:Psicologo.Fortino@gmail.com" class="hover:underline hover:text-white">Psicologo.Fortino@gmail.com</a></p>
                 <p><strong>Teléfono:</strong> <a href="tel:6688850591" class="hover:underline hover:text-white">668-885-0591</a></p>
-                
-                <div class="mt-6 border-t border-blue-800 pt-6">
-                    <p><strong>Consultorio:</strong> <strong>Clínica Velderrain</strong></p>
-                    <p class="text-base mt-1">Blvd. Rosales #188, entre Morelos y Juárez, 81245 Los Mochis, Sin.</p>
-                    <p class="mt-4">
-                        <a href="https://maps.app.goo.gl/SJRvB9puPiUp194r6" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           class="inline-flex items-center gap-2 text-white border border-white/30 px-4 py-2 hover:bg-white/10 transition-colors text-sm uppercase tracking-wide">
-                            <i class="fas fa-map-location-dot"></i>
-                            Ver en Google Maps
-                        </a>
-                    </p>
-                </div>
+                <p><strong>Email:</strong> <a href="mailto:Psicologo.Fortino@gmail.com" class="hover:underline hover:text-white">Psicologo.Fortino@gmail.com</a></p>
             </div>
-
-            <!-- Footer -->
+            
+            <!-- Footer Integrado -->
             <div class="mt-16 pt-6 border-t border-blue-800 text-blue-200 text-xs uppercase tracking-widest">
                 <p>&copy; 2025 Psicólogo Fortino. Todos los derechos reservados.</p>
             </div>
         </div>
     </section>
 
-    <!-- BOTÓN 3: FLOTANTE (CON TRACKING) -->
+    <!-- Botón Flotante -->
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino,%20te%20encontr%C3%A9%20por%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es:"
        target="_blank"
        onclick="return gtagSendEvent(this.href);"
@@ -361,7 +422,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts de UI -->
+    <!-- Script Menú y Scroll Sticky -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('mobile-menu-button');
@@ -369,17 +430,37 @@
             const menuLinks = document.querySelectorAll('.mobile-menu-link');
             const header = document.getElementById('main-header');
 
-            const toggleMenu = () => {
-                mobileMenu.classList.toggle('hidden');
-                document.body.classList.toggle('menu-open');
+            // Función para cerrar el menú
+            const closeMenu = () => {
+                if (document.body.classList.contains('menu-open')) {
+                    mobileMenu.classList.remove('hidden'); 
+                    document.body.classList.remove('menu-open');
+                }
             };
+
+            // Menú móvil
+            const toggleMenu = () => {
+                if (document.body.classList.contains('menu-open')) {
+                    closeMenu();
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.classList.add('menu-open');
+                }
+            };
+
             menuButton.addEventListener('click', toggleMenu);
             menuLinks.forEach(link => {
-                link.addEventListener('click', toggleMenu);
+                link.addEventListener('click', closeMenu);
             });
 
+            // Cerrar menú al hacer scroll
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
+                if (document.body.classList.contains('menu-open')) {
+                    closeMenu();
+                }
+                
+                // Header Sticky Logic
+                if (window.scrollY > 50) { // Si bajamos más de 50px
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
