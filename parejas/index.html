@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- Google Analytics & Google Ads Tracking (Mismo código de tu página principal para consistencia) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG4RRB1FM1');
+    </script>
+
+    <!-- Script de Conversión Blindado para WhatsApp -->
+    <script>
+      function gtagSendEvent(url) {
+        if (typeof gtag === 'function') {
+            gtag('event', 'ads_conversion_Contact_1', {
+              'event_timeout': 2000,
+            });
+        }
+        return true; // Permite abrir el chat siempre
+      }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapia de Pareja en Los Mochis | Psicólogo Fortino Velderrain</title>
+    <meta name="description" content="Terapia de pareja estructurada e integral en Los Mochis. Resuelvan conflictos perpetuos, recuperen la confianza y reconstruyan la complicidad con bases científicas.">
+    <link rel="canonical" href="https://psicologofortino.com/parejas/" />
+    <link rel="icon" href="../psicologo-fortino-velderrain-los-mochis.jpg" type="image/jpeg" />
+
+    <!-- Open Graph para compartir en Redes/WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://psicologofortino.com/parejas/">
+    <meta property="og:title" content="Terapia de Pareja en Los Mochis | Psic. Fortino Velderrain">
+    <meta property="og:description" content="Salven su relación. Espacio neutral, práctico y sin rodeos basado en la ciencia de las relaciones.">
+    <meta property="og:image" content="https://psicologofortino.com/psicologo-fortino-velderrain-los-mochis.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                brand: {
+                  dark: '#0F172A', 
+                  primary: '#1E3A8A', 
+                  light: '#EFF6FF', 
+                  accent: '#25D366', 
+                }
+              },
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              }
+            }
+          }
+        }
+    </script>
+
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 64px; height: 64px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50%; text-align: center;
+            font-size: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100; transition: transform 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0; opacity: 0; overflow: hidden;
+        }
+        #mobile-menu.open { max-height: 400px; opacity: 1; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- HEADER (Adaptado para subir un nivel a la raíz) -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="../index.html" class="group flex flex-col">
+                <span class="text-2xl md:text-3xl font-extrabold text-brand-dark tracking-tight group-hover:text-brand-primary transition-colors">
+                    FORTINO VELDERRAIN
+                </span>
+                <span class="text-xs font-bold text-gray-500 tracking-[0.3em] uppercase">
+                    Terapia de Pareja en Los Mochis
+                </span>
+            </a>
+
+            <!-- Navegación de Escritorio -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors">Inicio</a>
+                <a href="#enfoque" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors">Método</a>
+                <a href="#testimonios" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors">Opiniones</a>
+                <a href="#faq" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors">Preguntas</a>
+                
+                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A" 
+                   onclick="return gtagSendEvent(this.href);"
+                   target="_blank"
+                   class="bg-brand-primary text-white px-5 py-2 rounded font-bold text-sm hover:bg-brand-dark transition-colors">
+                   Pedir Información
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brand-dark focus:outline-none p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="bg-white border-t border-gray-100 md:hidden shadow-lg">
+            <nav class="flex flex-col p-4 space-y-4 text-center">
+                <a href="#inicio" class="mobile-link text-gray-800 font-bold py-2">Inicio</a>
+                <a href="#enfoque" class="mobile-link text-gray-800 font-bold py-2">Método</a>
+                <a href="#testimonios" class="mobile-link text-gray-800 font-bold py-2">Opiniones</a>
+                <a href="#faq" class="mobile-link text-gray-800 font-bold py-2">Preguntas</a>
+                
+                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A" 
+                   onclick="return gtagSendEvent(this.href);"
+                   target="_blank"
+                   class="text-brand-primary font-bold py-2 border border-brand-primary rounded mx-8">
+                   Contactar por WhatsApp
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="py-12 md:py-20 lg:py-24 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                
+                <!-- Imagen Profesional (Sube un nivel para encontrar el recurso común) -->
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute inset-0 bg-brand-primary rounded-lg transform translate-x-3 translate-y-3 hidden md:block"></div>
+                    <img src="../psicologo-fortino-velderrain-los-mochis.jpg" 
+                         alt="Psicólogo Fortino Velderrain Terapia de Pareja Los Mochis" 
+                         class="relative w-full rounded-lg shadow-xl object-cover z-10 aspect-[4/5] md:aspect-square">
+                </div>
+
+                <!-- Texto de Conversión -->
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <div class="inline-block bg-blue-100 text-brand-primary text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+                        Terapia de Pareja Científica
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Reconstruyan el puente.<br>
+                        <span class="text-brand-primary">Salven su relación.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        El distanciamiento y las discusiones repetitivas no significan que su historia deba terminar. Son señales de que necesitan un **método nuevo para comunicarse**. <br>
+                        Ofrezco terapia de pareja práctica y neutral basada en la ciencia de las relaciones más efectiva a nivel mundial.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A"
+                           onclick="return gtagSendEvent(this.href);"
+                           target="_blank"
+                           class="bg-brand-accent text-white font-bold py-4 px-8 rounded-lg hover:bg-green-600 transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            Agendar Primera Sesión
+                        </a>
+                        <a href="#enfoque" class="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors">
+                            Ver Nuestro Método
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOLOR / SÍNTOMAS RELACIONALES -->
+    <section class="py-16 bg-white border-b border-gray-50">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">¿Se sienten atrapados en estos patrones?</h2>
+            <p class="text-gray-500 mb-12 max-w-xl mx-auto">Es perfectamente normal toparse con pared en la convivencia diaria, pero no tienen por qué resolverlo solos.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <!-- Problema 1 -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 mb-4">
+                        <i class="fas fa-comments-slash"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Discusiones Circulares</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Pelean por cosas insignificantes (los platos, la hora de llegada) que terminan escalando a insultos o silencios de días.</p>
+                </div>
+                <!-- Problema 2 -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-4">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Falta de Conexión o "Roomies"</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Viven bajo el mismo techo, administran la casa y los niños de manera impecable, pero la intimidad afectiva y sexual se ha apagado.</p>
+                </div>
+                <!-- Problema 3 -->
+                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-brand-primary mb-4">
+                        <i class="fas fa-heart-broken"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Crisis de Confianza</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">El desgaste emocional provocado por traiciones del pasado o mentiras hace que duden si vale la pena seguir intentándolo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENFOQUE DE TRABAJO -->
+    <section id="enfoque" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <span class="text-brand-primary font-bold uppercase tracking-wider text-xs">Un Enfoque Diferente</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2">¿Cómo trabajaremos en la terapia?</h2>
+                <p class="text-gray-500 mt-3 max-w-xl mx-auto">No tomamos lados. Mi consultorio es un espacio seguro para ambos, donde el cliente real es **la relación**.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-brand-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg shrink-0">1</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Evaluación Diagnóstica Rigurosa</h3>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">No empezamos a ciegas. Identificamos qué patrones biológicos (desbordamiento) e históricos de su crianza están afectando su comunicación actual.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-brand-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg shrink-0">2</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Neutralidad Absoluta</h3>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">Aquí no se trata de definir "quién tiene la culpa". Los dos aportan al problema y ambos encontrarán la salida a través de acuerdos equilibrados.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-brand-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg shrink-0">3</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Herramientas Prácticas para Casa</h3>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">Basado en metodologías científicas de relaciones (Método Gottman). Se llevarán estrategias precisas para gestionar el enojo y dialogar con asertividad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Informativo Método -->
+                <div class="bg-brand-dark text-slate-300 p-8 rounded-2xl shadow-xl relative border border-slate-800">
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-2">Bases Científicas</span>
+                    <h3 class="text-xl font-bold text-white mb-4">El Secreto del 69%</h3>
+                    <p class="text-sm leading-relaxed mb-6 font-light">
+                        Las investigaciones demuestran que la gran mayoría de los desacuerdos en pareja provienen de diferencias de personalidad y valores que nunca cambiarán. 
+                    </p>
+                    <p class="text-sm leading-relaxed font-light">
+                        Por ello, la meta no es eliminar el conflicto por completo, sino **aprender a dialogar con él con curiosidad y respeto**, sin permitir que lastime el amor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="py-16 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 uppercase tracking-wide">
+                La experiencia de mis pacientes
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between h-full text-left">
+                    <div>
+                        <div class="text-yellow-400 mb-3 text-sm">★★★★★</div>
+                        <p class="text-gray-600 text-sm italic mb-4">"Nos ayudó muchísimo a destrabar peleas que teníamos por años. Su enfoque confrontativo pero súper respetuoso te hace ver las cosas desde una perspectiva totalmente diferente."</p>
+                    </div>
+                    <p class="text-gray-900 font-bold text-xs mt-auto">- Familia G. M.</p>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between h-full text-left">
+                    <div>
+                        <div class="text-yellow-400 mb-3 text-sm">★★★★★</div>
+                        <p class="text-gray-600 text-sm italic mb-4">"Excelente psicólogo. No toma lados para nada, se enfoca realmente en lo que le hace falta a la relación para salir adelante y te da tareas prácticas."</p>
+                    </div>
+                    <p class="text-gray-900 font-bold text-xs mt-auto">- Carlos & Ana</p>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between h-full text-left">
+                    <div>
+                        <div class="text-yellow-400 mb-3 text-sm">★★★★★</div>
+                        <p class="text-gray-600 text-sm italic mb-4">"Veníamos de una racha súper difícil de comunicación por meses. En solo unas sesiones reconectamos y pudimos hablar con calma otra vez. ¡Muy recomendado!"</p>
+                    </div>
+                    <p class="text-gray-900 font-bold text-xs mt-auto">- Valeria</p>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97" target="_blank" class="text-brand-primary text-sm font-bold hover:underline">
+                    Ver opiniones reales en Google Maps &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 uppercase tracking-wide">Preguntas Frecuentes</h2>
+                <p class="text-gray-500 mt-2">Respuestas rápidas para dar el primer paso con seguridad.</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-white rounded-lg shadow-sm border border-gray-200 group open:ring-2 open:ring-brand-primary/20 transition-all">
+                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                        ¿Qué pasa si mi pareja no quiere asistir?
+                        <span class="transform group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        <p>Es una duda muy común. Aunque lo ideal es iniciar el proceso juntos, si tu pareja aún no se siente lista, tú puedes iniciar de manera individual enfocándote en tus herramientas relacionales. A menudo, ver cambios positivos en uno de los dos inspira al otro a integrarse más adelante.</p>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
+                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                        ¿Cuánto dura el proceso terapéutico?
+                        <span class="transform group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        <p>Cada sesión dura **50 minutos**. La terapia de pareja suele requerir menor número de sesiones que la individual debido a que su enfoque es sumamente estructurado y orientado a metas específicas de comunicación y resolución. El tiempo final dependerá de la situación de cada relación.</p>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
+                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                        ¿Es confidencial?
+                        <span class="transform group-open:rotate-180 transition-transform"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        <p>Totalmente. El consultorio es un espacio seguro y bajo estricto código de ética profesional. Todo lo que se trabaje dentro de la sesión se mantiene en absoluta reserva.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 uppercase tracking-wide">Ubicación del Consultorio</h2>
+            
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Blvd. Rosales #188, entre Morelos y Juárez.<br> 
+                <span class="text-sm text-gray-500">Pasando "El Bronco", antes de llegar a "TostiHouse".</span>
+            </p>
+
+            <div class="w-full h-80 bg-gray-200 rounded-xl overflow-hidden shadow-lg border border-gray-200 relative mb-8">
+                 <iframe 
+                    src="https://maps.google.com/maps?q=Psic%C3%B3logo%20Fortino%20Velderrain%20Los%20Mochis&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
+            <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97" 
+               target="_blank"
+               class="inline-flex items-center gap-2 text-brand-primary border-2 border-brand-primary px-6 py-3 rounded hover:bg-brand-primary hover:text-white transition-colors font-bold uppercase tracking-widest text-sm">
+               <i class="fas fa-location-arrow"></i> Ver en Google Maps
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER / CTA FINAL -->
+    <footer id="contacto" class="bg-brand-dark text-white py-16">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <h2 class="text-3xl font-bold mb-6">¿Listos para reconstruir su alianza?</h2>
+            <p class="text-blue-200 mb-8 text-lg">Inicien su proceso terapéutico hoy y recuperen la complicidad en pareja.</p>
+            
+            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A"
+               target="_blank"
+               onclick="return gtagSendEvent(this.href);"
+               class="bg-brand-accent text-white font-bold py-4 px-10 rounded-lg hover:bg-white hover:text-brand-accent transition-all shadow-lg inline-flex items-center gap-3 text-lg">
+                <i class="fab fa-whatsapp"></i>
+                Pedir Informes por WhatsApp
+            </a>
+
+            <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-sm text-gray-400">
+                <a href="tel:6688850591" class="hover:text-white transition-colors"><i class="fas fa-phone mr-2"></i> 668-885-0591</a>
+                <a href="mailto:Psicologo.Fortino@gmail.com" class="hover:text-white transition-colors"><i class="fas fa-envelope mr-2"></i> Psicologo.Fortino@gmail.com</a>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-gray-400 hover:text-gray-200 text-2xl transition-colors"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-400 hover:text-red-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p class="mt-8 text-xs text-gray-600">&copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A"
+       target="_blank"
+       onclick="return gtagSendEvent(this.href);"
+       class="whatsapp-float hover:scale-110"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lógica del Menú Móvil -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            const icon = btn.querySelector('i');
+            if (menu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+                btn.querySelector('i').classList.remove('fa-times');
+                btn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
