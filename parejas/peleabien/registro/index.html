@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Pelea Bien - Psic. Fortino Velderrain</title>
+    <meta name="robots" content="noindex">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG4RRB1FM1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LG4RRB1FM1');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif-title { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <nav class="bg-white border-b border-slate-100 sticky top-0 z-50 py-4 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <a href="../" class="font-bold text-slate-900 tracking-tight hover:text-blue-900 transition-colors">
+                <i class="fas fa-arrow-left mr-2 text-sm opacity-60"></i>Pelea Bien
+            </a>
+            <span class="bg-amber-50 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full border border-amber-200 uppercase tracking-wider">
+                Cupo Limitado
+            </span>
+        </div>
+    </nav>
+
+    <section class="py-16 bg-slate-100 min-h-[80vh]">
+        <div class="max-w-xl mx-auto px-4">
+
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-50 px-2.5 py-1 rounded">Pelea Bien</span>
+                <h1 class="serif-title text-3xl font-normal text-slate-900 mt-4">Reserva tu Mesa Privada</h1>
+                <p class="text-slate-500 text-sm mt-2">Sábado 11 de Julio, 2026 · 10:00 AM a 2:00 PM · Global Leaders, Los Mochis</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-5 mb-6 space-y-2 text-sm">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-700">🎟️ Precio Preventa</span>
+                    <span class="font-bold text-emerald-600">$1,800 MXN por pareja</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-700">⚠️ Sábado 4 de Julio</span>
+                    <span class="font-semibold text-amber-700">Cierre definitivo de Preventa</span>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-100 pt-2">
+                    <span class="text-slate-700">💵 Precio Regular</span>
+                    <span class="font-bold text-slate-500">$2,500 MXN por pareja</span>
+                </div>
+                <p id="contadorPreventa" class="text-center text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg py-2 mt-2"></p>
+                <p id="contadorRegistro" class="hidden text-center text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg py-2 mt-2"></p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-slate-900 p-6 text-center text-white">
+                    <h3 class="serif-title text-xl font-normal text-amber-200">Formulario de Registro</h3>
+                    <p class="text-xs text-slate-400 mt-1">Completa los datos de ambos para iniciar tu proceso de reserva</p>
+                </div>
+
+                <form id="formParejas" class="p-6 space-y-5" onsubmit="procesarRegistro(event)">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1" for="nombre_completo">Tu Nombre Completo</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 text-xs"><i class="fas fa-user"></i></span>
+                            <input type="text" id="nombre_completo" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-900 transition-colors" placeholder="Ej. Carlos Mendoza">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1" for="whatsapp">Tu Número de WhatsApp</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 text-xs"><i class="fab fa-whatsapp"></i></span>
+                            <input type="tel" id="whatsapp" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-900 transition-colors" placeholder="Ej. 6681234567">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1" for="nombre_pareja">Nombre Completo de tu Pareja</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 text-xs"><i class="fas fa-heart"></i></span>
+                            <input type="text" id="nombre_pareja" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-900 transition-colors" placeholder="Ej. Ana Sofía Rodríguez">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1" for="whatsapp_pareja">WhatsApp de tu Pareja</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 text-xs"><i class="fab fa-whatsapp"></i></span>
+                            <input type="tel" id="whatsapp_pareja" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-900 transition-colors" placeholder="Ej. 6687654321">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-900 hover:bg-slate-900 text-white font-bold py-3.5 rounded-lg text-sm tracking-wide shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                        <span>Siguiente: Obtener Datos de Pago</span> <i class="fas fa-arrow-right text-xs opacity-60"></i>
+                    </button>
+                </form>
+
+                <div id="seccionPago" class="hidden border-t border-slate-100 p-6 bg-amber-50/50 space-y-5">
+                    <div class="bg-amber-100/70 border border-amber-200 rounded-xl p-4 text-xs text-amber-950 flex items-start gap-2.5">
+                        <i class="fas fa-info-circle text-sm mt-0.5 text-amber-800"></i>
+                        <div>
+                            <p class="font-bold mb-0.5">¡Paso final!</p>
+                            <p class="leading-relaxed">Tu información ha sido guardada temporalmente. Para congelar formalmente tu mesa privada, por favor realiza la transferencia bancaria y envía el comprobante presionando el botón verde de abajo.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Datos de Depósito / Transferencia:</h4>
+                        <div class="bg-white border border-slate-200 rounded-xl p-4 text-sm shadow-sm space-y-2">
+                            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                                <span class="text-slate-500 text-xs font-medium">Banco:</span>
+                                <span class="font-bold text-slate-800">HSBC</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                                <span class="text-slate-500 text-xs font-medium">Beneficiario:</span>
+                                <span class="font-semibold text-slate-800 text-right text-xs">Eduardo Fortino Velderrain Valle</span>
+                            </div>
+                            <div class="flex justify-between items-center py-1">
+                                <span class="text-slate-500 text-xs font-medium">Tarjeta / Cuenta:</span>
+                                <span class="font-mono font-bold text-blue-900 tracking-wide select-all cursor-pointer bg-slate-100 px-2 py-0.5 rounded" title="Haz clic para seleccionar">
+                                    4213168058539297
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a id="btnEnviarWhatsApp" href="#" target="_blank" onclick="return registrarConversion();" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-emerald-600/20 text-center flex items-center justify-center gap-2 transition-all transform active:scale-95">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Enviar Comprobante por WhatsApp</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <p class="text-center text-xs text-slate-400 mt-6 leading-relaxed">
+                Al enviar el formulario aceptas que el cupo es limitado e intransferible para la fecha indicada (11 de Julio de 2026).
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.</p>
+        <p class="mt-1">Los Mochis, Sinaloa, México.</p>
+    </footer>
+
+    <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20sobre%20el%20taller%20Pelea%20Bien..."
+       target="_blank"
+       onclick="return registrarConversion();"
+       class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition transform hover:scale-110 active:scale-95 z-50"
+       aria-label="Contacto Directo">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function procesarRegistro(event) {
+            event.preventDefault();
+
+            const miNombre = document.getElementById('nombre_completo').value.trim();
+            const miTelefono = document.getElementById('whatsapp').value.trim();
+            const nombrePareja = document.getElementById('nombre_pareja').value.trim();
+            const telefonoPareja = document.getElementById('whatsapp_pareja').value.trim();
+
+            const textoMensaje = `¡Hola Psic. Fortino! Acabo de registrarme al Taller "Pelea Bien".%0A%0A*Nuestros Datos:*%0A• Mi nombre: ${encodeURIComponent(miNombre)}%0A• Mi WhatsApp: ${encodeURIComponent(miTelefono)}%0A• Nombre de mi pareja: ${encodeURIComponent(nombrePareja)}%0A• WhatsApp de mi pareja: ${encodeURIComponent(telefonoPareja)}%0A%0AAquí le adjunto nuestro comprobante de transferencia bancaria para asegurar nuestra mesa privada.`;
+
+            const numeroWhatsApp = "5216688850591";
+            const urlFinal = `https://wa.me/${numeroWhatsApp}?text=${textoMensaje}`;
+            document.getElementById('btnEnviarWhatsApp').href = urlFinal;
+
+            const seccionPago = document.getElementById('seccionPago');
+            seccionPago.classList.remove('hidden');
+            seccionPago.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function registrarConversion() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'ads_conversion_Contact_1', {
+                    'event_timeout': 2000
+                });
+            }
+            return true;
+        }
+
+        // Cierre de preventa: Sábado 4 de Julio, 2026 (fin del día)
+        // Cierre de registro: Viernes 10 de Julio, 2026 (fin del día, un día antes del taller)
+        function actualizarContadores() {
+            const cierrePreventa = new Date('2026-07-04T23:59:59-07:00');
+            const cierreRegistro = new Date('2026-07-10T23:59:59-07:00');
+            const ahora = new Date();
+
+            const elPreventa = document.getElementById('contadorPreventa');
+            const elRegistro = document.getElementById('contadorRegistro');
+
+            const difPreventa = cierrePreventa - ahora;
+            if (difPreventa > 0) {
+                const dias = Math.floor(difPreventa / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((difPreventa / (1000 * 60 * 60)) % 24);
+                elPreventa.textContent = `⏳ Quedan ${dias} días y ${horas} h para que termine la preventa`;
+                elRegistro.classList.add('hidden');
+            } else {
+                elPreventa.textContent = '⚠️ La preventa ha finalizado. Aplica el precio regular.';
+
+                const difRegistro = cierreRegistro - ahora;
+                elRegistro.classList.remove('hidden');
+                if (difRegistro > 0) {
+                    const dias = Math.floor(difRegistro / (1000 * 60 * 60 * 24));
+                    const horas = Math.floor((difRegistro / (1000 * 60 * 60)) % 24);
+                    elRegistro.textContent = `⏳ Quedan ${dias} días y ${horas} h para el cierre de registro`;
+                } else {
+                    elRegistro.textContent = '⚠️ El registro para este taller ha cerrado.';
+                }
+            }
+        }
+        actualizarContadores();
+        setInterval(actualizarContadores, 60 * 1000);
+    </script>
+</body>
+</html>
