@@ -166,7 +166,6 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-center text-xs text-slate-400 mt-3">Conócenos en video antes de reservar</p>
                 </div>
             </div>
         </div>
@@ -421,7 +420,7 @@
             player.style.backgroundPosition = 'center';
 
             player.addEventListener('click', () => {
-                player.innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0" title="Video del Taller Pelea Bien" frameborder="0" allow="accelerate; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                player.innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" title="Video del Taller Pelea Bien" frameborder="0" allow="accelerate; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             }, { once: true });
         })();
     </script>
