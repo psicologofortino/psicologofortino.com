@@ -20,17 +20,59 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-title { font-family: 'Playfair Display', serif; }
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0; opacity: 0; overflow: hidden;
+        }
+        #mobile-menu.open { max-height: 400px; opacity: 1; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <nav class="bg-white border-b border-slate-100 sticky top-0 z-50 py-4 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <a href="../../index.html" class="font-bold text-slate-900 tracking-tight hover:text-blue-900 transition-colors">
-                <i class="fas fa-arrow-left mr-2 text-sm opacity-60"></i>Psicólogo Fortino Velderrain
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+
+            <a href="../../index.html" class="group flex flex-col">
+                <span class="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight group-hover:text-blue-900 transition-colors">
+                    FORTINO VELDERRAIN
+                </span>
+                <span class="text-[10px] font-bold text-slate-500 tracking-[0.3em] uppercase">
+                    Psicólogo en Los Mochis
+                </span>
             </a>
+
+            <nav class="hidden md:flex items-center space-x-5">
+                <a href="../#enfoque" class="text-sm font-bold text-slate-600 hover:text-blue-900 uppercase tracking-wide transition-colors whitespace-nowrap">Método</a>
+                <a href="../#faq" class="text-sm font-bold text-slate-600 hover:text-blue-900 uppercase tracking-wide transition-colors whitespace-nowrap">Preguntas</a>
+                <a href="../../index.html" class="text-sm font-bold text-slate-600 hover:text-blue-900 uppercase tracking-wide transition-colors whitespace-nowrap">Terapia Individual</a>
+                <a href="../" class="text-sm font-bold text-slate-600 hover:text-blue-900 uppercase tracking-wide transition-colors whitespace-nowrap">Parejas</a>
+                <a href="#" class="text-sm font-bold text-blue-900 uppercase tracking-wide transition-colors whitespace-nowrap">Taller</a>
+
+                <a href="registro/" class="bg-blue-900 text-white px-5 py-2 rounded font-bold text-sm hover:bg-slate-900 transition-colors">
+                   Reservar Mi Lugar
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-slate-900 focus:outline-none p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
-    </nav>
+
+        <div id="mobile-menu" class="bg-white border-t border-slate-100 md:hidden shadow-lg">
+            <nav class="flex flex-col p-4 space-y-4 text-center">
+                <a href="../#enfoque" class="mobile-link text-slate-800 font-bold py-2">Método</a>
+                <a href="../#faq" class="mobile-link text-slate-800 font-bold py-2">Preguntas</a>
+                <a href="../../index.html" class="mobile-link text-slate-800 font-bold py-2">Terapia Individual</a>
+                <a href="../" class="mobile-link text-slate-800 font-bold py-2">Terapia de Pareja</a>
+                <hr class="border-slate-100">
+                <a href="#" class="mobile-link text-blue-900 font-bold py-2">Taller: Pelea Bien</a>
+
+                <a href="registro/" class="text-blue-900 font-bold py-2 border border-blue-900 rounded mx-8">
+                   Reservar Mi Lugar
+                </a>
+            </nav>
+        </div>
+    </header>
 
     <header class="bg-slate-900 text-white relative overflow-hidden py-20 lg:py-28">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -80,40 +122,154 @@
         </div>
     </header>
 
-    <section class="py-14 bg-white border-b border-slate-100">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-50 px-2.5 py-1 rounded">De Qué Se Trata Este Taller</span>
-            <h2 class="serif-title text-3xl font-normal text-slate-900 mt-4 mb-4 leading-tight">Herramientas con respaldo científico para su relación</h2>
-            <p class="text-slate-600 leading-relaxed">
-                Aprende las herramientas de la metodología Gottman para transformar los desacuerdos cotidianos en puentes de conexión profunda.
-            </p>
+    <section class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <div>
+                    <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-50 px-2.5 py-1 rounded">De Qué Se Trata Este Taller</span>
+                    <h2 class="serif-title text-3xl font-normal text-slate-900 mt-4 mb-4 leading-tight">Más de 50 años de investigación, traducidos a herramientas prácticas</h2>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        El Dr. John Gottman y la Dra. Julie Gottman estudiaron durante décadas a miles de parejas para entender qué hace que algunas relaciones florezcan y otras se desgasten con el tiempo.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        Su conclusión es simple pero poderosa: <strong>el conflicto no es el fin de una relación, es la puerta de entrada a la intimidad</strong>. El secreto no está en dejar de pelear, sino en aprender a reparar la forma en que lo hacen.
+                    </p>
+
+                    <p class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-3">Los van a acompañar esa noche</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border border-slate-200 shrink-0">
+                                <img src="../../psicologo-fortino-velderrain-los-mochis.jpg" alt="Psic. Fortino Velderrain" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-gray-900 leading-tight">Psic. Fortino Velderrain</p>
+                                <p class="text-xs text-slate-500">Facilitador y Terapeuta de Parejas</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border border-slate-200 shrink-0">
+                                <img src="../../psicologo-felipe-valle-los-mochis.png" alt="Psic. Felipe Valle" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-gray-900 leading-tight">Psic. Felipe Valle</p>
+                                <p class="text-xs text-slate-500">Facilitador y Terapeuta de Parejas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div id="videoTaller" data-youtube-id="1dUpTuA_97I" class="relative aspect-[9/16] max-w-sm mx-auto rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-slate-700 cursor-pointer group">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shadow-lg">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-3">Conócenos en video antes de reservar</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="py-16 max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div>
-            <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-50 px-2.5 py-1 rounded">La Filosofía del Taller</span>
-            <h2 class="serif-title text-3xl font-normal text-slate-900 mt-4 mb-6 leading-tight">El conflicto no es el fin, es la puerta de entrada a la intimidad.</h2>
-            <p class="text-slate-600 mb-4 leading-relaxed">
-                Contrario a lo que la mayoría piensa, la ausencia de discusiones no es sinónimo de una relación sana. La verdadera intimidad genera diferencias de manera inevitable.
-            </p>
-            <p class="text-slate-600 mb-4 leading-relaxed">
-                El secreto de las parejas exitosas no radica en dejar de pelear, sino en <strong>aprender a reparar la forma en que lo hacen</strong>, sustituyendo los ataques y el distanciamiento por curiosidad y colaboración mutua.
-            </p>
-        </div>
-        <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-xl text-slate-300 relative">
-            <i class="fas fa-quote-left text-4xl text-amber-300/20 absolute top-6 left-6"></i>
-            <p class="italic text-lg text-slate-200 relative z-10 mb-6 font-light leading-relaxed">
-                "Vale muchísimo invertir en este taller de 4 horas en el que vas a aprender a manejar mejor tus emociones y comunicarte bajo presión. Te ahorras muchísimo desgaste innecesario para tu relación y en cambio lo transformas en algo productivo para los dos."
-            </p>
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full overflow-hidden border border-slate-700 shrink-0">
-                    <img src="../../psicologo-fortino-velderrain-los-mochis.jpg" alt="Psic. Fortino Velderrain" class="w-full h-full object-cover">
+    <section class="py-16 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold text-blue-900 tracking-wider uppercase bg-blue-50 px-2.5 py-1 rounded">El Temario</span>
+                <h2 class="serif-title text-3xl font-normal text-slate-900 mt-4 mb-4 leading-tight">Esto es lo que vamos a trabajar juntos</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed mb-3">
+                    En este taller de 4 horas adaptamos esa metodología a un formato cercano y práctico para parejas en Los Mochis: nada de teoría aburrida, solo herramientas que podrán usar desde esa misma noche.
+                </p>
+                <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                    Lo vamos a desglosar todo por partes: primero entenderemos de dónde viene nuestra forma de pelear, y después revisaremos los 5 tipos de pelea en los que más nos atascamos, y cómo darles la vuelta.
+                </p>
+            </div>
+
+            <div class="mb-14">
+                <h3 class="serif-title text-xl md:text-2xl font-normal text-slate-900 mb-1">Primera Parte: El Contexto de Sus Conflictos</h3>
+                <p class="text-slate-500 text-sm mb-6">Todo lo que ocurre antes de que lleguemos a la pelea.</p>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-3">
+                            <i class="fas fa-house"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Nuestra Crianza</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">El hogar en el que crecimos moldea, sin que lo notemos, cómo reaccionamos ante un conflicto.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-3">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Cultura</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Lo que nuestro entorno nos enseñó sobre qué es "normal" al pelear, y qué no se debe decir.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-3">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Meta-Emociones</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Lo que sentimos sobre lo que sentimos: por qué nos cuesta validar ciertas emociones, propias o de nuestra pareja.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-3">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Cómo Peleamos</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Los patrones que se repiten una y otra vez en nuestras discusiones, aunque cambie el tema.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-blue-50 flex items-center justify-center text-blue-900 mb-3">
+                            <i class="fas fa-magnifying-glass"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Las Verdaderas Razones</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Lo que realmente nos motiva a pelear, más allá del tema "oficial" de la discusión.</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-semibold text-white text-sm">Psic. Fortino Velderrain</h4>
-                    <p class="text-xs text-slate-400">Facilitador y Terapeuta de Parejas</p>
+            </div>
+
+            <div>
+                <h3 class="serif-title text-xl md:text-2xl font-normal text-slate-900 mb-1">Segunda Parte: Los 5 Tipos de Pelea</h3>
+                <p class="text-slate-500 text-sm mb-6">Las formas específicas en las que nos suele ir mal... y cómo darles la vuelta para pelear bien.</p>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
+                            <i class="fas fa-bomb"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">La Bomba</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Cuando una noticia o decisión cae de sorpresa y hace explotar la conversación sin previo aviso.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">La Inundación</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Cuando las emociones nos rebasan, dejamos de escuchar y solo reaccionamos.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">Lo Superficial</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Cuando peleamos siempre por lo mismo (los trastes, el celular) sin llegar nunca al fondo real.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
+                            <i class="fas fa-arrows-left-right"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">El Punto Muerto</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Cuando ninguno cede y damos vueltas en círculo sobre el mismo tema, sin avanzar.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 text-center">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-1">El Abismo</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">El tema que ambos evitan, y que poco a poco abre una distancia entre ustedes.</p>
+                    </div>
                 </div>
+                <p class="text-slate-500 text-sm mt-6 max-w-2xl mx-auto text-center italic">
+                    Para cada uno de estos 5 tipos de pelea, practicaremos herramientas concretas para cambiar el rumbo en el momento y reparar después.
+                </p>
             </div>
         </div>
     </section>
@@ -142,23 +298,51 @@
             </div>
         </div>
 
-        <div class="bg-blue-900 text-white rounded-2xl p-8 md:p-10 mb-10 text-left">
-            <p class="text-blue-100 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed mb-4">
-                No hay discusiones grupales ni exposición frente a otras personas, así que los detalles de su relación se mantienen privados. Todo el trabajo se realiza en pareja, en su <strong>propia mesa individual</strong>, y los terapeutas estaremos disponibles para apoyarles de forma uno a uno durante los ejercicios.
+        <div class="bg-blue-900 text-white rounded-2xl p-8 md:p-10 text-left">
+            <p class="text-blue-100 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed mb-3">
+                Trabajan en pareja, en su <strong>propia mesa individual</strong> y sin exposición frente a otras personas: lo que platiquen se mantiene privado, mientras los terapeutas les acompañamos de cerca durante los ejercicios.
             </p>
-            <p class="text-blue-200 max-w-2xl mx-auto text-xs md:text-sm font-light italic leading-relaxed">
-                Nota: Este taller educativo puede no ser apropiado para parejas que atraviesan adicciones, violencia doméstica u otros problemas graves de relación. En esos casos, recomendamos buscar terapia individualizada.
+            <p class="text-blue-200 max-w-2xl mx-auto text-xs font-light italic leading-relaxed">
+                Nota: si atraviesan adicciones o violencia doméstica, este taller no sustituye una terapia individualizada.
             </p>
         </div>
-
-        <a href="registro/" class="inline-block bg-blue-900 hover:bg-slate-900 text-white font-bold px-8 py-4 rounded-lg shadow-lg transform transition active:scale-95 text-md">
-            Reservar Nuestro Espacio <i class="fas fa-chevron-right ml-2 text-xs"></i>
-        </a>
     </section>
 
-    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Psicólogo Fortino Velderrain Velderrain. Todos los derechos reservados.</p>
-        <p class="mt-1">Los Mochis, Sinaloa, México.</p>
+    <section class="bg-slate-900 text-white relative overflow-hidden py-16 lg:py-24">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-2xl mx-auto px-4 text-center relative z-10">
+            <span class="text-xs font-bold text-amber-300 tracking-wider uppercase bg-white/5 border border-white/10 px-2.5 py-1 rounded">Cupo Limitado</span>
+            <h2 class="serif-title text-3xl md:text-4xl font-normal leading-tight tracking-tight mt-4 mb-4">
+                Un Encuentro en Vivo, Solo para Ustedes Dos
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-8">
+                Acompáñennos este <strong class="text-white">sábado 11 de julio</strong>, en un salón privado en Los Mochis, guiados en persona por los terapeutas <strong class="text-white">Fortino Velderrain</strong> y <strong class="text-white">Felipe Valle</strong>. Cuatro horas, una mesa para ustedes, y las herramientas que necesitan para pelear bien.
+            </p>
+
+            <a href="registro/" class="inline-block bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-amber-500/10 transform transition active:scale-95 text-md">
+                Reservar Nuestro Espacio <i class="fas fa-chevron-right ml-2 text-xs"></i>
+            </a>
+            <p class="text-slate-500 text-xs mt-4">Cupo limitado a un número reducido de parejas por sesión.</p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-slate-800 py-10 text-center text-slate-400">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-sm font-semibold text-white mb-3">Psic. Fortino Velderrain</p>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs mb-4">
+                <a href="tel:6688850591" class="hover:text-amber-300 transition-colors"><i class="fas fa-phone-alt mr-1.5"></i>668 885 0591</a>
+                <a href="mailto:psicologo.fortino@gmail.com" class="hover:text-amber-300 transition-colors"><i class="fas fa-envelope mr-1.5"></i>psicologo.fortino@gmail.com</a>
+            </div>
+            <div class="flex items-center justify-center gap-5 text-base mb-6">
+                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="hover:text-amber-300 transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" class="hover:text-amber-300 transition-colors" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="hover:text-amber-300 transition-colors" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="hover:text-amber-300 transition-colors" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="text-xs text-slate-500">&copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.</p>
+            <p class="text-xs text-slate-500 mt-1">Los Mochis, Sinaloa, México.</p>
+        </div>
     </footer>
 
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20sobre%20el%20taller%20Pelea%20Bien..."
@@ -196,6 +380,50 @@
         }
         actualizarContador();
         setInterval(actualizarContador, 60 * 1000);
+    </script>
+
+    <!-- Lógica del Menú Móvil -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    </script>
+
+    <!-- Video del taller: facade ligera, solo carga YouTube al hacer clic -->
+    <script>
+        (() => {
+            const player = document.getElementById('videoTaller');
+            const videoId = player.dataset.youtubeId;
+            if (!videoId) return;
+
+            player.style.backgroundImage = `url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg')`;
+            player.style.backgroundSize = 'cover';
+            player.style.backgroundPosition = 'center';
+
+            player.addEventListener('click', () => {
+                player.innerHTML = `<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="Video del Taller Pelea Bien" frameborder="0" allow="accelerate; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }, { once: true });
+        })();
     </script>
 </body>
 </html>
