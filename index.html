@@ -104,6 +104,13 @@
             max-height: 0; opacity: 0; overflow: hidden;
         }
         #mobile-menu.open { max-height: 500px; opacity: 1; }
+
+        /* Titular del hero: en movil se escala con el ancho de pantalla para
+           que cada frase quepa en un solo renglon. El limite medido es
+           11.40em de ancho, asi que 7vw siempre queda por debajo. */
+        @media (max-width: 767px) {
+            h1.titular-hero { font-size: min(7vw, 3rem); line-height: 1.15; }
+        }
     </style>
 
     <!--
@@ -204,12 +211,12 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section id="inicio" class="py-12 md:py-20 lg:py-24 bg-gray-50">
+    <section id="inicio" class="py-8 md:py-20 lg:py-24 bg-gray-50">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12">
                 
                 <!-- Imagen -->
-                <div class="w-full md:w-1/2 relative">
+                <div class="w-full max-w-[240px] mx-auto md:max-w-none md:mx-0 md:w-1/2 relative">
                     <div class="absolute inset-0 bg-brand-primary rounded-lg transform translate-x-3 translate-y-3 hidden md:block"></div>
                     <img src="psicologo-fortino-velderrain-los-mochis.jpg" 
                          alt="Psicólogo Fortino Velderrain Los Mochis" 
@@ -218,7 +225,7 @@
 
                 <!-- Texto -->
                 <div class="w-full md:w-1/2 text-center md:text-left">
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                    <h1 class="titular-hero text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4 md:mb-6">
                         Enfrenta lo que evitas.<br>
                         <span class="text-brand-primary">Psicoterapia Dinámica.</span>
                     </h1>
