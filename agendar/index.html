@@ -97,8 +97,11 @@
             border-color: #1E3A8A;
         }
 
-        /* Contenedor del calendario */
-        #cal-frame { width: 100%; min-height: 720px; border: 0; }
+        /* Contenedor del calendario. El embed de Cal.com ajusta la altura al
+           contenido, de modo que solo hay una barra de desplazamiento: la de
+           la página. */
+        .cal-caja { width: 100%; }
+        .cal-caja iframe { width: 100%; border: 0; }
 
         /* Tailwind declara iframe { display: block }, que le gana al atributo
            hidden del navegador. Esta regla lo devuelve a su comportamiento. */
@@ -157,58 +160,31 @@
     </header>
 
     <!-- HERO: LOS DOS CAMINOS -->
-    <section class="py-12 md:py-20 lg:py-24 bg-gray-50 border-b border-gray-100">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-
-                <!-- Imagen -->
-                <div class="w-full md:w-1/2 relative">
-                    <div class="absolute inset-0 bg-brand-primary rounded-lg transform translate-x-3 translate-y-3 hidden md:block"></div>
-                    <img src="/psicologo-fortino-velderrain-los-mochis.jpg"
-                         alt="Psicólogo Fortino Velderrain en su consultorio de Los Mochis"
-                         class="relative w-full rounded-lg shadow-xl object-cover z-10 aspect-[4/5] md:aspect-square">
-                </div>
-
-                <!-- Texto -->
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <div class="inline-block bg-blue-100 text-brand-primary text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-                        Agenda en Línea
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
-                        Agenda tu<br>
-                        <span class="text-brand-primary">primera cita.</span>
-                    </h1>
-
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Elige el día y la hora que te funcionen. Apartas tu lugar con un anticipo
-                        y la cita queda <strong>confirmada en el momento</strong>, sin esperar respuesta.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <!-- Camino principal: ya decidió -->
-                        <a href="#calendario"
-                           class="bg-brand-primary text-white font-bold py-4 px-8 rounded-lg hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
-                            <i class="far fa-calendar-check text-xl" aria-hidden="true"></i>
-                            Ver horarios disponibles
-                        </a>
-                    </div>
-
-                    <!-- Camino secundario: tiene dudas -->
-                    <p class="mt-5 text-sm text-gray-500">
-                        ¿Tienes dudas antes de decidir?
-                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
-                           onclick="return gtagSendEvent(this.href);"
-                           target="_blank"
-                           class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">
-                           Escríbeme por WhatsApp
-                        </a>
-                    </p>
-
-                    <p class="mt-6 text-xs text-gray-400 font-medium">
-                        Cédula Profesional: 15259245 • Atención presencial y online
-                    </p>
-                </div>
+    <section class="py-10 md:py-14 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <div class="inline-block bg-blue-100 text-brand-primary text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+                Agenda en Línea
             </div>
+
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+                Agenda tu <span class="text-brand-primary">primera cita</span>
+            </h1>
+
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                Elige el día y la hora que te funcionen. Apartas tu lugar con un anticipo
+                y la cita queda <strong>confirmada en el momento</strong>, sin esperar respuesta.
+            </p>
+
+            <!-- Camino secundario: tiene dudas -->
+            <p class="text-sm text-gray-500">
+                ¿Tienes dudas antes de decidir?
+                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
+                   onclick="return gtagSendEvent(this.href);"
+                   target="_blank"
+                   class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">
+                   Escríbeme por WhatsApp
+                </a>
+            </p>
         </div>
     </section>
 
@@ -287,7 +263,8 @@
 
             <!-- Contenedor del calendario Cal.com -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-                <div id="cal-container"></div>
+                <div id="cal-individual" class="cal-caja"></div>
+                <div id="cal-pareja" class="cal-caja" hidden></div>
 
                 <!-- Estado mientras el calendario carga, o si no llega a cargar -->
                 <div id="cal-estado" class="p-16 text-center">
@@ -313,6 +290,14 @@
 
             <p class="text-center text-sm text-gray-500 mt-6">
                 Las citas se agendan con al menos un día de anticipación. No hay citas el mismo día.
+            </p>
+
+            <p class="text-center text-sm mt-3">
+                <a id="cal-completo" href="https://cal.com/fortino-velderrain-aifqcp/primera-cita-individual"
+                   target="_blank"
+                   class="text-gray-500 hover:text-brand-primary underline underline-offset-4 transition-colors">
+                    ¿Se te hace incómodo aquí? Ábrelo en pantalla completa
+                </a>
             </p>
         </div>
     </section>
@@ -467,6 +452,11 @@
         };
     </script>
 
+    <!-- Cargador oficial del embed de Cal.com (no modificar) -->
+    <script>
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://cal.com/embed.js", "init");
+    </script>
+
     <!-- Lógica de la página -->
     <script>
         // --- Menú móvil ---
@@ -495,42 +485,59 @@
         });
 
         // --- Calendario ---
-        const contenedor = document.getElementById('cal-container');
+        // Se usa el embed oficial de Cal.com en vez de un iframe propio: ajusta
+        // la altura al contenido, así que la página tiene una sola barra de
+        // desplazamiento en vez de dos anidadas.
         const pendiente = document.getElementById('cal-pendiente');
         const estado = document.getElementById('cal-estado');
+        const enlaceCompleto = document.getElementById('cal-completo');
         const tabs = document.querySelectorAll('.tab-btn');
-        let cargado = false;
+        const cajas = {
+            individual: document.getElementById('cal-individual'),
+            pareja: document.getElementById('cal-pareja')
+        };
+        const iniciados = {};
+
+        function enlaceDe(tipo) {
+            return CAL.usuario + '/' + (tipo === 'pareja' ? CAL.pareja : CAL.individual);
+        }
+
+        function iniciarEmbed(tipo) {
+            if (iniciados[tipo]) return;
+            iniciados[tipo] = true;
+
+            Cal('init', tipo, { origin: 'https://cal.com' });
+            Cal.ns[tipo]('inline', {
+                elementOrSelector: '#cal-' + tipo,
+                calLink: enlaceDe(tipo),
+                config: {
+                    layout: 'month_view',
+                    // Deja el teléfono con el prefijo de México ya puesto
+                    attendeePhoneNumber: CAL.prefijoTelefono || undefined
+                }
+            });
+        }
 
         function mostrarCalendario(tipo) {
             if (!CAL.usuario) return;
-
-            const evento = tipo === 'pareja' ? CAL.pareja : CAL.individual;
-            let frame = document.getElementById('cal-frame');
-
-            if (!frame) {
-                frame = document.createElement('iframe');
-                frame.id = 'cal-frame';
-                frame.title = 'Calendario de citas';
-                frame.hidden = true;
-                frame.addEventListener('load', () => {
-                    cargado = true;
-                    frame.hidden = false;
-                    estado.hidden = true;
-                });
-                contenedor.appendChild(frame);
-            }
-            let url = `https://cal.com/${CAL.usuario}/${evento}`;
-            if (CAL.prefijoTelefono) {
-                const prefill = new URLSearchParams({ attendeePhoneNumber: CAL.prefijoTelefono });
-                url += '?' + prefill;
-            }
-            frame.src = url;
+            iniciarEmbed(tipo);
+            Object.keys(cajas).forEach(k => { cajas[k].hidden = (k !== tipo); });
+            enlaceCompleto.href = 'https://cal.com/' + enlaceDe(tipo);
         }
 
-        // Si el calendario no llega a cargar, ofrecer la salida por WhatsApp
-        // en vez de dejar a la persona mirando un recuadro vacío.
-        setTimeout(() => {
-            if (cargado || !CAL.usuario) return;
+        // El embed inserta su propio iframe. En cuanto aparece, se quita el
+        // aviso de carga; si a los doce segundos no apareció, se ofrece
+        // WhatsApp en vez de dejar a la persona mirando un recuadro vacío.
+        const vigilante = new MutationObserver(() => {
+            if (!document.querySelector('.cal-caja iframe')) return;
+            estado.hidden = true;
+            vigilante.disconnect();
+            clearTimeout(avisoDeFallo);
+        });
+
+        const avisoDeFallo = setTimeout(() => {
+            if (estado.hidden || !CAL.usuario) return;
+            vigilante.disconnect();
             estado.innerHTML =
                 '<p class="font-bold text-gray-700 mb-2">El calendario está tardando en cargar</p>' +
                 '<p class="text-gray-500 text-sm max-w-md mx-auto mb-6">' +
@@ -558,9 +565,11 @@
 
         if (CAL.usuario) {
             pendiente.remove();
+            vigilante.observe(document.getElementById('calendario'), { childList: true, subtree: true });
             mostrarCalendario(tipoInicial);
         } else {
             estado.remove();
+            clearTimeout(avisoDeFallo);
         }
 
         tabs.forEach(tab => {

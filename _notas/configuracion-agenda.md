@@ -222,9 +222,9 @@ hay que actualizar el texto y su fecha.
 
 ## 10. Prefijo telefónico de México en el formulario
 
-El calendario se carga con `?attendeePhoneNumber=%2B52`, que es el parámetro de
-prellenado de Cal.com para el campo de teléfono. Con eso el campo llega con el
-prefijo de México ya puesto y nadie tiene que buscar el país en la lista.
+El calendario llega con el prefijo de México ya puesto en el campo de teléfono,
+así nadie tiene que buscar el país en la lista. Se pasa como `attendeePhoneNumber`
+dentro del `config` del embed de Cal.com.
 
 Se controla desde `agendar/index.html`, en el bloque `CAL`, con
 `prefijoTelefono: "+52"`. Vaciar esa cadena quita el parámetro.
@@ -235,3 +235,35 @@ calendario de Cal.com, que se carga desde otro dominio; el navegador impide
 modificar su contenido desde nuestra página. Es un defecto de Cal.com y solo
 ellos pueden corregirlo. El prellenado del prefijo evita que la mayoría tenga
 que abrir esa lista.
+
+---
+
+## 11. Por qué el calendario usa el embed oficial
+
+Al principio el calendario era un `iframe` propio. En móvil eso daba dos barras
+de desplazamiento anidadas —la de la página y la del recuadro— y moverse entre
+ellas resultaba incómodo.
+
+Ahora se usa el **embed oficial de Cal.com**, que ajusta la altura del recuadro
+al contenido: la página queda con una sola barra.
+
+Detalles de la implementación, en `agendar/index.html`:
+
+- Cada tipo de sesión tiene su propio contenedor (`#cal-individual`,
+  `#cal-pareja`) y su propio *namespace* del embed.
+- El segundo calendario **no se carga hasta que alguien toca su pestaña**, para
+  no descargar dos calendarios en balde. Después solo se muestran y ocultan.
+- Un `MutationObserver` quita el aviso de "Cargando calendario…" en cuanto el
+  embed inserta su iframe. Si a los doce segundos no apareció, el aviso se
+  convierte en una salida por WhatsApp.
+- Bajo el calendario hay un enlace para abrirlo **en pantalla completa** en
+  cal.com, para quien prefiera evitar el recuadro incrustado. El enlace sigue la
+  pestaña activa.
+
+### Lo que no se resolvió
+
+Al abrir el teclado en móvil, la pantalla puede dar un salto de zoom. Eso lo
+provoca el navegador cuando un campo de texto tiene una letra pequeña, y ese
+campo vive dentro del calendario de Cal.com, en otro dominio: no se puede
+cambiar desde nuestra página. El enlace a pantalla completa es la vía de escape
+para quien lo sufra.
