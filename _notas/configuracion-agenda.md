@@ -3,6 +3,10 @@
 Notas internas. **Esta carpeta no se publica** en el sitio: GitHub Pages (Jekyll)
 ignora las carpetas que empiezan con guion bajo.
 
+> ⚠️ **No agregar un archivo `.nojekyll` a la raíz del repositorio.** Desactiva
+> Jekyll, y con él la regla que mantiene ocultas estas carpetas: `_notas/` y
+> `_archivo/` quedarían publicadas.
+
 La página vive en `agendar/index.html`.
 
 ---

@@ -4,6 +4,10 @@ Contenido guardado para posible reutilización futura. **Nada de esta carpeta se
 publica en el sitio**: GitHub Pages (Jekyll) ignora las carpetas cuyo nombre
 empieza con guion bajo (`_`), así que estos archivos viven solo en el repositorio.
 
+> ⚠️ **No agregar un archivo `.nojekyll` a la raíz del repositorio.** Ese archivo
+> desactiva Jekyll, y con él la regla que mantiene ocultas las carpetas con guion
+> bajo: `_archivo/` y `_notas/` quedarían publicadas y accesibles para cualquiera.
+
 ## Contenido
 
 ### `peleabien/`
