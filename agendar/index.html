@@ -292,13 +292,6 @@
                 Las citas se agendan con al menos un día de anticipación. No hay citas el mismo día.
             </p>
 
-            <p class="text-center text-sm mt-3">
-                <a id="cal-completo" href="https://cal.com/fortino-velderrain-aifqcp/primera-cita-individual"
-                   target="_blank"
-                   class="text-gray-500 hover:text-brand-primary underline underline-offset-4 transition-colors">
-                    ¿Se te hace incómodo aquí? Ábrelo en pantalla completa
-                </a>
-            </p>
         </div>
     </section>
 
@@ -350,6 +343,14 @@
             <p class="text-sm text-gray-500 mb-8">
                 Pasando "El Bronco", antes de llegar a "TostiHouse".
             </p>
+
+            <div class="w-full h-80 bg-gray-200 rounded-xl overflow-hidden shadow-lg border border-gray-200 relative mb-8">
+                <iframe
+                    title="Mapa del consultorio en Los Mochis"
+                    src="https://maps.google.com/maps?q=Psic%C3%B3logo%20Fortino%20Velderrain%20Los%20Mochis&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
 
             <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97"
                target="_blank"
@@ -490,7 +491,6 @@
         // desplazamiento en vez de dos anidadas.
         const pendiente = document.getElementById('cal-pendiente');
         const estado = document.getElementById('cal-estado');
-        const enlaceCompleto = document.getElementById('cal-completo');
         const tabs = document.querySelectorAll('.tab-btn');
         const cajas = {
             individual: document.getElementById('cal-individual'),
@@ -522,7 +522,6 @@
             if (!CAL.usuario) return;
             iniciarEmbed(tipo);
             Object.keys(cajas).forEach(k => { cajas[k].hidden = (k !== tipo); });
-            enlaceCompleto.href = 'https://cal.com/' + enlaceDe(tipo);
         }
 
         // El embed inserta su propio iframe. En cuanto aparece, se quita el

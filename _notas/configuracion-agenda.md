@@ -256,14 +256,13 @@ Detalles de la implementación, en `agendar/index.html`:
 - Un `MutationObserver` quita el aviso de "Cargando calendario…" en cuanto el
   embed inserta su iframe. Si a los doce segundos no apareció, el aviso se
   convierte en una salida por WhatsApp.
-- Bajo el calendario hay un enlace para abrirlo **en pantalla completa** en
-  cal.com, para quien prefiera evitar el recuadro incrustado. El enlace sigue la
-  pestaña activa.
 
 ### Lo que no se resolvió
 
 Al abrir el teclado en móvil, la pantalla puede dar un salto de zoom. Eso lo
 provoca el navegador cuando un campo de texto tiene una letra pequeña, y ese
 campo vive dentro del calendario de Cal.com, en otro dominio: no se puede
-cambiar desde nuestra página. El enlace a pantalla completa es la vía de escape
-para quien lo sufra.
+cambiar desde nuestra página.
+
+Se probó ofrecer un enlace para abrir el calendario en pantalla completa como vía
+de escape, pero se descartó por innecesario.
