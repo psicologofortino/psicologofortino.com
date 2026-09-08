@@ -76,11 +76,26 @@ En cada uno:
 
 ### Campos del formulario
 
-Dejar solo **nombre, correo y teléfono**.
+Nombre, correo y teléfono, más el campo de notas que Cal.com trae por defecto.
 
-**Quitar el campo de notas adicionales.** No debe pedirse motivo de consulta ni
-ninguna información clínica: son datos sensibles bajo la ley de protección de
-datos, y lo que no se recolecta no hay que custodiarlo.
+**Decisión tomada:** se deja el campo de notas abierto, aunque quien reserve
+escriba ahí su motivo de consulta. Queda anotado que eso implica que información
+de salud —dato sensible bajo la ley mexicana de protección de datos— se guarda
+en Cal.com y Google Calendar. Pendiente asociado: el sitio no tiene aviso de
+privacidad, y al recolectar datos personales por formulario conviene publicarlo.
+
+### Redireccionamiento al terminar
+
+En cada tipo de evento, configurar el redireccionamiento posterior a la reserva
+hacia:
+
+```
+https://psicologofortino.com/agendar/gracias/
+```
+
+En Cal.com está en los ajustes avanzados del tipo de evento, como *redirect on
+booking* / redireccionamiento tras la reserva. Es lo que hace que la conversión
+de Google Ads se registre; ver la sección 7.
 
 ---
 
@@ -141,14 +156,22 @@ WhatsApp queda como salida secundaria, para quien todavía tiene dudas: un enlac
 de texto bajo los botones del hero, otro en el pie de página, y el botón
 flotante verde, que sigue presente en todas las páginas.
 
-### Nota sobre Google Ads
+### Conversión de Google Ads
 
-El evento de conversión `ads_conversion_Contact_1` sigue disparándose solo en
-los enlaces de WhatsApp. Como el botón principal ahora lleva a la agenda, ese
-evento va a registrar bastante menos conversiones que antes: la decisión fue
-priorizar el flujo del usuario por encima de la medición.
+La conversión se registra en `agendar/gracias/`, la página a la que Cal.com
+redirige cuando la reserva se completa y se cobra el anticipo. Así se cuentan
+reservas reales, no clics: nadie llega a esa página sin haber pagado.
 
-Si más adelante se quiere recuperar el seguimiento, lo correcto no es marcar el
-clic en "Agendar Cita" —que solo es una navegación interna— sino registrar la
-conversión **cuando la reserva se completa**, usando el redireccionamiento a una
-página de gracias que Cal.com permite configurar al terminar el pago.
+Para que funcione hay que configurar el redireccionamiento en **los dos** tipos
+de evento (ver sección 4). Si no se configura, la conversión nunca se dispara.
+
+Detalles de la implementación:
+
+- Se reutiliza el evento `ads_conversion_Contact_1`, el mismo de los enlaces de
+  WhatsApp, para no tener que cambiar nada en Google Ads. La cuenta de
+  conversiones queda mezclando mensajes de WhatsApp y reservas completadas.
+- Si se prefiere separarlas, hay que crear una acción de conversión nueva en
+  Google Ads para reservas y cambiar el nombre del evento en la línea marcada
+  al final de `agendar/gracias/index.html`. Es un solo valor.
+- La página lleva `noindex` para que no aparezca en buscadores, y evita contar
+  dos veces si alguien la recarga.
