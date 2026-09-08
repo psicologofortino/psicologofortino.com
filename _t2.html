@@ -513,7 +513,7 @@
                 });
                 contenedor.appendChild(frame);
             }
-            frame.src = `https://cal.com/${CAL.usuario}/${evento}`;
+            frame.src = 'http://127.0.0.1:8901/cuelga';
         }
 
         // Si el calendario no llega a cargar, ofrecer la salida por WhatsApp
@@ -529,7 +529,7 @@
                 'target="_blank" onclick="return gtagSendEvent(this.href);" ' +
                 'class="inline-flex items-center gap-2 bg-brand-accent text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity">' +
                 '<i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar por WhatsApp</a>';
-        }, 12000);
+        }, 500);
 
         // Permite llegar con la pestaña ya elegida: /agendar/?tipo=pareja
         const params = new URLSearchParams(window.location.search);
