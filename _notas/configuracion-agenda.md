@@ -7,24 +7,24 @@ La página vive en `agendar/index.html`.
 
 ---
 
-## 1. Activar el calendario en la página
+## 1. Enlace de la página con Cal.com
 
-Al final de `agendar/index.html` hay un bloque de configuración:
+Ya está configurado al final de `agendar/index.html`:
 
 ```js
 const CAL = {
-    usuario: "",
+    usuario: "fortino-velderrain-aifqcp",
     individual: "primera-cita-individual",
     pareja: "primera-cita-pareja"
 };
 ```
 
-Escribir el usuario de Cal.com entre las comillas de `usuario` — es la parte que
-aparece en el enlace `cal.com/TU-USUARIO`. Con eso el calendario aparece solo y
-el aviso de "pendiente de conectar" desaparece.
+**Los dos tipos de evento tienen que existir en Cal.com con esos mismos slugs**,
+o el calendario mostrará una página de error. Si en Cal.com se nombran distinto,
+hay que corregir estos valores para que coincidan.
 
-Los otros dos valores son los *slugs* de cada tipo de sesión. Si en Cal.com se
-nombran distinto, hay que cambiarlos aquí para que coincidan.
+La página acepta `?tipo=pareja` en la dirección para abrir directamente en la
+pestaña de pareja. Los botones de la página de parejas ya apuntan así.
 
 ---
 
@@ -60,7 +60,7 @@ Con sesiones de 50 minutos y 10 de margen, los espacios caen en horas cerradas:
 
 Crear dos, ambos de **50 minutos**:
 
-| Nombre | Slug | Anticipo |
+| Nombre | Slug (debe coincidir) | Anticipo |
 |---|---|---|
 | Primera cita – Terapia individual | `primera-cita-individual` | $400 MXN |
 | Primera cita – Terapia de pareja | `primera-cita-pareja` | $500 MXN |
@@ -71,7 +71,7 @@ En cada uno:
   (Blvd. Rosales #188, entre Morelos y Juárez, Los Mochis). Así queda en el
   evento del calendario y en el correo de confirmación.
 - **Margen después del evento** (*buffer after*): 10 minutos.
-- **Antelación mínima** (*minimum notice*): **18 horas**. Ver la sección 6.
+- **Antelación mínima** (*minimum notice*): **19 horas**. Ver la sección 6.
 - **Pago**: app de Stripe, con el monto del anticipo en MXN.
 
 ### Campos del formulario
@@ -86,46 +86,69 @@ datos, y lo que no se recolecta no hay que custodiarlo.
 
 ## 5. Stripe
 
-- Conectar desde **Apps → Stripe** dentro de Cal.com.
-- Tarifa en México: **3.6% + $3 MXN** por transacción.
-  - Anticipo de $400 → comisión $17.40
-  - Anticipo de $500 → comisión $21.00
-- **Los reembolsos no devuelven la comisión.** Si se reembolsa un anticipo de
-  $400, los $17.40 se pierden igual. Por eso la política de la página es
-  reagendar en vez de reembolsar.
+**No se necesita ninguna clave de API.** La conexión es por autorización: dentro
+de Cal.com, **Apps → Stripe → Install**, que redirige a Stripe para aceptar. Las
+claves `pk_` y `sk_` son para quien programa una integración propia; aquí no van
+en ningún archivo, y una `sk_` nunca debe quedar escrita en el repositorio.
+
+**Modo de prueba vs. modo real.** Las claves que empiezan con `pk_test_` /
+`sk_test_` indican que la cuenta todavía está en modo de prueba: los cobros son
+simulados y no llega dinero. Para cobrar de verdad hay que completar la
+verificación de Stripe (RFC, CLABE, identificación) y que la cuenta quede
+activada.
+
+Tarifa en México: **3.6% + $3 MXN** por transacción.
+
+- Anticipo de $400 → comisión $17.40
+- Anticipo de $500 → comisión $21.00
+
+**Los reembolsos no devuelven la comisión.** Si se reembolsa un anticipo de $400,
+los $17.40 se pierden igual. Por eso la política de la página es reagendar en
+vez de reembolsar.
 
 ---
 
-## 6. Sobre la antelación mínima de 18 horas
+## 6. Sobre la antelación mínima de 19 horas
 
 Lo que se quería: nada de citas el mismo día, y que después de las 6 pm ya no se
 pueda agendar la mañana siguiente.
 
 Cal.com no tiene una regla de "hora de corte"; solo una ventana móvil de
-antelación mínima. Con **18 horas** el comportamiento queda así:
+antelación mínima. Con **19 horas** el comportamiento queda así:
 
-- Reservar a las 6:00 pm → lo más temprano disponible es el mediodía siguiente,
-  así que el espacio de las 11:00 am queda bloqueado. ✅
-- Reservar a las 7:00 pm o después → toda la mañana siguiente queda bloqueada. ✅
-- Nunca hay citas el mismo día en horario normal. ✅
-
-Dos diferencias respecto a la regla ideal, ambas menores:
-
-1. Entre las 6 y las 7 pm, el espacio de las 12:00 pm del día siguiente sigue
-   disponible (el de las 11:00 am ya no). Para cerrar también ese, subir a
-   **19 horas**; el costo es que el corte efectivo se adelanta a las 5 pm.
-2. Reservando entre medianoche y la 1:00 am se alcanzaría el espacio de las
-   7:00 pm de ese mismo día. En la práctica no ocurre.
+- Reservar a las 6:00 pm → lo más temprano disponible es la 1:00 pm del día
+  siguiente, así que **toda la mañana siguiente queda cerrada**. ✅
+- Reservar a las 5:00 pm → el espacio de las 11:00 am ya no aparece; el de las
+  12:00 pm todavía sí. El corte empieza a operar un poco antes de las 6 pm.
+- Nunca hay citas el mismo día. ✅
 
 ---
 
-## 7. Pendiente de decidir
+## 7. Flujo de botones en el sitio
 
-El botón principal del encabezado (`Agendar Cita`, en azul) sigue apuntando a
-WhatsApp en todo el sitio, y es el que dispara la conversión de Google Ads
-(`ads_conversion_Contact_1`). La agenda en línea se agregó como un enlace de
-menú aparte, "Agendar en línea", para no tocar esa medición.
+Los botones principales de todo el sitio llevan a la agenda en línea:
 
-Si más adelante se quiere que el botón principal lleve a `/agendar/`, hay que
-decidir antes qué pasa con el evento de conversión, para no perder el
-seguimiento de las campañas.
+| Ubicación | Destino |
+|---|---|
+| Botón del encabezado (inicio y parejas) | `/agendar/` |
+| Botón del hero | `/agendar/` |
+| Botón del pie de página | `/agendar/` |
+| Menú móvil | `/agendar/` |
+
+Desde la página de parejas todos apuntan a `/agendar/?tipo=pareja`.
+
+WhatsApp queda como salida secundaria, para quien todavía tiene dudas: un enlace
+de texto bajo los botones del hero, otro en el pie de página, y el botón
+flotante verde, que sigue presente en todas las páginas.
+
+### Nota sobre Google Ads
+
+El evento de conversión `ads_conversion_Contact_1` sigue disparándose solo en
+los enlaces de WhatsApp. Como el botón principal ahora lleva a la agenda, ese
+evento va a registrar bastante menos conversiones que antes: la decisión fue
+priorizar el flujo del usuario por encima de la medición.
+
+Si más adelante se quiere recuperar el seguimiento, lo correcto no es marcar el
+clic en "Agendar Cita" —que solo es una navegación interna— sino registrar la
+conversión **cuando la reserva se completa**, usando el redireccionamiento a una
+página de gracias que Cal.com permite configurar al terminar el pago.

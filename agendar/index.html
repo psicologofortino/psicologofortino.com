@@ -121,13 +121,10 @@
                 <a href="/#faq" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Preguntas</a>
                 <a href="/" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Terapia Individual</a>
                 <a href="/parejas/" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Parejas</a>
-                <a href="/agendar/" class="text-sm font-bold text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Agendar</a>
 
-                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es%3A"
-                   onclick="return gtagSendEvent(this.href);"
-                   target="_blank"
+                <a href="#calendario"
                    class="bg-brand-primary text-white px-5 py-2 rounded font-bold text-sm hover:bg-brand-dark transition-colors">
-                   Agendar Cita
+                   Ver horarios
                 </a>
             </nav>
 
@@ -145,13 +142,9 @@
                 <hr class="border-gray-100">
                 <a href="/" class="mobile-link text-gray-800 font-bold py-2">Terapia Individual</a>
                 <a href="/parejas/" class="mobile-link text-gray-800 font-bold py-2">Terapia de Pareja</a>
-                <a href="/agendar/" class="mobile-link text-brand-primary font-bold py-2">Agendar Cita</a>
 
-                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es%3A"
-                   onclick="return gtagSendEvent(this.href);"
-                   target="_blank"
-                   class="text-brand-primary font-bold py-2 border border-brand-primary rounded mx-8">
-                   Preguntar por WhatsApp
+                <a href="#calendario" class="mobile-link bg-brand-primary text-white font-bold py-3 rounded mx-8">
+                   Ver horarios
                 </a>
             </nav>
         </div>
@@ -460,7 +453,7 @@
          ================================================================ -->
     <script>
         const CAL = {
-            usuario: "",
+            usuario: "fortino-velderrain-aifqcp",
             individual: "primera-cita-individual",
             pareja: "primera-cita-pareja"
         };
@@ -501,9 +494,15 @@
             frame.src = `https://cal.com/${CAL.usuario}/${evento}`;
         }
 
+        // Permite llegar con la pestaña ya elegida: /agendar/?tipo=pareja
+        const params = new URLSearchParams(window.location.search);
+        const tipoInicial = params.get('tipo') === 'pareja' ? 'pareja' : 'individual';
+
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tipo === tipoInicial));
+
         if (CAL.usuario) {
             pendiente.remove();
-            mostrarCalendario('individual');
+            mostrarCalendario(tipoInicial);
         }
 
         tabs.forEach(tab => {

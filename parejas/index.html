@@ -103,11 +103,9 @@
                 <a href="#ubicacion" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Ubicación</a>
                 <a href="../index.html" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Terapia Individual</a>
                 <a href="#inicio" class="text-sm font-bold text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Parejas</a>
-                <a href="../agendar/" class="text-sm font-bold text-gray-600 hover:text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Agendar en línea</a>
 
-                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A" 
-                   onclick="return gtagSendEvent(this.href);"
-                   target="_blank"
+                <!-- CTA Header -> Agenda en línea -->
+                <a href="../agendar/?tipo=pareja"
                    class="bg-brand-primary text-white px-5 py-2 rounded font-bold text-sm hover:bg-brand-dark transition-colors">
                    Agendar Cita
                 </a>
@@ -127,13 +125,10 @@
                 <hr class="border-gray-100">
                 <a href="../index.html" class="mobile-link text-gray-800 font-bold py-2">Terapia Individual</a>
                 <a href="#inicio" class="mobile-link text-brand-primary font-bold py-2">Terapia de Pareja</a>
-                <a href="../agendar/" class="mobile-link text-gray-800 font-bold py-2">Agendar en línea</a>
 
-                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A" 
-                   onclick="return gtagSendEvent(this.href);"
-                   target="_blank"
-                   class="text-brand-primary font-bold py-2 border border-brand-primary rounded mx-8">
-                   Contactar por WhatsApp
+                <!-- CTA Móvil -> Agenda en línea -->
+                <a href="../agendar/?tipo=pareja" class="mobile-link bg-brand-primary text-white font-bold py-3 rounded mx-8">
+                   Agendar Cita
                 </a>
             </nav>
         </div>
@@ -168,17 +163,24 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A"
-                           onclick="return gtagSendEvent(this.href);"
-                           target="_blank"
-                           class="bg-brand-accent text-white font-bold py-4 px-8 rounded-lg hover:bg-green-600 transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
-                            <i class="fab fa-whatsapp text-xl"></i>
+                        <!-- CTA Hero -> Agenda en línea -->
+                        <a href="../agendar/?tipo=pareja"
+                           class="bg-brand-primary text-white font-bold py-4 px-8 rounded-lg hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                            <i class="far fa-calendar-check text-xl"></i>
                             Agendar Cita
                         </a>
                         <a href="#enfoque" class="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors">
                             Mi enfoque
                         </a>
                     </div>
+
+                    <p class="mt-5 text-sm text-gray-500">
+                        ¿Tienen dudas antes de decidir?
+                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20sobre%20la%20terapia%20de%20pareja%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
+                           onclick="return gtagSendEvent(this.href);"
+                           target="_blank"
+                           class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">Escríbeme por WhatsApp</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -329,13 +331,20 @@
             <h2 class="text-3xl font-bold mb-6">¿Listos para reconstruir su alianza?</h2>
             <p class="text-blue-200 mb-8 text-lg">Inicien su proceso terapéutico hoy y recuperen la complicidad en pareja.</p>
             
-            <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20de%20parejas%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia%20de%20pareja.%20Mi%20nombre%20es%3A"
-               target="_blank"
-               onclick="return gtagSendEvent(this.href);"
-               class="bg-brand-accent text-white font-bold py-4 px-10 rounded-lg hover:bg-white hover:text-brand-accent transition-all shadow-lg inline-flex items-center gap-3 text-lg">
-                <i class="fab fa-whatsapp"></i>
-                Agendar Cita por WhatsApp
+            <!-- CTA Footer -> Agenda en línea -->
+            <a href="../agendar/?tipo=pareja"
+               class="bg-white text-brand-dark font-bold py-4 px-10 rounded-lg hover:bg-brand-light transition-all shadow-lg inline-flex items-center gap-3 text-lg">
+                <i class="far fa-calendar-check"></i>
+                Agendar Cita
             </a>
+
+            <p class="mt-6 text-blue-200">
+                ¿Prefieren preguntar antes?
+                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20sobre%20la%20terapia%20de%20pareja%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
+                   target="_blank"
+                   onclick="return gtagSendEvent(this.href);"
+                   class="text-brand-accent font-bold underline underline-offset-4 hover:text-white transition-colors whitespace-nowrap">Escríbeme por WhatsApp</a>
+            </p>
 
             <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-sm text-gray-400">
                 <a href="tel:6688850591" class="hover:text-white transition-colors"><i class="fas fa-phone mr-2"></i> 668-885-0591</a>
