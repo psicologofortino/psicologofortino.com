@@ -21,6 +21,16 @@ Los Mochis, por Fortino Velderrain y Felipe Valle.
 - `peleabien/registro/index.html` — formulario de registro, con cuenta regresiva
   al cierre (fecha fija: 10 de julio de 2026).
 
+**Falta una imagen.** La fotografía de Felipe Valle
+(`psicologo-felipe-valle-los-mochis.png`) se eliminó del repositorio en
+septiembre de 2026, porque seguía publicada en la raíz del sitio sin que nada la
+enlazara. La página la sigue referenciando. Si el taller se reutiliza, hay que
+recuperarla del historial de git y volver a colocarla en la raíz:
+
+```bash
+git checkout a756c86 -- psicologo-felipe-valle-los-mochis.png
+```
+
 Estuvo publicado en `psicologofortino.com/parejas/peleabien/` hasta agosto de
 2026. Sus enlaces internos hacia el resto del sitio usan rutas absolutas
 (`/`, `/parejas/`), por lo que la carpeta funciona igual desde cualquier

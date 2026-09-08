@@ -459,7 +459,11 @@
         const CAL = {
             usuario: "fortino-velderrain-aifqcp",
             individual: "primera-cita-individual",
-            pareja: "primera-cita-pareja"
+            pareja: "primera-cita-pareja",
+
+            // Deja el campo de teléfono con el prefijo de México ya puesto, para
+            // que nadie tenga que buscar el país en la lista. Vaciar para quitarlo.
+            prefijoTelefono: "+52"
         };
     </script>
 
@@ -515,7 +519,12 @@
                 });
                 contenedor.appendChild(frame);
             }
-            frame.src = `https://cal.com/${CAL.usuario}/${evento}`;
+            let url = `https://cal.com/${CAL.usuario}/${evento}`;
+            if (CAL.prefijoTelefono) {
+                const prefill = new URLSearchParams({ attendeePhoneNumber: CAL.prefijoTelefono });
+                url += '?' + prefill;
+            }
+            frame.src = url;
         }
 
         // Si el calendario no llega a cargar, ofrecer la salida por WhatsApp

@@ -217,3 +217,21 @@ los derechos ARCO y el uso de Google Analytics.
 
 Si cambia algo de eso —otro procesador de pagos, otro formulario, publicidad—
 hay que actualizar el texto y su fecha.
+
+---
+
+## 10. Prefijo telefónico de México en el formulario
+
+El calendario se carga con `?attendeePhoneNumber=%2B52`, que es el parámetro de
+prellenado de Cal.com para el campo de teléfono. Con eso el campo llega con el
+prefijo de México ya puesto y nadie tiene que buscar el país en la lista.
+
+Se controla desde `agendar/index.html`, en el bloque `CAL`, con
+`prefijoTelefono: "+52"`. Vaciar esa cadena quita el parámetro.
+
+**Lo que no se puede resolver desde aquí:** buscar "Mexico" sin acento en la
+lista de países de Cal.com no encuentra "México". Ese buscador vive dentro del
+calendario de Cal.com, que se carga desde otro dominio; el navegador impide
+modificar su contenido desde nuestra página. Es un defecto de Cal.com y solo
+ellos pueden corregirlo. El prellenado del prefijo evita que la mayoría tenga
+que abrir esa lista.
