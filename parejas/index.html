@@ -105,7 +105,7 @@
                 <a href="#inicio" class="text-sm font-bold text-brand-primary uppercase tracking-wide transition-colors whitespace-nowrap">Parejas</a>
 
                 <!-- CTA Header -> Agenda en línea -->
-                <a href="../agendar/?tipo=pareja"
+                <a href="../agendar/?tipo=pareja" onclick="return gtagSendEvent(this.href);"
                    class="bg-brand-primary text-white px-5 py-2 rounded font-bold text-sm hover:bg-brand-dark transition-colors">
                    Agendar Cita
                 </a>
@@ -127,7 +127,7 @@
                 <a href="#inicio" class="mobile-link text-brand-primary font-bold py-2">Terapia de Pareja</a>
 
                 <!-- CTA Móvil -> Agenda en línea -->
-                <a href="../agendar/?tipo=pareja" class="mobile-link bg-brand-primary text-white font-bold py-3 rounded mx-8">
+                <a href="../agendar/?tipo=pareja" onclick="return gtagSendEvent(this.href);" class="mobile-link bg-brand-primary text-white font-bold py-3 rounded mx-8">
                    Agendar Cita
                 </a>
             </nav>
@@ -164,7 +164,7 @@
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                         <!-- CTA Hero -> Agenda en línea -->
-                        <a href="../agendar/?tipo=pareja"
+                        <a href="../agendar/?tipo=pareja" onclick="return gtagSendEvent(this.href);"
                            class="bg-brand-primary text-white font-bold py-4 px-8 rounded-lg hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
                             <i class="far fa-calendar-check text-xl"></i>
                             Agendar Cita
@@ -332,7 +332,7 @@
             <p class="text-blue-200 mb-8 text-lg">Inicien su proceso terapéutico hoy y recuperen la complicidad en pareja.</p>
             
             <!-- CTA Footer -> Agenda en línea -->
-            <a href="../agendar/?tipo=pareja"
+            <a href="../agendar/?tipo=pareja" onclick="return gtagSendEvent(this.href);"
                class="bg-white text-brand-dark font-bold py-4 px-10 rounded-lg hover:bg-brand-light transition-all shadow-lg inline-flex items-center gap-3 text-lg">
                 <i class="far fa-calendar-check"></i>
                 Agendar Cita
@@ -359,7 +359,10 @@
                 <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-400 hover:text-red-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
             </div>
             
-            <p class="mt-8 text-xs text-gray-600">&copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.</p>
+            <p class="mt-8 text-xs text-gray-600">
+                &copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.
+                <a href="/privacidad/" class="underline underline-offset-2 hover:text-gray-400 transition-colors ml-1">Aviso de privacidad</a>
+            </p>
         </div>
     </footer>
 

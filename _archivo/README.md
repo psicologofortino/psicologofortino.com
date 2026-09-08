@@ -22,6 +22,18 @@ Estuvo publicado en `psicologofortino.com/parejas/peleabien/` hasta agosto de
 (`/`, `/parejas/`), por lo que la carpeta funciona igual desde cualquier
 ubicación.
 
+### `gracias-reserva/`
+
+Página de agradecimiento posterior a una reserva, con la confirmación, los
+siguientes pasos, la dirección del consultorio y los números de emergencia.
+Incluye el registro de la conversión de Google Ads al completarse la reserva.
+
+Nunca llegó a publicarse: el redireccionamiento tras la reserva que la haría
+alcanzable requiere un plan de pago de Cal.com. Si algún día se contrata, basta
+con moverla a `agendar/gracias/`, apuntar ahí el redireccionamiento de los dos
+tipos de evento, y quitar el `onclick` de seguimiento de los botones "Agendar
+Cita" del sitio, para no contar la conversión dos veces.
+
 ## Cómo volver a publicarlo
 
 Para reutilizar el taller (por ejemplo, en una nueva edición):

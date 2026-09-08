@@ -81,21 +81,18 @@ Nombre, correo y teléfono, más el campo de notas que Cal.com trae por defecto.
 **Decisión tomada:** se deja el campo de notas abierto, aunque quien reserve
 escriba ahí su motivo de consulta. Queda anotado que eso implica que información
 de salud —dato sensible bajo la ley mexicana de protección de datos— se guarda
-en Cal.com y Google Calendar. Pendiente asociado: el sitio no tiene aviso de
-privacidad, y al recolectar datos personales por formulario conviene publicarlo.
+en Cal.com y Google Calendar. Por eso el aviso de privacidad (sección 9) explica
+que ese campo es opcional y qué implica llenarlo.
 
-### Redireccionamiento al terminar
+### Redireccionamiento al terminar: descartado
 
-En cada tipo de evento, configurar el redireccionamiento posterior a la reserva
-hacia:
+El redireccionamiento posterior a la reserva requiere un plan de pago de Cal.com,
+y se decidió no contratarlo. Por eso la conversión de Google Ads se mide en el
+clic del botón y no en la reserva completada; ver la sección 7.
 
-```
-https://psicologofortino.com/agendar/gracias/
-```
-
-En Cal.com está en los ajustes avanzados del tipo de evento, como *redirect on
-booking* / redireccionamiento tras la reserva. Es lo que hace que la conversión
-de Google Ads se registre; ver la sección 7.
+La página de agradecimiento que se había construido para ese flujo quedó guardada
+en `_archivo/gracias-reserva/`, lista para reactivarse si algún día se contrata
+el plan.
 
 ---
 
@@ -106,11 +103,23 @@ de Cal.com, **Apps → Stripe → Install**, que redirige a Stripe para aceptar.
 claves `pk_` y `sk_` son para quien programa una integración propia; aquí no van
 en ningún archivo, y una `sk_` nunca debe quedar escrita en el repositorio.
 
-**Modo de prueba vs. modo real.** Las claves que empiezan con `pk_test_` /
-`sk_test_` indican que la cuenta todavía está en modo de prueba: los cobros son
-simulados y no llega dinero. Para cobrar de verdad hay que completar la
-verificación de Stripe (RFC, CLABE, identificación) y que la cuenta quede
-activada.
+### Verificar que el cobro funciona
+
+La cuenta ya está activada. Falta comprobar de punta a punta que el anticipo se
+cobra. Conviene hacerlo con una prueba barata en vez de con los $400 reales:
+
+1. Crear un tipo de evento temporal, marcado como **oculto**, de 15 minutos y con
+   precio de **$10 MXN**.
+2. Reservarlo uno mismo, con un correo distinto, y pagar con una tarjeta real.
+3. Comprobar las tres cosas que tienen que ocurrir:
+   - el cobro aparece en el panel de Stripe;
+   - la cita aparece en Google Calendar;
+   - llega el correo de confirmación.
+4. Reembolsar ese cobro y borrar el evento temporal.
+
+Si el calendario deja reservar **sin pedir el pago**, lo que falta casi siempre
+es el precio en el propio tipo de evento: la app de Stripe se instala una vez,
+pero el monto se define en cada evento por separado.
 
 Tarifa en México: **3.6% + $3 MXN** por transacción.
 
@@ -158,20 +167,49 @@ flotante verde, que sigue presente en todas las páginas.
 
 ### Conversión de Google Ads
 
-La conversión se registra en `agendar/gracias/`, la página a la que Cal.com
-redirige cuando la reserva se completa y se cobra el anticipo. Así se cuentan
-reservas reales, no clics: nadie llega a esa página sin haber pagado.
+Los botones que llevan a `/agendar/` disparan `ads_conversion_Contact_1`, el
+mismo evento que ya usaban los enlaces de WhatsApp. Con eso la medición vuelve a
+tener la calidad que tenía antes de la agenda: cuenta **intención de contacto**,
+no reservas pagadas.
 
-Para que funcione hay que configurar el redireccionamiento en **los dos** tipos
-de evento (ver sección 4). Si no se configura, la conversión nunca se dispara.
+No es lo ideal, y se llegó aquí por descarte: medir la reserva completada exige
+el redireccionamiento de Cal.com, que es de plan de pago. La opción que quedaba
+era dejar las campañas sin señal, o contar el clic como se contaba antes. Se
+eligió lo segundo.
 
-Detalles de la implementación:
+Consecuencia a tener presente: el número de conversiones será **mayor** que el de
+citas reales, porque incluye a quien abre la página de agenda y no reserva. Si
+algún día se contrata el plan de Cal.com, se recupera el flujo correcto
+restaurando `_archivo/gracias-reserva/` y quitando el `onclick` de los botones.
 
-- Se reutiliza el evento `ads_conversion_Contact_1`, el mismo de los enlaces de
-  WhatsApp, para no tener que cambiar nada en Google Ads. La cuenta de
-  conversiones queda mezclando mensajes de WhatsApp y reservas completadas.
-- Si se prefiere separarlas, hay que crear una acción de conversión nueva en
-  Google Ads para reservas y cambiar el nombre del evento en la línea marcada
-  al final de `agendar/gracias/index.html`. Es un solo valor.
-- La página lleva `noindex` para que no aparezca en buscadores, y evita contar
-  dos veces si alguien la recarga.
+---
+
+## 8. Evento privado para el espacio físico
+
+Existe un tipo de evento aparte para que la esposa o una colega de confianza
+aparten el consultorio. **No está enlazado desde el sitio y no debe estarlo.**
+
+Dos cosas que conviene revisar en Cal.com, porque los enlaces de reserva son
+públicos para quien los tenga:
+
+- Que el evento esté marcado como **oculto**, para que no aparezca listado en el
+  perfil público `cal.com/fortino-velderrain-aifqcp`.
+- Que no tenga precio, si la idea es que reserven sin pagar.
+
+Aun oculto, cualquiera con la dirección puede reservar. Si eso llega a ser un
+problema, Cal.com permite proteger el evento con contraseña.
+
+---
+
+## 9. Aviso de privacidad
+
+Publicado en `privacidad/index.html`, enlazado desde el pie de página de inicio,
+parejas y agendar.
+
+Cubre qué datos se piden al reservar, el campo de notas y los datos sensibles que
+puede contener, para qué se usan, los terceros que los procesan (Cal.com, Stripe,
+Google) y la transferencia fuera de México, la confidencialidad de la terapia,
+los derechos ARCO y el uso de Google Analytics.
+
+Si cambia algo de eso —otro procesador de pagos, otro formulario, publicidad—
+hay que actualizar el texto y su fecha.

@@ -151,33 +151,58 @@
     </header>
 
     <!-- HERO: LOS DOS CAMINOS -->
-    <section class="bg-brand-light border-b border-blue-100 py-16 md:py-20">
-        <div class="container mx-auto px-6 text-center max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-5 leading-tight">
-                Agenda tu primera cita
-            </h1>
-            <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                Elige el día y la hora que te funcionen. Apartas tu lugar con un anticipo
-                y la cita queda confirmada en el momento, sin esperar respuesta.
-            </p>
+    <section class="py-12 md:py-20 lg:py-24 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center gap-12">
 
-            <!-- Camino principal: ya decidió -->
-            <a href="#calendario"
-               class="inline-flex items-center gap-3 bg-brand-primary text-white font-bold py-4 px-10 rounded-lg hover:bg-brand-dark transition-all shadow-lg text-lg">
-                <i class="far fa-calendar-check"></i>
-                Ver horarios disponibles
-            </a>
+                <!-- Imagen -->
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute inset-0 bg-brand-primary rounded-lg transform translate-x-3 translate-y-3 hidden md:block"></div>
+                    <img src="/psicologo-fortino-velderrain-los-mochis.jpg"
+                         alt="Psicólogo Fortino Velderrain en su consultorio de Los Mochis"
+                         class="relative w-full rounded-lg shadow-xl object-cover z-10 aspect-[4/5] md:aspect-square">
+                </div>
 
-            <!-- Camino secundario: tiene dudas -->
-            <p class="mt-8 text-gray-500">
-                ¿Tienes dudas antes de decidir?
-                <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
-                   onclick="return gtagSendEvent(this.href);"
-                   target="_blank"
-                   class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">
-                   Escríbeme por WhatsApp
-                </a>
-            </p>
+                <!-- Texto -->
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <div class="inline-block bg-blue-100 text-brand-primary text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+                        Agenda en Línea
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Agenda tu<br>
+                        <span class="text-brand-primary">primera cita.</span>
+                    </h1>
+
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Elige el día y la hora que te funcionen. Apartas tu lugar con un anticipo
+                        y la cita queda <strong>confirmada en el momento</strong>, sin esperar respuesta.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <!-- Camino principal: ya decidió -->
+                        <a href="#calendario"
+                           class="bg-brand-primary text-white font-bold py-4 px-8 rounded-lg hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                            <i class="far fa-calendar-check text-xl"></i>
+                            Ver horarios disponibles
+                        </a>
+                    </div>
+
+                    <!-- Camino secundario: tiene dudas -->
+                    <p class="mt-5 text-sm text-gray-500">
+                        ¿Tienes dudas antes de decidir?
+                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20tengo%20una%20duda%20antes%20de%20agendar.%20Mi%20nombre%20es%3A"
+                           onclick="return gtagSendEvent(this.href);"
+                           target="_blank"
+                           class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">
+                           Escríbeme por WhatsApp
+                        </a>
+                    </p>
+
+                    <p class="mt-6 text-xs text-gray-400 font-medium">
+                        Cédula Profesional: 15259245 • Atención presencial y online
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -318,58 +343,23 @@
         </div>
     </section>
 
-    <!-- HORARIOS Y EDAD -->
+    <!-- UBICACIÓN DEL CONSULTORIO -->
     <section class="py-16 bg-brand-light border-y border-blue-100">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="grid md:grid-cols-2 gap-10">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 uppercase tracking-wide">Dónde nos vemos</h2>
 
-                <div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-5 uppercase tracking-wide">
-                        <i class="far fa-clock mr-2 text-brand-primary"></i> Horarios de consulta
-                    </h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex justify-between border-b border-blue-200/60 pb-2">
-                            <span class="font-semibold">Lunes</span>
-                            <span class="text-gray-600">3:00 – 8:00 pm</span>
-                        </li>
-                        <li class="flex justify-between border-b border-blue-200/60 pb-2">
-                            <span class="font-semibold">Martes, jueves y viernes</span>
-                            <span class="text-gray-600 text-right">11:00 am – 1:00 pm<br>3:00 – 8:00 pm</span>
-                        </li>
-                        <li class="flex justify-between border-b border-blue-200/60 pb-2">
-                            <span class="font-semibold">Sábado</span>
-                            <span class="text-gray-600">10:00 am – 1:00 pm</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span class="font-semibold">Miércoles y domingo</span>
-                            <span class="text-gray-500">Descanso</span>
-                        </li>
-                    </ul>
-                </div>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Blvd. Rosales #188, entre Morelos y Juárez.
+            </p>
+            <p class="text-sm text-gray-500 mb-8">
+                Pasando "El Bronco", antes de llegar a "TostiHouse".
+            </p>
 
-                <div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-5 uppercase tracking-wide">
-                        <i class="fas fa-location-dot mr-2 text-brand-primary"></i> Consultorio
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed mb-2">
-                        Blvd. Rosales #188, entre Morelos y Juárez.
-                    </p>
-                    <p class="text-sm text-gray-500 mb-5">
-                        Pasando "El Bronco", antes de llegar a "TostiHouse".
-                    </p>
-                    <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97"
-                       target="_blank"
-                       class="inline-flex items-center gap-2 text-brand-primary font-bold hover:underline">
-                        <i class="fas fa-location-arrow"></i> Ver en Google Maps
-                    </a>
-
-                    <p class="mt-8 pt-6 border-t border-blue-200/60 text-gray-700 leading-relaxed">
-                        <strong class="text-brand-dark">Atiendo a partir de los 15 años.</strong>
-                        No realizo terapia infantil.
-                    </p>
-                </div>
-
-            </div>
+            <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97"
+               target="_blank"
+               class="inline-flex items-center gap-2 text-brand-primary border-2 border-brand-primary px-6 py-3 rounded hover:bg-brand-primary hover:text-white transition-colors font-bold uppercase tracking-widest text-sm">
+                <i class="fas fa-location-arrow"></i> Ver en Google Maps
+            </a>
         </div>
     </section>
 
@@ -427,7 +417,10 @@
                 <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-400 hover:text-red-600 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
             </div>
 
-            <p class="mt-8 text-xs text-gray-600">&copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.</p>
+            <p class="mt-8 text-xs text-gray-600">
+                &copy; 2026 Psicólogo Fortino Velderrain. Todos los derechos reservados.
+                <a href="/privacidad/" class="underline underline-offset-2 hover:text-gray-400 transition-colors ml-1">Aviso de privacidad</a>
+            </p>
         </div>
     </footer>
 
