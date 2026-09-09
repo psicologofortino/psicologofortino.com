@@ -82,6 +82,10 @@
         }
         #mobile-menu.open { max-height: 500px; opacity: 1; }
 
+        /* El encabezado va fijo y mide unos 85 px. Sin esto, al saltar a una
+           seccion desde el menu, su titulo queda tapado por el encabezado. */
+        [id] { scroll-margin-top: 6rem; }
+
         /* Titular del hero: en movil se escala con el ancho de pantalla para
            que cada frase quepa en un solo renglon. La frase mas larga,
            "Reconstruyan el puente.", mide 12.10em, de ahi el 6.6vw. */

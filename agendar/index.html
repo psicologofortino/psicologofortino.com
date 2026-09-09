@@ -90,6 +90,10 @@
         }
         #mobile-menu.open { max-height: 500px; opacity: 1; }
 
+        /* El encabezado va fijo y mide unos 85 px. Sin esto, al saltar a una
+           seccion desde el menu, su titulo queda tapado por el encabezado. */
+        [id] { scroll-margin-top: 6rem; }
+
         /* Pestañas de tipo de sesión */
         .tab-btn.active {
             background-color: #1E3A8A;
