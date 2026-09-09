@@ -6,17 +6,6 @@ Notas internas, no se publican. Última revisión: septiembre de 2026.
 
 ## Pendiente de decidir
 
-### Terapia en línea
-
-La portada dice **«Atención presencial y online»**, pero los dos tipos de cita
-en Cal.com son presenciales, con la dirección del consultorio, y la página de
-agenda dice «Dónde nos vemos» con el mapa. Quien busca terapia en línea lee que
-se ofrece y no encuentra por dónde.
-
-Cal.com sí permite crear un evento con Google Meet. Falta decidir si se crea ese
-tercer tipo de cita y se le agrega su pestaña a `/agendar/`, o si se quita la
-palabra «online» de esa línea.
-
 ### Estructura de la portada
 
 La página de parejas está mejor construida: nombra el dolor
@@ -39,6 +28,10 @@ Requiere texto del autor.
 ---
 
 ## Decisiones tomadas, no volver sobre ellas
+
+- **La terapia en línea ya está cubierta.** Los tipos de cita de Cal.com ofrecen
+  «En persona» y «Google Meet» como opciones de ubicación, así que lo que dice la
+  portada sobre atención presencial y online está respaldado por la reserva.
 
 - **El contraste de los botones de WhatsApp se deja como está.** El blanco sobre
   `#25D366` da 1.98, por debajo del mínimo de 4.5, pero es la combinación oficial
