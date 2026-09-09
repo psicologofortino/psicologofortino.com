@@ -19,11 +19,20 @@ Requiere texto del autor.
 
 ---
 
-## Pendiente de hacer fuera del repositorio
+## Hecho
 
-- **Enviar el sitemap a Google Search Console**, en
-  `psicologofortino.com/sitemap.xml`. Con la cuenta que tiene permiso de edición
-  sobre Analytics, la verificación es de un clic.
+- **Search Console configurado.** Propiedad de dominio (`sc-domain:`), verificada.
+  El sitemap se envió el 9 de septiembre de 2026 y quedó en estado *Success*, con
+  las cuatro páginas descubiertas.
+- **Dos avisos de Search Console que NO hay que "arreglar"**, porque ambos son
+  intencionales:
+  - *Page with redirect* (3): las variantes con `www` y sin `https` del dominio,
+    que redirigen a la definitiva. Es el comportamiento correcto.
+  - *Not found 404* (1): `/parejas/peleabien/`, el taller que se archivó a
+    propósito. La página de error propia se encarga de reconducir a quien llegue.
+
+  No usar el botón *Validate fix* en ninguno: fallaría y dejaría una notificación
+  de error sin motivo.
 
 ---
 
