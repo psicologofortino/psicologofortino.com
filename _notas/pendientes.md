@@ -1,59 +1,51 @@
-# Pendientes y hallazgos
+# Pendientes
 
 Notas internas, no se publican. Última revisión: septiembre de 2026.
 
 ---
 
-## Requieren una decisión
+## Pendiente de decidir
 
-### 1. Tailwind se compila en el navegador de cada visitante
+### Terapia en línea
 
-Las páginas cargan Tailwind desde `cdn.tailwindcss.com`. Ese CDN no entrega CSS
-ya hecho: entrega un programa de unos 400 KB que **genera los estilos dentro del
-navegador**, en cada visita. Sus propios autores dicen que no es para sitios en
-producción.
+La portada dice **«Atención presencial y online»**, pero los dos tipos de cita
+en Cal.com son presenciales, con la dirección del consultorio, y la página de
+agenda dice «Dónde nos vemos» con el mapa. Quien busca terapia en línea lee que
+se ofrece y no encuentra por dónde.
 
-Por qué importa aquí más que en otros sitios: la velocidad de carga entra en el
-*nivel de calidad* de Google Ads, y ese nivel influye en cuánto se paga por clic.
-Una página de destino lenta encarece las campañas.
+Cal.com sí permite crear un evento con Google Meet. Falta decidir si se crea ese
+tercer tipo de cita y se le agrega su pestaña a `/agendar/`, o si se quita la
+palabra «online» de esa línea.
 
-La solución es generar el CSS una sola vez y publicarlo como un archivo, en vez
-de armarlo en cada visita. Implica agregar un paso de compilación al
-repositorio, así que es una decisión, no un ajuste. El resultado sería la misma
-apariencia con una fracción del peso.
+### Estructura de la portada
 
-### 2. Posible desbordamiento del encabezado en tabletas
+La página de parejas está mejor construida: nombra el dolor
+(«¿Se sienten atrapados en estos patrones?»), explica el método
+(«¿Cómo trabajaremos en la terapia?») y después resuelve dudas.
 
-Entre 768 px y unos 980 px de ancho, el menú de escritorio muestra cinco
-elementos más el botón, todos sin permitir corte de línea, junto a un logotipo
-ancho. La estimación da un total mayor al espacio disponible, lo que rompería el
-encabezado en tabletas en vertical.
+La portada va del titular a los testimonios, sin una sección que explique cómo
+trabaja ni para quién es. Y la portada es la que reciben los anuncios.
 
-**No verificado**: desde el entorno de trabajo no se puede renderizar la página,
-porque el CDN de Tailwind está bloqueado ahí. Conviene comprobarlo en una tableta
-real o en el modo responsivo del navegador, a 768 px y a 900 px.
-
-Si se confirma, la corrección es de una palabra por archivo: cambiar el punto de
-quiebre del menú de `md:` a `lg:`, de modo que el menú de hamburguesa se use
-hasta los 1024 px.
+Requiere texto del autor.
 
 ---
 
-## Para hacer fuera del repositorio
+## Pendiente de hacer fuera del repositorio
 
-- **Enviar el sitemap a Google Search Console**, en `psicologofortino.com/sitemap.xml`.
-  Acelera que Google encuentre la página de agenda.
-- **Revisión legal del aviso de privacidad.** El texto es correcto y honesto,
-  pero no lo redactó ni revisó un abogado.
+- **Enviar el sitemap a Google Search Console**, en
+  `psicologofortino.com/sitemap.xml`. Con la cuenta que tiene permiso de edición
+  sobre Analytics, la verificación es de un clic.
 
 ---
 
-## Limitaciones conocidas, ya decididas
+## Decisiones tomadas, no volver sobre ellas
 
-- **La conversión de Google Ads cuenta clics, no reservas pagadas.** Ver la
-  sección 7 de `configuracion-agenda.md`. Consecuencia: las conversiones
-  reportadas serán más que las citas reales.
-- **El aviso de "el calendario está tardando" no detecta todos los fallos.** Si
-  Cal.com responde con un error, el navegador lo considera cargado y el aviso no
-  aparece. Cubre el caso de una conexión lenta o colgada, que es el más común.
-  Detectar lo otro requeriría un servidor propio.
+- **El contraste de los botones de WhatsApp se deja como está.** El blanco sobre
+  `#25D366` da 1.98, por debajo del mínimo de 4.5, pero es la combinación oficial
+  de la marca según sus propias guías (Pantone 7479 C). Se prioriza la
+  identidad reconocible.
+- **El aviso de privacidad no pasará por revisión legal.**
+- **La conversión de Google Ads cuenta clics, no reservas pagadas**, porque el
+  redireccionamiento de Cal.com es de plan de pago. No se va a corregir.
+- **El teléfono se queda en la ficha de Google Maps**, aunque se haya retirado
+  del sitio.
