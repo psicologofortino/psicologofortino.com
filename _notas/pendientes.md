@@ -4,21 +4,6 @@ Notas internas, no se publican. Última revisión: septiembre de 2026.
 
 ---
 
-## Pendiente de decidir
-
-### Estructura de la portada
-
-La página de parejas está mejor construida: nombra el dolor
-(«¿Se sienten atrapados en estos patrones?»), explica el método
-(«¿Cómo trabajaremos en la terapia?») y después resuelve dudas.
-
-La portada va del titular a los testimonios, sin una sección que explique cómo
-trabaja ni para quién es. Y la portada es la que reciben los anuncios.
-
-Requiere texto del autor.
-
----
-
 ## Hecho
 
 - **Search Console configurado.** Propiedad de dominio (`sc-domain:`), verificada.
@@ -37,6 +22,12 @@ Requiere texto del autor.
 ---
 
 ## Decisiones tomadas, no volver sobre ellas
+
+- **La estructura de la portada se queda como está.** Se planteó agregarle una
+  sección de método y de para quién es, como la que tiene la página de parejas.
+  Se descartó: el hero ya separa a los dos públicos con sus dos botones —quien
+  viene decidido tiene «Agendar Cita», quien viene a informarse tiene «¿Cómo
+  funciona?»— y el FAQ, ya con siete preguntas, cubre lo que esa sección diría.
 
 - **La terapia en línea ya está cubierta.** Los tipos de cita de Cal.com ofrecen
   «En persona» y «Google Meet» como opciones de ubicación, así que lo que dice la
