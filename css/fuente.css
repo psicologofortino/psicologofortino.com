@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Inter servida desde el propio sitio (licencia en /fuentes/OFL.txt).
+   Es la fuente variable: un solo archivo cubre del 400 al 800. Solo el
+   juego latino, que incluye acentos, ñ, ¿ y ¡. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(/fuentes/inter-latin.woff2) format('woff2');
+}
+
+/* Iconos: dibujos SVG del sprite /iconos.svg. Miden lo mismo que el texto
+   que los rodea y toman su color, como hacía Font Awesome. */
+.icono {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  overflow: visible;
+}
+
+/* El atributo hidden siempre oculta, aunque una clase diga otra cosa. */
+[hidden] { display: none !important; }

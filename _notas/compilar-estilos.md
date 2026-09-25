@@ -48,3 +48,17 @@ Después hay que confirmar `css/estilos.css` junto con el cambio de HTML.
 
 Hay que añadirla a la lista `content` de `tailwind.config.js`, o sus clases no
 se incluirán.
+
+## Íconos y tipografía
+
+Desde septiembre de 2026 el sitio ya no carga nada de otros servidores para
+verse bien:
+
+- **Íconos:** están dibujados en `iconos.svg` (tomados de Font Awesome Free
+  6.5.2, licencia CC BY 4.0). En las páginas se usan así:
+  `<svg class="icono" viewBox="0 0 512 512" aria-hidden="true"><use href="/iconos.svg#whatsapp"></use></svg>`.
+  El `viewBox` debe ser el mismo del `<symbol>` correspondiente. Para un
+  ícono nuevo, se copia el `<path>` del SVG original de Font Awesome a un
+  `<symbol>` nuevo dentro de `iconos.svg`.
+- **Tipografía:** Inter, servida desde `fuentes/inter-latin.woff2` (licencia
+  en `fuentes/OFL.txt`). Se declara en `css/fuente.css`.
