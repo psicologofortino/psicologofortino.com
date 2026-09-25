@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "estilos": "tailwindcss -c tailwind.config.js -i css/fuente.css -o css/estilos.css --minify && node _herramientas/versionar.js"
+  },
   "dependencies": {
     "tailwindcss": "^3.4.19"
   }

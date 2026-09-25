@@ -62,3 +62,22 @@ verse bien:
   `<symbol>` nuevo dentro de `iconos.svg`.
 - **Tipografía:** Inter, servida desde `fuentes/inter-latin.woff2` (licencia
   en `fuentes/OFL.txt`). Se declara en `css/fuente.css`.
+
+## Versión de los estilos (importante)
+
+Desde el 25 de septiembre de 2026 se compila con:
+
+```bash
+npm run estilos
+```
+
+Hace lo mismo que el comando de arriba y además pone en cada página la huella
+del archivo (`/css/estilos.css?v=03f7b354`, `/iconos.svg?v=…#icono`). Cuando
+el CSS cambia, la huella cambia y el navegador lo descarga de nuevo.
+
+**Por qué:** GitHub Pages permite que el navegador guarde cada archivo 10
+minutos. El día que se quitó Font Awesome, un navegador combinó el HTML nuevo
+con el CSS viejo guardado: sin la tipografía ni el tamaño de los íconos, la
+página se vio con Arial y con íconos gigantes. Con la huella eso ya no pasa.
+Además, cada ícono lleva `width`, `height` y `fill` en el propio HTML, así que
+aunque faltara el CSS no se deforman.
