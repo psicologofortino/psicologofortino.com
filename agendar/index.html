@@ -158,61 +158,8 @@
         </div>
     </section>
 
-    <!-- COSTOS -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-3xl font-bold text-gray-900 mb-3 text-center uppercase tracking-wide">Costos</h2>
-            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-                Apartas tu lugar con un anticipo y el resto lo cubres en consultorio.
-                El anticipo se descuenta del costo de la sesión.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Individual -->
-                <div class="border-2 border-gray-200 rounded-lg p-8 hover:border-brand-primary transition-colors">
-                    <h3 class="text-xl font-bold text-brand-dark mb-1">Terapia Individual</h3>
-                    <p class="text-sm text-gray-500 mb-6">Adolescentes desde 15 años y adultos</p>
-
-                    <p class="text-4xl font-extrabold text-brand-dark mb-1">$800<span class="text-lg font-bold text-gray-400"> MXN</span></p>
-                    <p class="text-sm text-gray-500 mb-6">Sesión de 50 minutos</p>
-
-                    <ul class="space-y-3 text-gray-600 border-t border-gray-100 pt-6">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
-                            <span><strong class="text-gray-900">$400</strong> de anticipo al reservar</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
-                            <span><strong class="text-gray-900">$400</strong> restantes en consultorio</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Pareja -->
-                <div class="border-2 border-gray-200 rounded-lg p-8 hover:border-brand-primary transition-colors">
-                    <h3 class="text-xl font-bold text-brand-dark mb-1">Terapia de Pareja</h3>
-                    <p class="text-sm text-gray-500 mb-6">Sesión conjunta para ambos</p>
-
-                    <p class="text-4xl font-extrabold text-brand-dark mb-1">$1,000<span class="text-lg font-bold text-gray-400"> MXN</span></p>
-                    <p class="text-sm text-gray-500 mb-6">Sesión de 50 minutos</p>
-
-                    <ul class="space-y-3 text-gray-600 border-t border-gray-100 pt-6">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
-                            <span><strong class="text-gray-900">$500</strong> de anticipo al reservar</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
-                            <span><strong class="text-gray-900">$500</strong> restantes en consultorio</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CALENDARIO -->
-    <section id="calendario" class="py-16 bg-gray-50 border-y border-gray-100">
+    <section id="calendario" class="py-16 bg-white">
         <div class="container mx-auto px-6 max-w-4xl">
             <h2 class="text-3xl font-bold text-gray-900 mb-3 text-center uppercase tracking-wide">Elige tu horario</h2>
             <p class="text-center text-gray-600 mb-8">
@@ -222,12 +169,14 @@
             <!-- Pestañas -->
             <div class="flex justify-center gap-3 mb-8">
                 <button type="button" data-tipo="individual"
-                        class="tab-btn active border-2 border-gray-300 text-gray-700 font-bold px-6 py-3 rounded-lg transition-colors">
-                    Individual
+                        class="tab-btn active flex-1 sm:flex-none border-2 border-gray-300 text-gray-700 font-bold px-4 sm:px-6 py-3 rounded-lg transition-colors">
+                    <span class="block">Individual</span>
+                    <span class="block text-sm font-normal">$800<span class="hidden sm:inline"> · </span><br class="sm:hidden">anticipo $400</span>
                 </button>
                 <button type="button" data-tipo="pareja"
-                        class="tab-btn border-2 border-gray-300 text-gray-700 font-bold px-6 py-3 rounded-lg transition-colors">
-                    Pareja
+                        class="tab-btn flex-1 sm:flex-none border-2 border-gray-300 text-gray-700 font-bold px-4 sm:px-6 py-3 rounded-lg transition-colors">
+                    <span class="block">Pareja</span>
+                    <span class="block text-sm font-normal">$1,000<span class="hidden sm:inline"> · </span><br class="sm:hidden">anticipo $500</span>
                 </button>
             </div>
 
@@ -262,6 +211,59 @@
         </div>
     </section>
 
+    <!-- COSTOS -->
+    <section class="py-16 bg-gray-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-gray-900 mb-3 text-center uppercase tracking-wide">Costos</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Apartas tu lugar con un anticipo, que se descuenta del costo de la sesión.
+                El resto lo cubres en consultorio o, si la sesión es en línea, por transferencia SPEI.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Individual -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-8 hover:border-brand-primary transition-colors">
+                    <h3 class="text-xl font-bold text-brand-dark mb-1">Terapia Individual</h3>
+                    <p class="text-sm text-gray-500 mb-6">Adolescentes desde 15 años y adultos</p>
+
+                    <p class="text-4xl font-extrabold text-brand-dark mb-1">$800<span class="text-lg font-bold text-gray-400"> MXN</span></p>
+                    <p class="text-sm text-gray-500 mb-6">Sesión de 50 minutos</p>
+
+                    <ul class="space-y-3 text-gray-600 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
+                            <span><strong class="text-gray-900">$400</strong> de anticipo al reservar</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
+                            <span><strong class="text-gray-900">$400</strong> restantes en consultorio o por SPEI</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pareja -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-8 hover:border-brand-primary transition-colors">
+                    <h3 class="text-xl font-bold text-brand-dark mb-1">Terapia de Pareja</h3>
+                    <p class="text-sm text-gray-500 mb-6">Sesión conjunta para ambos</p>
+
+                    <p class="text-4xl font-extrabold text-brand-dark mb-1">$1,000<span class="text-lg font-bold text-gray-400"> MXN</span></p>
+                    <p class="text-sm text-gray-500 mb-6">Sesión de 50 minutos</p>
+
+                    <ul class="space-y-3 text-gray-600 border-t border-gray-100 pt-6">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
+                            <span><strong class="text-gray-900">$500</strong> de anticipo al reservar</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-brand-primary mt-1" aria-hidden="true"></i>
+                            <span><strong class="text-gray-900">$500</strong> restantes en consultorio o por SPEI</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- POLÍTICA DE ANTICIPO Y CANCELACIÓN -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
@@ -278,7 +280,10 @@
                     <i class="fas fa-calendar-day text-brand-primary text-xl mt-1" aria-hidden="true"></i>
                     <p class="text-gray-600 leading-relaxed">
                         Puedes <strong class="text-gray-900">reagendar una vez</strong>, avisando con al menos
-                        24 horas de anticipación.
+                        24 horas de anticipación. Para reagendar o cancelar,
+                        <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20necesito%20reagendar%20mi%20cita.%20Mi%20nombre%20es%3A"
+                           target="_blank"
+                           class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors whitespace-nowrap">escríbeme por WhatsApp</a>.
                     </p>
                 </div>
                 <div class="flex items-start gap-4">
