@@ -55,25 +55,13 @@
     <meta property="og:image" content="https://psicologofortino.com/psicologo-fortino-velderrain-los-mochis.jpg">
 
     <!-- Estilos del sitio: Tailwind ya compilado, no se arma en el navegador -->
-    <link rel="stylesheet" href="/css/estilos.css?v=03f7b354">
+    <link rel="stylesheet" href="/css/estilos.css?v=e149c497">
 
     <!-- Fuentes -->
     <link rel="preload" href="/fuentes/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
         body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        
-        /* Botón Flotante WhatsApp */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 64px; height: 64px;
-            background-color: #25d366; color: #FFF;
-            border-radius: 50%; text-align: center;
-            font-size: 32px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 100; transition: transform 0.3s ease;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
         
         /* Navegación Móvil */
         /* Cerrado también queda invisible para el teclado y los lectores de
@@ -170,7 +158,7 @@
 
             <!-- Botón Menú Móvil -->
             <button id="mobile-menu-btn" class="lg:hidden text-brand-dark p-2 rounded" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-                <svg class="icono icono-abrir text-2xl" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#bars"></use></svg><svg class="icono icono-cerrar text-2xl" viewBox="0 0 384 512" width="0.75em" height="1em" fill="currentColor" aria-hidden="true" hidden><use href="/iconos.svg?v=1aa7a531#xmark"></use></svg>
+                <svg class="icono icono-abrir text-2xl" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#bars"></use></svg><svg class="icono icono-cerrar text-2xl" viewBox="0 0 384 512" width="0.75em" height="1em" fill="currentColor" aria-hidden="true" hidden><use href="/iconos.svg?v=cf1afca1#xmark"></use></svg>
             </button>
         </div>
 
@@ -193,7 +181,7 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section id="inicio" class="py-8 md:py-20 lg:py-24 bg-gray-50">
+    <section id="inicio" data-oculta-whatsapp class="py-8 md:py-14 md:py-20 lg:py-24 bg-gray-50">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12">
                 
@@ -223,7 +211,7 @@
                         <!-- CTA Hero -> Agenda en línea -->
                         <a href="agendar/" onclick="return gtagSendEvent(this.href);"
                            class="bg-brand-primary text-white font-bold py-4 px-8 rounded-lg hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
-                            <svg class="icono text-xl" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#calendar-check"></use></svg>
+                            <svg class="icono text-xl" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#calendar-check"></use></svg>
                             Agendar Cita
                         </a>
                         <a href="#faq" class="border-2 border-gray-300 text-gray-700 font-bold py-4 px-8 rounded-lg hover:border-brand-primary hover:text-brand-primary transition-colors">
@@ -240,7 +228,7 @@
                     </p>
 
                     <p class="mt-6 text-xs text-gray-500 font-medium">
-                        Cédula Profesional: 15259245 • Atención presencial y online
+                        <span class="block sm:inline">Cédula Profesional: 15259245</span><span class="hidden sm:inline"> • </span><span class="block sm:inline">Atención presencial y en línea</span>
                     </p>
                 </div>
             </div>
@@ -248,113 +236,118 @@
     </section>
 
     <!-- TESTIMONIOS -->
-    <section id="testimonios" class="py-16 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8 uppercase tracking-wide">
+    <section id="testimonios" class="py-12 md:py-16 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl lg:max-w-5xl text-center">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-8 uppercase tracking-wide">
                 Lo que dicen mis pacientes
             </h2>
             
-            <div class="flex flex-wrap justify-center gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                    <p class="text-gray-600 text-sm italic">"En estos 2 años que he ido a terapia con Fortino he sentido un gran avance en mi desarrollo emocional, es un psicólogo muy empático, profesional y divertido. Estoy muy agradecida por su apoyo🙌🙌"</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                    <p class="text-gray-600 text-sm italic">"Un gran ser humano que busca apoyarte a dar con la respuesta que buscas, excelente profesional de la salud, gran psicólogo y luz para la mente"</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                    <p class="text-gray-600 text-sm italic">"Para mí Fortino es un gran sicólogo me ha ayudado mucho y he avanzado muchísimo yo estuve casada con un narcisista de lo peor y por el supere ese terrible infierno donde estuve atrapada muchos años"</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                    <p class="text-gray-600 text-sm italic">"La atención que recibí del psicólogo Fortino Valderrain fue muy positiva. Me hizo sentir en confianza desde el inicio gracias a su forma divertida de trabajar, lo que facilitó que me abriera con más facilidad, fue un proceso muy eficaz"</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
-                    <p class="text-gray-600 text-sm italic">"Excelente psicologo, te hace sentir en confianza y he de decir que desde el día 1 sentí que fue la mejor decisión, altamente recomendado."</p>
-                </div>
+            <div class="carrusel -mx-6 px-6 scroll-pl-6 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:flex-wrap md:justify-center md:gap-6">
+                <figure class="snap-start shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left">
+                    <svg class="icono block text-2xl text-brand-primary/25 mb-3" viewBox="0 0 448 512" width="0.8750em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#quote-left"></use></svg>
+                    <blockquote class="text-gray-700 text-[15px] leading-relaxed">En estos 2 años que he ido a terapia con Fortino he sentido un gran avance en mi desarrollo emocional, es un psicólogo muy empático, profesional y divertido. Estoy muy agradecida por su apoyo🙌🙌</blockquote>
+                </figure>
+                <figure class="snap-start shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left">
+                    <svg class="icono block text-2xl text-brand-primary/25 mb-3" viewBox="0 0 448 512" width="0.8750em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#quote-left"></use></svg>
+                    <blockquote class="text-gray-700 text-[15px] leading-relaxed">Un gran ser humano que busca apoyarte a dar con la respuesta que buscas, excelente profesional de la salud, gran psicólogo y luz para la mente</blockquote>
+                </figure>
+                <figure class="snap-start shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left">
+                    <svg class="icono block text-2xl text-brand-primary/25 mb-3" viewBox="0 0 448 512" width="0.8750em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#quote-left"></use></svg>
+                    <blockquote class="text-gray-700 text-[15px] leading-relaxed">Para mí Fortino es un gran sicólogo me ha ayudado mucho y he avanzado muchísimo yo estuve casada con un narcisista de lo peor y por el supere ese terrible infierno donde estuve atrapada muchos años</blockquote>
+                </figure>
+                <figure class="snap-start shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left">
+                    <svg class="icono block text-2xl text-brand-primary/25 mb-3" viewBox="0 0 448 512" width="0.8750em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#quote-left"></use></svg>
+                    <blockquote class="text-gray-700 text-[15px] leading-relaxed">La atención que recibí del psicólogo Fortino Valderrain fue muy positiva. Me hizo sentir en confianza desde el inicio gracias a su forma divertida de trabajar, lo que facilitó que me abriera con más facilidad, fue un proceso muy eficaz</blockquote>
+                </figure>
+                <figure class="snap-start shrink-0 w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm text-left">
+                    <svg class="icono block text-2xl text-brand-primary/25 mb-3" viewBox="0 0 448 512" width="0.8750em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#quote-left"></use></svg>
+                    <blockquote class="text-gray-700 text-[15px] leading-relaxed">Excelente psicologo, te hace sentir en confianza y he de decir que desde el día 1 sentí que fue la mejor decisión, altamente recomendado.</blockquote>
+                </figure>
             </div>
-            
+            <p class="md:hidden mt-4 text-sm text-gray-500">Desliza para ver más testimonios</p>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 bg-gray-50">
+    <section id="faq" class="py-14 md:py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-3xl">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 uppercase tracking-wide">Preguntas Frecuentes</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 uppercase tracking-wide">Preguntas Frecuentes</h2>
                 <p class="text-gray-500 mt-2">Dudas comunes antes de iniciar.</p>
             </div>
 
             <div class="space-y-4">
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group open:ring-2 open:ring-brand-primary/20 transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Qué es la terapia psicodinámica?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Es un enfoque "sin rodeos". No se trata solo de escucharte: trabajamos activamente para identificar los patrones inconscientes que te hacen tropezar. Te ayuda a distinguir lo que sí está en tus manos cambiar, lo cual es indispensable para sanar.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Qué pasa en la primera sesión?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Mucha gente se siente intimidada por la idea de nunca haber ido antes a terapia y no saber qué esperar. Quiero que sepas que la primera sesión se trata principalmente de empezar a construir una relación: conocerte, que me conozcas y empezar a desarrollar confianza. Mi objetivo es que al final de la sesión te quede la sensación de que puedo entenderte y ayudarte en tu caso particular.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Cómo sé si esto es para mí?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Si sientes que das vueltas en los mismos problemas, si tienes ansiedad constante o si simplemente quieres entenderte a fondo. No necesitas estar en una crisis grave; solo necesitas voluntad para trabajar y ser honesto contigo mismo.</p>
                         <p class="mt-3">Algunos de los motivos de consulta más comunes: ansiedad y estrés, tristeza o desánimo que no se va, problemas de pareja o relaciones que se repiten, rupturas y duelos, baja autoestima y dificultad para poner límites.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Atiendes adolescentes?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Sí, desde los <strong>15 años</strong>. No hago terapia infantil: los niños necesitan un enfoque y un entrenamiento distintos, y en ese caso prefiero referirte con alguien especializado.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Cuánto dura un proceso de terapia?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Obviamente depende mucho del caso, pero mi meta es que nos tomemos de <strong>3 a 5 sesiones</strong> para formar una idea general de cómo funciona tu personalidad y cuáles son tus retos personales. De ahí definimos tus objetivos terapéuticos y empezamos a trabajar sobre ellos.</p>
                         <p class="mt-3">La duración total depende mucho de tu voluntad para hacer cambios, pero a grandes rasgos nos damos de <strong>10 a 20 sesiones</strong> para trabajar a profundidad en tus primeros objetivos. De ahí en adelante podemos continuar el tiempo que tú quieras, porque si algo me han enseñado mis pacientes, es que siempre salen temas nuevos.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Es confidencial?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Sí. El consultorio es un espacio seguro y trabajo bajo el código de ética profesional: lo que se habla en terapia se queda en terapia. La única excepción es la que marca la ley, cuando hay un riesgo grave para tu vida o la de alguien más.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         ¿Atiendes en línea?
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Sí, por Google Meet, con el mismo precio y la misma duración que en consultorio. Al reservar eliges la opción <strong>Google Meet</strong> y el enlace te llega en el correo de confirmación. El anticipo se paga al agendar y el resto por <strong>transferencia SPEI</strong>.</p>
                     </div>
                 </details>
                 <details class="bg-white rounded-lg shadow-sm border border-gray-200 group transition-all">
-                    <summary class="cursor-pointer p-6 font-bold text-gray-900 flex justify-between items-center select-none">
+                    <summary class="cursor-pointer p-5 md:p-6 font-bold text-gray-900 flex justify-between items-center select-none">
                         Precio y Duración
-                        <span class="transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#chevron-down"></use></svg></span>
+                        <span class="ml-4 shrink-0 text-gray-400 transform group-open:rotate-180 transition-transform"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#chevron-down"></use></svg></span>
                     </summary>
-                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    <div class="px-5 pb-5 md:px-6 md:pb-6 pt-4 text-gray-600 leading-relaxed border-t border-gray-100">
                         <p>Las sesiones duran <strong>50 minutos</strong>. La terapia individual cuesta <strong>$800</strong> y la de pareja <strong>$1,000</strong>. Se recomienda una frecuencia semanal al inicio para ver resultados consistentes. Para agendar se aparta el lugar con un <strong>anticipo</strong> que se descuenta del costo de la sesión. Puedes ver los horarios disponibles y reservar en la <a href="agendar/" class="text-brand-primary font-bold underline underline-offset-4 hover:text-brand-dark transition-colors">página de agenda</a>.</p>
                     </div>
                 </details>
@@ -363,9 +356,9 @@
     </section>
 
     <!-- UBICACIÓN -->
-    <section id="ubicacion" class="py-20 bg-white">
+    <section id="ubicacion" class="py-14 md:py-20 bg-white">
         <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8 uppercase tracking-wide">Ubicación del Consultorio</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 uppercase tracking-wide">Ubicación del Consultorio</h2>
             
             <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                 Blvd. Rosales #188, entre Morelos y Juárez.
@@ -382,7 +375,7 @@
             <a href="https://maps.app.goo.gl/hk7asEEcw1SNSHX97" 
                target="_blank"
                class="inline-flex items-center gap-2 text-brand-primary border-2 border-brand-primary px-6 py-3 rounded hover:bg-brand-primary hover:text-white transition-colors font-bold uppercase tracking-widest text-sm">
-               <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#location-arrow"></use></svg> Ver en Google Maps
+               <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#location-arrow"></use></svg> Ver en Google Maps
             </a>
         </div>
     </section>
@@ -396,7 +389,7 @@
             <!-- CTA Footer -> Agenda en línea -->
             <a href="agendar/" onclick="return gtagSendEvent(this.href);"
                class="bg-white text-brand-dark font-bold py-4 px-10 rounded-lg hover:bg-brand-light transition-all shadow-lg inline-flex items-center gap-3 text-lg">
-                <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#calendar-check"></use></svg>
+                <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#calendar-check"></use></svg>
                 Agendar Cita
             </a>
 
@@ -409,15 +402,15 @@
             </p>
 
             <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-sm text-gray-400">
-                <a href="mailto:psicologo.fortino@gmail.com" class="hover:text-white transition-colors"><svg class="icono mr-2" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#envelope"></use></svg> psicologo.fortino@gmail.com</a>
+                <a href="mailto:psicologo.fortino@gmail.com" class="hover:text-white transition-colors"><svg class="icono mr-2" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#envelope"></use></svg> psicologo.fortino@gmail.com</a>
             </div>
 
             <!-- Iconos Sociales -->
             <div class="mt-8 flex justify-center space-x-6">
-                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors" aria-label="Instagram"><svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#instagram"></use></svg></a>
-                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors" aria-label="Facebook"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#facebook"></use></svg></a>
-                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-gray-400 hover:text-gray-200 text-2xl transition-colors" aria-label="TikTok"><svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#tiktok"></use></svg></a>
-                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-400 hover:text-red-600 text-2xl transition-colors" aria-label="YouTube"><svg class="icono" viewBox="0 0 576 512" width="1.125em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#youtube"></use></svg></a>
+                <a href="https://www.instagram.com/psicologo.fortino/" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors" aria-label="Instagram"><svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#instagram"></use></svg></a>
+                <a href="https://www.facebook.com/Fortino.Velderrain/" target="_blank" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors" aria-label="Facebook"><svg class="icono" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#facebook"></use></svg></a>
+                <a href="https://www.tiktok.com/@psicologo.fortino" target="_blank" class="text-gray-400 hover:text-gray-200 text-2xl transition-colors" aria-label="TikTok"><svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#tiktok"></use></svg></a>
+                <a href="https://www.youtube.com/channel/UCqUZBuG6tD2qYoSNQ3BeKsw" target="_blank" class="text-gray-400 hover:text-red-600 text-2xl transition-colors" aria-label="YouTube"><svg class="icono" viewBox="0 0 576 512" width="1.125em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#youtube"></use></svg></a>
             </div>
             
             <p class="mt-8 text-xs text-gray-400">
@@ -431,9 +424,9 @@
     <a href="https://wa.me/5216688850591?text=Hola%20Psic.%20Fortino%2C%20vi%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20la%20terapia.%20Mi%20nombre%20es%3A"
        target="_blank"
        onclick="return gtagSendEvent(this.href);"
-       class="whatsapp-float hover:scale-110"
+       class="whatsapp-float oculto"
        aria-label="Contactar por WhatsApp">
-        <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=1aa7a531#whatsapp"></use></svg>
+        <svg class="icono" viewBox="0 0 448 512" width="0.875em" height="1em" fill="currentColor" aria-hidden="true"><use href="/iconos.svg?v=cf1afca1#whatsapp"></use></svg>
     </a>
 
     <!-- Lógica del Menú Móvil -->
@@ -460,6 +453,16 @@
                 pintarBoton();
             });
         });
+        // Botón flotante de WhatsApp: se esconde mientras está a la vista la
+        // zona marcada con data-oculta-whatsapp (el inicio, que ya ofrece
+        // WhatsApp, o el calendario, para no tapar horarios).
+        (() => {
+            const flotante = document.querySelector('.whatsapp-float');
+            const zona = document.querySelector('[data-oculta-whatsapp]');
+            if (!flotante) return;
+            if (!zona || !('IntersectionObserver' in window)) { flotante.classList.remove('oculto'); return; }
+            new IntersectionObserver(([e]) => flotante.classList.toggle('oculto', e.isIntersecting)).observe(zona);
+        })();
     </script>
 </body>
 </html>

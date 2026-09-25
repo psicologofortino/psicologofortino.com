@@ -26,3 +26,32 @@
 
 /* El atributo hidden siempre oculta, aunque una clase diga otra cosa. */
 [hidden] { display: none !important; }
+
+/* Botón flotante de WhatsApp (colores oficiales: blanco sobre #25D366).
+   Con la clase "oculto" se desvanece; cada página decide cuándo. */
+.whatsapp-float {
+  position: fixed; bottom: 30px; right: 30px;
+  width: 64px; height: 64px;
+  background-color: #25d366; color: #fff;
+  border-radius: 50%;
+  font-size: 32px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float.oculto {
+  opacity: 0; transform: scale(0.6); visibility: hidden; pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+@media (max-width: 767px) {
+  .whatsapp-float { width: 56px; height: 56px; bottom: 20px; right: 20px; font-size: 28px; }
+}
+
+/* Carrusel de testimonios en móvil: se desliza sin barra visible. */
+.carrusel { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.carrusel::-webkit-scrollbar { display: none; }
+
+/* Preguntas frecuentes: sin el triangulito que Safari agrega a <summary>. */
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }

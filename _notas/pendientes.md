@@ -42,3 +42,9 @@ Notas internas, no se publican. Última revisión: septiembre de 2026.
   redireccionamiento de Cal.com es de plan de pago. No se va a corregir.
 - **El teléfono se queda en la ficha de Google Maps**, aunque se haya retirado
   del sitio.
+- **Botón flotante de WhatsApp:** se esconde mientras se ve el inicio (que ya
+  tiene su enlace a WhatsApp) y, en la agenda, mientras se ve el calendario,
+  para no tapar botones ni horarios. Cada página marca esa zona con
+  `data-oculta-whatsapp`.
+- **Testimonios en móvil:** carrusel que se desliza de lado; en escritorio
+  siguen en cuadrícula.
