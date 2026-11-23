@@ -65,5 +65,12 @@ Notas internas, no se publican. Última revisión: septiembre de 2026.
 - **SSL/TLS en "Full", no "Full (strict)" ni "Flexible".** Flexible provoca un
   ciclo de redirecciones; strict tumbaría el sitio si GitHub no logra renovar
   su certificado detrás del proxy.
-- Para volver atrás: en Squarespace, nameservers de nuevo a los de Google
-  (`ns-cloud-b1` a `b4.googledomains.com`); los registros siguen guardados ahí.
+- Tras el cambio, Telcel siguió un rato con la dirección vieja guardada en su
+  DNS (puede tardar hasta 48 h en olvidarla). Para acelerarlo, los registros
+  guardados en Squarespace se cambiaron a las direcciones de Cloudflare
+  (A 104.21.78.224 y 172.67.137.222; AAAA 2606:4700:3030::6815:4ee0 y
+  2606:4700:3034::ac43:89de; `www` → `psicologofortino.com`).
+- **Para volver atrás:** en Squarespace, nameservers de nuevo a los de Google
+  (`ns-cloud-b1` a `b4.googledomains.com`) **y** devolver esos registros a
+  GitHub Pages: 4 A (185.199.108.153 a .111.153), 4 AAAA
+  (2606:50c0:8000::153 a 8003::153) y `www` → `psicologofortino.github.io`.
