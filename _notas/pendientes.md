@@ -48,3 +48,22 @@ Notas internas, no se publican. Última revisión: septiembre de 2026.
   `data-oculta-whatsapp`.
 - **Testimonios en móvil:** carrusel que se desliza de lado; en escritorio
   siguen en cuadrícula.
+
+## Dominio, DNS y Cloudflare (noviembre de 2026)
+
+- **El 23 de noviembre de 2026 el DNS pasó de Squarespace a Cloudflare** (plan
+  gratuito). Motivo: con datos móviles de Telcel no cargaba ningún sitio de
+  GitHub Pages (tampoco pages.github.com); con WiFi, sí. Cloudflare recibe las
+  visitas con sus propios servidores y le pide la página a GitHub.
+- **El dominio sigue registrado en Squarespace** (vence el 6 de noviembre de
+  2027); ahí solo cambiaron los nameservers a `dell.ns.cloudflare.com` y
+  `jerry.ns.cloudflare.com`. **Los registros DNS ahora se editan en
+  Cloudflare**, no en Squarespace.
+- Registros: 4 A y 4 AAAA de GitHub Pages y el CNAME `www` →
+  `psicologofortino.github.io`, con proxy (nube naranja). MX `smtp.google.com`
+  y los 3 TXT de Google (SPF, DKIM, verificación) sin proxy.
+- **SSL/TLS en "Full", no "Full (strict)" ni "Flexible".** Flexible provoca un
+  ciclo de redirecciones; strict tumbaría el sitio si GitHub no logra renovar
+  su certificado detrás del proxy.
+- Para volver atrás: en Squarespace, nameservers de nuevo a los de Google
+  (`ns-cloud-b1` a `b4.googledomains.com`); los registros siguen guardados ahí.
